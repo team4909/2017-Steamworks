@@ -57,8 +57,15 @@ public class Drivetrain extends Subsystem {
     	robotDrive.tankDrive(leftY, rightY);
     }
     
+    public void moveDistance(){
+    	
+    }
+    
+    public void rotateAngle(){
+    	
+    }
+    
     public void stop(){
     	robotDrive.drive(0, 0);
     }
 }
-
