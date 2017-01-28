@@ -11,6 +11,8 @@
 
 package org.usfirst.frc4909.STEAMWORKS.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 /**
@@ -41,8 +43,11 @@ public class ClimbCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = (Robot.oi.getClimberSpeed() - 1.0)/2.0;
-    	Robot.climber.climb(speed);
+    	double speed = Robot.oi.getManipulatorJoystick().getY();//(Robot.oi.getClimberSpeed() - 1.0)/2.0;
+    	//Robot.climber.climb(speed);
+    	Robot.climber.climb(.53);
+    	SmartDashboard.putNumber("Rspeed", speed);
+    	System.out.println(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()

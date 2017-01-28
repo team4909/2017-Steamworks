@@ -44,13 +44,17 @@ public class ShootCommand extends Command {
     
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putNumber("Velocity",0);
 		Robot.shooter.shooterPID.resetPID();
 		Robot.shooter.setShooterState(true);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		Robot.shooter.setRPM(60);
+		Robot.shooter.setRPM(SmartDashboard.getNumber("Velocity",0));
+    	//Robot.shooter.setSpeed(1);
+		SmartDashboard.putBoolean("PID Stuffs", true);
+		SmartDashboard.putNumber("currentSpeed", Robot.shooter.getRPM());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -64,6 +68,8 @@ public class ShootCommand extends Command {
 		Robot.shooter.setRPM(0);
 		
 		Robot.shooter.setShooterState(false);
+		SmartDashboard.putBoolean("PID Stuffs", false);
+
     }
 
     // Called when another command which requires one or more of the same

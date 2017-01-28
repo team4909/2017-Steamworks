@@ -205,6 +205,8 @@ public class PIDController {
 
 		// P
 		pOut = pGain * error;
+		if(pOut<0)
+			pOut=0;
 
 		// I
 
