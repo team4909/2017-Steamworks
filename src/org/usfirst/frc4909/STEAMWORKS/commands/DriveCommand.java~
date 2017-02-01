@@ -11,6 +11,8 @@
 
 package org.usfirst.frc4909.STEAMWORKS.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 /**
@@ -42,6 +44,10 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.moveTank();
+		SmartDashboard.putNumber("X dist",Robot.drivetrain.getDisplacementX());
+		SmartDashboard.putNumber("Y dist",Robot.drivetrain.getDisplacementY());
+		SmartDashboard.putNumber("Z dist",Robot.drivetrain.getDisplacementZ());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
