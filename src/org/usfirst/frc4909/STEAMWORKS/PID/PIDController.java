@@ -17,6 +17,7 @@ public class PIDController {
 	double pOut;
 	double iOut;
 	double dOut;
+	double maxOut;
 
 	double error;
 	double errorSum = 0;
@@ -36,7 +37,7 @@ public class PIDController {
 	double average;
 
 	/** The at target. */
-	boolean atTarget = false;
+	public boolean atTarget = false;
 
 	/**
 	 * Instantiates a new PID controller.
@@ -48,12 +49,13 @@ public class PIDController {
 	 * @param d
 	 *            the d
 	 */
-	public PIDController(double p, double i, double d) {
+	public PIDController(double p, double i, double d, double max) {
 		errorSum = 0; // initialize errorSum to 0
 		lastError = 0; // initialize lastError to 0
 		pGain = p;
 		iGain = i;
 		dGain = d;
+		maxOut = max;
 	}
 
 	/**
@@ -133,8 +135,7 @@ public class PIDController {
 
 		// Scale output to be between 1 and -1
 		if (output != 0.0)
-			output = output / Math.abs(output) * (1.0 - Math.pow(0.1, (Math.abs(output))));
-
+			output = (output / Math.abs(output) * (1 - Math.pow(.1, (Math.abs(output)))))*maxOut;
 		return output;
 	}
 
