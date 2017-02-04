@@ -23,6 +23,7 @@ public class DriveDist extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*
     	if(Robot.oi.leftDriveJoystick.getRawButton(2))
     		Robot.drivetrain.driveStraightNavX(.5);
     	else if(Robot.oi.leftDriveJoystick.getRawButton(3))
@@ -31,6 +32,18 @@ public class DriveDist extends Command {
     		Robot.drivetrain.driveStraightNavX(2);
     	else if(Robot.oi.leftDriveJoystick.getRawButton(5))
     		Robot.drivetrain.driveStraightNavX(-1);
+		*/
+
+    	if(Robot.oi.leftDriveJoystick.getRawButton(2))
+    		Robot.drivetrain.driveStraightEncoder(12);
+    	else if(Robot.oi.leftDriveJoystick.getRawButton(3))
+    		Robot.drivetrain.driveStraightEncoder(24);
+    	else if(Robot.oi.leftDriveJoystick.getRawButton(4))
+    		Robot.drivetrain.driveStraightEncoder(36);
+    	else if(Robot.oi.leftDriveJoystick.getRawButton(5))
+    		Robot.drivetrain.driveStraightEncoder(-12);
+
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

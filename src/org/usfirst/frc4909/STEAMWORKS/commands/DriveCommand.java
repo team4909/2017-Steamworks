@@ -44,9 +44,17 @@ public class DriveCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	Robot.drivetrain.moveTank();
+    	/*
 		SmartDashboard.putNumber("X dist",Robot.drivetrain.getDisplacementX());
 		SmartDashboard.putNumber("Y dist",Robot.drivetrain.getDisplacementY());
 		SmartDashboard.putNumber("Z dist",Robot.drivetrain.getDisplacementZ());
+		*/
+    	
+		SmartDashboard.putNumber("Left dist",Robot.drivetrain.getLeftEncDistance());
+		SmartDashboard.putNumber("Right dist",Robot.drivetrain.getRightEncDistance());
+
+    	
+		
 
     }
 

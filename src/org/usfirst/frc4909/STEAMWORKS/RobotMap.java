@@ -89,11 +89,11 @@ public class RobotMap {
         drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
         drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
         drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
-        drivetrainLeftEncoder = new Encoder(2, 3, false, EncodingType.k4X);
+        drivetrainLeftEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "LeftEncoder", drivetrainLeftEncoder);
         drivetrainLeftEncoder.setDistancePerPulse(1.0);
         drivetrainLeftEncoder.setPIDSourceType(PIDSourceType.kDisplacement);
-        drivetrainRightEncoder = new Encoder(4, 5, true, EncodingType.k4X);
+        drivetrainRightEncoder = new Encoder(4, 5, false, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "RightEncoder", drivetrainRightEncoder);
         drivetrainRightEncoder.setDistancePerPulse(1.0);
         drivetrainRightEncoder.setPIDSourceType(PIDSourceType.kRate);
