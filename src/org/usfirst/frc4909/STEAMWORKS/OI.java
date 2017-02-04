@@ -90,7 +90,7 @@ public class OI {
         SmartDashboard.putData("DriveCommand", new DriveCommand());
         SmartDashboard.putData("ShiftUpCommand", new ShiftUpCommand());
         SmartDashboard.putData("ShiftDownCommand", new ShiftDownCommand());
-        SmartDashboard.putData("ShootCommand", new ShootCommand());
+        SmartDashboard.putData("ShootCommand", new BoilerShot());
         SmartDashboard.putData("ClimbCommand", new ClimbCommand());
         SmartDashboard.putData("UnclimbCommand", new UnclimbCommand());
 
