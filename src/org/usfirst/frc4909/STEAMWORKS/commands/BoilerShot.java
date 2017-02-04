@@ -61,8 +61,8 @@ public class BoilerShot extends Command {
     	//Robot.shooter.setSpeed(1);
 		SmartDashboard.putBoolean("PID Stuffs", true);
 		SmartDashboard.putNumber("currentSpeed", Robot.shooter.getRPM());
-		if(Robot.shooter.getRPM() >= SmartDashboard.getNumber("Target Velocity", 2900*0.9)*0.9){
-			SmartDashboard.putBoolean("IsReadyToShoot", true);
+		if(Robot.shooter.getRPM() >= SmartDashboard.getNumber("Target Velocity",2900.0)*0.9){
+			SmartDashboard.putBoolean("Ready To Shoot", true);
 		}
     }
 
@@ -77,13 +77,13 @@ public class BoilerShot extends Command {
 		Robot.shooter.setRPM(0);
 		
 		//Robot.shooter.setShooterState(false);
-		SmartDashboard.putBoolean("PID Stuffs", false);
+		SmartDashboard.putBoolean("IsReadyToShoot", false);
 
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	
+    	end();
     }
 }
