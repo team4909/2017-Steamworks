@@ -109,8 +109,10 @@ public class OI {
         
         shootButton = new JoystickButton(manipulatorJoystick,0);
         shootButton.whenPressed(new BoilerShot());
+        
         stopShootButton = new JoystickButton(manipulatorJoystick,1);
         stopShootButton.whenPressed(new StopShooting());
+        
         feedButton = new JoystickButton(manipulatorJoystick,2);
         feedButton.whileHeld(new FeederOn());
 
