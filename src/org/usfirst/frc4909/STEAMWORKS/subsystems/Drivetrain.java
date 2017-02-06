@@ -168,7 +168,7 @@ public class Drivetrain extends Subsystem {
         	encPID.changePIDGains(encP, encI, encD);
 
     		double currentDistL=getLeftEncDistance();
-    		double currentDistR=getLeftEncDistance();
+    		double currentDistR=getRightEncDistance();
 
     		SmartDashboard.putNumber("encPID L out",-encPID.calcPID(dist, currentDistL, 2));
     		SmartDashboard.putNumber("encPID R out",-encPID.calcPID(dist, currentDistR, 2));
