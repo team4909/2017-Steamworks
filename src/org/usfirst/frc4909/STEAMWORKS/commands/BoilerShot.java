@@ -24,8 +24,6 @@ public class BoilerShot extends Command {
     public BoilerShot() {
     	//Change this to set target velocity for the shooter, in rpms
     
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
         requires(Robot.shooter);
     }
     
