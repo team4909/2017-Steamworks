@@ -27,7 +27,7 @@ public class UnclimbCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = (Robot.oi.getClimberSpeed() - 1.0)/2.0;
+    	double speed = (Robot.oi.getClimberSpeed() - 1.0) / 2.0;
     	Robot.climber.climb(-speed);
     }
 
