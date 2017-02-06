@@ -1,41 +1,26 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
-import org.usfirst.frc4909.STEAMWORKS.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
-public class StopShooting extends Command {
+import org.usfirst.frc4909.STEAMWORKS.Robot;
 
+public class StopShooting extends Command {
     public StopShooting() {
         requires(Robot.feeder);
     	requires(Robot.shooter);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.feeder.stopFeed();
-    	
+    	Robot.feeder.stopFeed();    	
     }
+    
+    protected void execute() {}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return true;
     }
 
-    // Called once after isFinished returns true
-    protected void end() {
-    }
+    protected void end() {}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+    protected void interrupted() {}
 }
