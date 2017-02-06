@@ -9,8 +9,6 @@ public class DropGear extends InstantCommand {
 
     public DropGear() {
         super();
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called once when the command executes

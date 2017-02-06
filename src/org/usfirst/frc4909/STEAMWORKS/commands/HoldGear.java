@@ -11,8 +11,6 @@ public class HoldGear extends InstantCommand {
 
     public HoldGear() {
         super();
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
     // Called once when the command executes

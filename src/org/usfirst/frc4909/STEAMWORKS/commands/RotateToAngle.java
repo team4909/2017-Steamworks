@@ -11,9 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RotateToAngle extends Command {
 
     public RotateToAngle() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drivetrain);
+        requires(Robot.drivetrain);
     }
 
     // Called just before this Command runs the first time
