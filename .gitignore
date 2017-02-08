@@ -46,6 +46,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+<<<<<<< HEAD
+~
+
+=======
 bin*
 dist*
 build*.jar
@@ -53,3 +57,4 @@ build*.jar
 *.java~
 *.class
 *.jar
+>>>>>>> master
