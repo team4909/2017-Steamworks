@@ -164,9 +164,19 @@ public class RobotMap {
         // Loader
     	loaderMotor = new Talon(9);
     	loaderPivotPot = new AnalogPotentiometer(1, 3600, 0.0);
+<<<<<<< HEAD
         
         LiveWindow.addActuator("Loader", "LoaderMotor", (Talon) loaderMotor);
         LiveWindow.addSensor("Loader", "PivotPot", loaderPivotPot);
+=======
+       LiveWindow.addSensor("Loader", "PivotPot", loaderPivotPot);
+       
+       intakePivotMotor= new Talon(8);
+       LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Talon) intakePivotMotor);
+       
+       climberSwitch= new DigitalInput(8);
+       
+>>>>>>> master
        
         // PDP
     	PDP = new PowerDistributionPanel();
