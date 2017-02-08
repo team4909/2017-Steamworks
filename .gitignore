@@ -46,5 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-~
-.class
+bin/*
+dist/*
+build/org/usfirst/frc4909/*
+
+*.java~
+*.class

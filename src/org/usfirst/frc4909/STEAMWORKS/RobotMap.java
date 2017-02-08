@@ -150,7 +150,7 @@ public class RobotMap {
        intakePivotMotor= new Talon(8);
        LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Talon) intakePivotMotor);
        
-       climberSwitch= new DigitalInput(6);
+       climberSwitch= new DigitalInput(8);
        
        
     }
