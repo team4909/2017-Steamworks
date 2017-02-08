@@ -42,7 +42,7 @@ public class Drivetrain extends Subsystem {
 	private double navI = 0.00000;
 	private double navD = 0.00000;
 	
-	private double encP = 0.005;
+	private double encP = 0.15;
 	private double encI = 0.00000;
 	private double encD = 0.00000;
 
@@ -70,7 +70,7 @@ public class Drivetrain extends Subsystem {
 
     private final PIDController rotatePID = new PIDController(rotateP, rotateI, rotateD,.5);
     private final PIDController navxPID = new PIDController(navP, navI, navD,.6);
-    private final PIDController encPID = new PIDController(encP, encI, encD,.6);
+    private final PIDController encPID = new PIDController(encP, encI, encD,.8);
 
     
     private final AHRS navx = RobotMap.navx;
@@ -174,9 +174,12 @@ public class Drivetrain extends Subsystem {
     	SmartDashboard.putNumber("eI", encI);
     	SmartDashboard.putNumber("eD", encD);
     	double startAngle = getAngle();
-
+    	double maxP=0;
+    	double LPower=0;
+    	double RPower=0;
     	double targetTime=Timer.getFPGATimestamp();
     	while(Timer.getFPGATimestamp()-targetTime<.5){
+    		maxP+=.005;
     		encPID.atTarget=false;
         	encP=SmartDashboard.getNumber("eP", 0);
         	encI=SmartDashboard.getNumber("eI", 0);
@@ -184,22 +187,29 @@ public class Drivetrain extends Subsystem {
         	encPID.changePIDGains(encP, encI, encD);
 
     		double currentDistL=getLeftEncDistance();
-    		double currentDistR=getLeftEncDistance();
+    		double currentDistR=getRightEncDistance();
 
-    		SmartDashboard.putNumber("encPID L out",-encPID.calcPID(dist, currentDistL, 2));
-    		SmartDashboard.putNumber("encPID R out",-encPID.calcPID(dist, currentDistR, 2));
 
     		SmartDashboard.putNumber("current distance",currentDistL);
     		SmartDashboard.putNumber("current distance",currentDistR);
 
-    		//robotDrive.tankDrive(-encPID.calcPID(dist, currentDistL, 2),-encPID.calcPID(dist, currentDistR, 2));
-    		
-    		robotDrive.arcadeDrive(-encPID.calcPID(dist, (currentDistL+currentDistR)/2, 2),0);//-(getAngle()-startAngle)/4
+    		LPower=-encPID.calcPID(dist, currentDistL, 2);
+    		RPower=-encPID.calcPID(dist, currentDistR, 2);
+    		if(Math.abs(LPower)>maxP)
+    			LPower=maxP*Math.signum(LPower);
+    		if(Math.abs(RPower)>maxP)
+    			RPower=maxP*Math.signum(RPower);
+    		SmartDashboard.putNumber("encPID L out",LPower);
+    		SmartDashboard.putNumber("encPID R out",RPower);
+
+
+    		//robotDrive.arcadeDrive(power,rotatePID.calcPID(startAngle, getAngle(), 1));//)/4
+    		robotDrive.tankDrive(LPower,RPower*.95);
 
     		
     		if(!encPID.isDone()){
     				targetTime=Timer.getFPGATimestamp();
-    				
+    		
     		}
     	}
     	
