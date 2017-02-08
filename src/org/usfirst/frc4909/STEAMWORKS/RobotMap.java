@@ -11,7 +11,7 @@
 
 package org.usfirst.frc4909.STEAMWORKS;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.*;
+import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 
 import com.kauailabs.navx.frc.AHRS;
 
