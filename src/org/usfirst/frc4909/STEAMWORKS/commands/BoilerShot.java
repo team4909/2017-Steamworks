@@ -14,17 +14,15 @@ public class BoilerShot extends Command {
     	SmartDashboard.putNumber("Target Velocity",2900.0);
     	SmartDashboard.putBoolean("ReadyToShoot", false);
 		Robot.shooter.shooterPID.resetPID();
-		//Robot.shooter.setShooterState(true);
     }
 
     protected void execute() {
 		Robot.shooter.setRPM(SmartDashboard.getNumber("Target Velocity", 2900.0));
-    	//Robot.shooter.setSpeed(1);
-		SmartDashboard.putBoolean("PID Stuffs", true);
+		
 		SmartDashboard.putNumber("currentSpeed", Robot.shooter.getRPM());
-		if(Robot.shooter.getRPM() >= SmartDashboard.getNumber("Target Velocity",2900.0)*0.9){
+		
+		if(Robot.shooter.getRPM() >= SmartDashboard.getNumber("Target Velocity",2900.0)*0.9)
 			SmartDashboard.putBoolean("ReadyToShoot", true);
-		}
     }
 
     protected boolean isFinished() {
@@ -35,8 +33,7 @@ public class BoilerShot extends Command {
 		Robot.shooter.shooterPID.resetPID();
 		Robot.shooter.setRPM(0);
 		
-		//Robot.shooter.setShooterState(false);
-		SmartDashboard.putBoolean("IsReadyToShoot", false);
+		SmartDashboard.putBoolean("ReadyToShoot", false);
     }
 
     protected void interrupted() {
