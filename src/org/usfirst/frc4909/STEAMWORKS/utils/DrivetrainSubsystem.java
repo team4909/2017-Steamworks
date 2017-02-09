@@ -45,7 +45,7 @@ public abstract class DrivetrainSubsystem extends Subsystem {
     }
     
     /**
-     * Rotate to a Given Angle using the NavX
+     * Rotate to a Given Angle using the NavX, and PID
      * @param angle Angle in degrees
      */
     public void rotateAngle(double angle, double rotateP, double rotateI, double rotateD){
