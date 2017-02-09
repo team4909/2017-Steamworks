@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc4909.STEAMWORKS.commands.*;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -21,7 +20,7 @@ public class Robot extends IterativeRobot {
     public static Loader loader;
    
     public void robotInit() {
-    RobotMap.init();
+    	RobotMap.init();
         drivetrain = new Drivetrain();
         climber = new Climber();
         intake = new Intake();
