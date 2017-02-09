@@ -18,7 +18,6 @@ public class FeederOn extends Command {
 
     protected void execute() {
     	Robot.feeder.startFeed();
-
     }
 
     protected boolean isFinished() {

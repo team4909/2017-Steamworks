@@ -32,7 +32,7 @@ public class Climber extends Subsystem {
     }
     
     public void climb(double speed){
-    	SmartDashboard.putNumber("Current",PDP.getCurrent(11));
+    	SmartDashboard.putNumber("Current", PDP.getCurrent(11));
     	
     	climberMotorController.set(speed);
     }
