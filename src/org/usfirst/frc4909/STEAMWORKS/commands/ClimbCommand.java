@@ -13,8 +13,6 @@ public class ClimbCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-    	// double speed = Robot.oi.getManipulatorJoystick().getY();
-    	// double speed = (Robot.oi.getClimberSpeed() - 1.0)/2.0;
     	double speed = .53;
     	
     	Robot.climber.climb(speed);

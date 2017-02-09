@@ -12,7 +12,7 @@ public class UnclimbCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-    	double speed = (Robot.oi.getClimberSpeed() - 1.0)/2.0;
+    	double speed = (0.53)/2.0;
     	Robot.climber.climb(-speed);
     }
 
