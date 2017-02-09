@@ -19,7 +19,10 @@ public class OI {
     public JoystickButton shootButton;
     public JoystickButton feedButton;
     public JoystickButton stopShootButton;
-        public OI() {
+    public JoystickButton setInvDriveButton;
+    public JoystickButton unsetInvDriveButton;
+    
+    public OI() {
         manipulatorJoystick = new Joystick(2);
         
         rightDriveJoystick = new Joystick(1);
@@ -30,11 +33,17 @@ public class OI {
         shiftUpJoystickButton.whenPressed(new ShiftUpCommand());
         leftDriveJoystick = new Joystick(0);
         
+        setInvDriveButton = new JoystickButton(leftDriveJoystick, 10);
+        setInvDriveButton.whileHeld(new SetInversionDrive());
+        unsetInvDriveButton = new JoystickButton(leftDriveJoystick, 11);
+        unsetInvDriveButton.whileHeld(new UnsetInversionDrive());
+        
         unclimbJoystickButton = new JoystickButton(leftDriveJoystick, 6);
         unclimbJoystickButton.whileHeld(new UnclimbCommand());
         climbJoystickButton = new JoystickButton(leftDriveJoystick, 1);
         climbJoystickButton.whileHeld(new ClimbCommand());
 
+        
 
         // SmartDashboard Buttons
         SmartDashboard.putData("AutonomousCommand", new AutonomousCommand());
