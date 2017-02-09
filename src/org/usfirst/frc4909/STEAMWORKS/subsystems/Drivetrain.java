@@ -1,70 +1,69 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import com.kauailabs.navx.frc.AHRS;
+
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.commands.*;
 
-import com.kauailabs.navx.frc.AHRS;
-
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-
 public class Drivetrain extends Subsystem {
+	//in inches
+	private double wheelDiameter = 4.0;
+	private double pulsesPerRev = 1440.0;
 
+    private final RobotDrive robotDrive = RobotMap.drivetrainRobotDrive;
+    
+    private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
+    private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
+    
     private double rotateP = 0.15;
 	private double rotateI = 0.00000;
 	private double rotateD = 0.00000;
-
-
-    private double navP = 0.0002;
+	private final PIDController rotatePID = new PIDController(rotateP, rotateI, rotateD,.5);
+    
+	private double navP = 0.0002;
 	private double navI = 0.00000;
 	private double navD = 0.00000;
-	
-	private double encP = 0.15;
+	private final PIDController navxPID = new PIDController(navP, navI, navD,.6);
+    
+    private double encP = 0.15;
 	private double encI = 0.00000;
 	private double encD = 0.00000;
-
-	//in inches
-	private double wheelDiameter = 4.0;
-	
-	private double pulsesPerRev = 1440.0;
-
-    private final SpeedController leftFrontDriveMotorController = RobotMap.drivetrainLeftFrontDriveMotorController;
-    private final SpeedController leftBackDriveMotorController = RobotMap.drivetrainLeftBackDriveMotorController;
-    private final SpeedController rightBackDriveMotorController = RobotMap.drivetrainRightBackDriveMotorController;
-    private final SpeedController rightFrontDriveMotorController = RobotMap.drivetrainRightFrontDriveMotorController;
-    private final RobotDrive robotDrive = RobotMap.drivetrainRobotDrive;
-    private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
-    private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
-
-
-    
-
-    private final PIDController rotatePID = new PIDController(rotateP, rotateI, rotateD,.5);
-    private final PIDController navxPID = new PIDController(navP, navI, navD,.6);
     private final PIDController encPID = new PIDController(encP, encI, encD,.8);
 
-    
     private final AHRS navx = RobotMap.navx;
+    
+    private boolean inversion = false;
     
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
     }
     
     public void moveTank(){
-    	double leftY = Robot.oi.getLeftDriveY();
-    	double rightY = Robot.oi.getRightDriveY();
+	    double leftY = Robot.oi.getLeftDriveY();
+	    double rightY = Robot.oi.getRightDriveY();
+	    	
+    	if(inversion){
+    		leftY = -Robot.oi.getRightDriveY();
+    		rightY = -Robot.oi.getLeftDriveY();
+    	}
+    	
     	robotDrive.tankDrive(leftY, rightY);
-    	
-    	// RETURN SPEED
-    	
+    }
+    
+    public boolean getInversion(){
+    	return inversion;
+    }
+    
+    public void setInversion(boolean newInversion){
+    	inversion = newInversion;
     }
     
     /**
@@ -73,32 +72,33 @@ public class Drivetrain extends Subsystem {
      */
     public void rotateAngle(double angle){
     	rotatePID.resetPID();
+    	
     	SmartDashboard.putBoolean("rotate", true);
+    	
     	double targetTime=Timer.getFPGATimestamp();
     	while(Timer.getFPGATimestamp()-targetTime<.5){
     		rotatePID.atTarget=false;
+    		
         	rotateP=SmartDashboard.getNumber("rP", 0);
         	rotateI=SmartDashboard.getNumber("rI", 0);
         	rotateD=SmartDashboard.getNumber("rD", 0);
         	rotatePID.changePIDGains(rotateP, rotateI, rotateD);
 
     		double currentAngle=getYaw();
-    		if(Math.abs(angle-currentAngle)>180){
+    		if(Math.abs(angle-currentAngle)>180)
     			angle = angle + (currentAngle / Math.abs(currentAngle))*360;
-    		}
+    		
     		SmartDashboard.putNumber("current angle",currentAngle);
     		SmartDashboard.putNumber("PID out",rotatePID.calcPID(angle, currentAngle, 4));
 
     		robotDrive.arcadeDrive(0,rotatePID.calcPID(angle, currentAngle, 4));
-    		if(!rotatePID.isDone()){
-    				targetTime=Timer.getFPGATimestamp();
-    				
-    		}
+    		if(!rotatePID.isDone())
+    			targetTime=Timer.getFPGATimestamp();
     	}
     	
     	SmartDashboard.putBoolean("rotate", false);
-
     }
+    
     /**
      * 
      * @param dist Distance in inches
@@ -123,14 +123,13 @@ public class Drivetrain extends Subsystem {
     		SmartDashboard.putNumber("nPID out",navxPID.calcPID(dist, currentDist, .05));
 
     		robotDrive.arcadeDrive(-navxPID.calcPID(dist, currentDist, .05),0);
-    		if(!navxPID.isDone()){
-    				targetTime=Timer.getFPGATimestamp();
-    				
-    		}
+    		if(!navxPID.isDone())
+    			targetTime=Timer.getFPGATimestamp();
     	}
     	
     	SmartDashboard.putBoolean("straightNav", false);
     }
+    
     /**
      * 
      * @param dist Distance in inches
@@ -139,14 +138,17 @@ public class Drivetrain extends Subsystem {
     	encPID.resetPID();
     	leftEncoder.reset();
     	rightEncoder.reset();
+    	
     	SmartDashboard.putBoolean("straightEnc", true);
     	SmartDashboard.putNumber("eP", encP);
     	SmartDashboard.putNumber("eI", encI);
     	SmartDashboard.putNumber("eD", encD);
+    	
     	double startAngle = getAngle();
     	double maxP=0;
     	double LPower=0;
     	double RPower=0;
+    	
     	double targetTime=Timer.getFPGATimestamp();
     	while(Timer.getFPGATimestamp()-targetTime<.5){
     		maxP+=.005;
@@ -159,7 +161,6 @@ public class Drivetrain extends Subsystem {
     		double currentDistL=getLeftEncDistance();
     		double currentDistR=getRightEncDistance();
 
-
     		SmartDashboard.putNumber("current distance",currentDistL);
     		SmartDashboard.putNumber("current distance",currentDistR);
 
@@ -169,18 +170,15 @@ public class Drivetrain extends Subsystem {
     			LPower=maxP*Math.signum(LPower);
     		if(Math.abs(RPower)>maxP)
     			RPower=maxP*Math.signum(RPower);
+    		
     		SmartDashboard.putNumber("encPID L out",LPower);
     		SmartDashboard.putNumber("encPID R out",RPower);
 
-
-    		//robotDrive.arcadeDrive(power,rotatePID.calcPID(startAngle, getAngle(), 1));//)/4
+    		// robotDrive.arcadeDrive(power,rotatePID.calcPID(startAngle, getAngle(), 1));//)/4
     		robotDrive.tankDrive(LPower,RPower*.95);
-
     		
-    		if(!encPID.isDone()){
-    				targetTime=Timer.getFPGATimestamp();
-    		
-    		}
+    		if(!encPID.isDone())
+    			targetTime=Timer.getFPGATimestamp();
     	}
     	
     	SmartDashboard.putBoolean("straightEnc", false);
@@ -212,10 +210,8 @@ public class Drivetrain extends Subsystem {
     		SmartDashboard.putNumber("nPID out",encPID.calcPID(dist, currentDist, .05));
 
     		robotDrive.arcadeDrive(-encPID.calcPID(dist, currentDist, .05),0);
-    		if(!encPID.isDone()){
-    				targetTime=Timer.getFPGATimestamp();
-    				
-    		}
+    		if(!encPID.isDone())
+   				targetTime=Timer.getFPGATimestamp();
     	}
     	
     	SmartDashboard.putBoolean("straight", false);
