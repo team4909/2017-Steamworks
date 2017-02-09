@@ -29,7 +29,6 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         loader = new Loader();
         oi = new OI();
-        autonomousCommand = new AutonomousCommand();
         
         SmartDashboard.putBoolean("ShooterOverride", false);
     }
