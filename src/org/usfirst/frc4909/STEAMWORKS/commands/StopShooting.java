@@ -2,9 +2,9 @@ package org.usfirst.frc4909.STEAMWORKS.commands;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class StopShooting extends Command {
+public class StopShooting extends InstantCommand {
 
     public StopShooting() {
     	requires(Robot.feeder);
@@ -14,14 +14,4 @@ public class StopShooting extends Command {
     protected void initialize() {
     	Robot.feeder.stopFeed();
     }
-
-    protected void execute() {}
-
-    protected boolean isFinished() {
-        return true;
-    }
-
-    protected void end() {}
-
-    protected void interrupted() {}
 }
