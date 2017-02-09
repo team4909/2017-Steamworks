@@ -1,12 +1,11 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
+import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class FeederOn extends Command {
-
     public FeederOn() {
     	requires(Robot.feeder);
     }
@@ -19,12 +18,4 @@ public class FeederOn extends Command {
     protected void execute() {
     	Robot.feeder.startFeed();
     }
-
-    protected boolean isFinished() {
-        return false;
-    }
-
-    protected void end() {}
-
-    protected void interrupted() {}
 }

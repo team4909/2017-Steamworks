@@ -2,12 +2,12 @@ package org.usfirst.frc4909.STEAMWORKS.utils;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Subsystem;
 
 public abstract class DrivetrainSubsystem extends Subsystem {
 	private boolean inversion = false;

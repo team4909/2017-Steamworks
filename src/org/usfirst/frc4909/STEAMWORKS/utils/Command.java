@@ -10,7 +10,7 @@ public abstract class Command extends edu.wpi.first.wpilibj.command.Command {
 
     protected void initialize() {}
     
-    protected abstract void end();
+    protected void end(){}
     
     protected void interrupted() {
     	end();

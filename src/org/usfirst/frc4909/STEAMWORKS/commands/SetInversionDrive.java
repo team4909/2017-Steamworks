@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class SetInversionDrive extends InstantCommand {
     public SetInversionDrive() {
-        super();
+    	requires(Robot.drivetrain);
     }
 
     protected void initialize() {
