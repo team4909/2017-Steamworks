@@ -14,8 +14,6 @@ public class OI {
         
         manipulatorJoystick = new Joystick(2);
         
-        leftDriveJoystick.buttonPressed(7, new DriveDist());
-        
         rightDriveJoystick.buttonPressed(1, new ShiftUpCommand());
         rightDriveJoystick.buttonPressed(2, new ShiftDownCommand());
         
