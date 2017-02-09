@@ -1,7 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
