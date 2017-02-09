@@ -47,15 +47,13 @@ public class Drivetrain extends Subsystem {
     }
     
     public void moveTank(){
-	    double leftY = Robot.oi.getLeftDriveY();
-	    double rightY = Robot.oi.getRightDriveY();
+	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, 0.15);
+	    double rightY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, 0.15);
 	    	
-    	if(inversion){
-    		leftY = -Robot.oi.getRightDriveY();
-    		rightY = -Robot.oi.getLeftDriveY();
-    	}
-    	
-    	robotDrive.tankDrive(leftY, rightY);
+    	if(inversion)
+        	robotDrive.tankDrive(-rightY, -leftY);
+    	else
+    		robotDrive.tankDrive(leftY, rightY);
     }
     
     public boolean getInversion(){
