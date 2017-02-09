@@ -12,8 +12,7 @@ public class UnclimbCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-    	double speed = (0.53)/2.0;
-    	Robot.climber.climb(-speed);
+    	Robot.climber.climb(Robot.config.getUnclimberMaxSpeed());
     }
 
     protected boolean isFinished() {

@@ -13,11 +13,7 @@ public class ClimbCommand extends Command {
     protected void initialize() {}
 
     protected void execute() {
-    	double speed = .53;
-    	
-    	Robot.climber.climb(speed);
-    	
-    	SmartDashboard.putNumber("Rspeed", speed);
+    	Robot.climber.climb(Robot.config.getClimberMaxSpeed());
     }
 
     protected boolean isFinished() {
