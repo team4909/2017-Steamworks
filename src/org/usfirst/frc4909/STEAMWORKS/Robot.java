@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 
 public class Robot extends IterativeRobot {
@@ -18,6 +19,8 @@ public class Robot extends IterativeRobot {
     public static Feeder feeder;
     public static Shooter shooter;
     public static Loader loader;
+    
+    public static Config config;
    
     public void robotInit() {
     	RobotMap.init();
@@ -28,6 +31,8 @@ public class Robot extends IterativeRobot {
         shooter = new Shooter();
         loader = new Loader();
         oi = new OI();
+        
+        config = new Config();
         
         SmartDashboard.putBoolean("ShooterOverride", false);
     }
