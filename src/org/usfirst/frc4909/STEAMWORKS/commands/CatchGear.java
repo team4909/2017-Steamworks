@@ -1,11 +1,17 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
+import org.usfirst.frc4909.STEAMWORKS.Robot;
+
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class CatchGear extends InstantCommand {
     public CatchGear() {
         super();
+        
+        requires(Robot.loader);
     }
 
-    protected void initialize() {}
+    protected void initialize() {
+    	Robot.loader.catchGear();
+    }
 }
