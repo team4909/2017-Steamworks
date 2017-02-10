@@ -1,6 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
 
 import com.kauailabs.navx.frc.AHRS;
 
@@ -19,7 +20,6 @@ import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.SerialPort;
 
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotMap {
     public static SpeedController drivetrainLeftFrontDriveMotorController;
@@ -34,13 +34,11 @@ public class RobotMap {
     public static AnalogPotentiometer intakePivotPot;
     public static SpeedController intakeIntakeMotor;
     public static SpeedController feederFeederMotor;
-    public static Encoder shooterShooterEncoder;
-    public static SpeedController shooterShooterMotorController;
     public static SpeedController intakePivotMotor;
     public static SpeedController loaderMotor;
     public static AnalogPotentiometer loaderPivotPot;
     public static DigitalInput climberSwitch;
-    public static PIDController shooterPID;
+    public static CANTalon shooterMotorController ;
     public static double shooterP = 0.00015;
     public static double shooterI = 0.00000;
     public static double shooterD = 0.00000;
@@ -97,26 +95,21 @@ public class RobotMap {
         feederFeederMotor = new Talon(6);
         LiveWindow.addActuator("Feeder", "FeederMotor", (Talon) feederFeederMotor);
         
-        shooterShooterEncoder = new Encoder(6, 7, true, EncodingType.k4X);
-        LiveWindow.addSensor("Shooter", "ShooterEncoder", shooterShooterEncoder);
-        shooterShooterEncoder.setDistancePerPulse(1.0);
-        shooterShooterEncoder.setPIDSourceType(PIDSourceType.kRate);
-        shooterShooterMotorController = new Talon(4);
-        LiveWindow.addActuator("Shooter", "ShooterMotorController", (Talon) shooterShooterMotorController);
+        shooterMotorController = new CANTalon(0);
+        shooterMotorController.configEncoderCodesPerRev(2048);
+        shooterMotorController.reverseSensor(false);
+        shooterMotorController.configNominalOutputVoltage(+0.0f, -0.0f);
+        shooterMotorController.configPeakOutputVoltage(+12.0f, -12.0f);
+        shooterMotorController.setProfile(0);
+        shooterMotorController.setF(0.00050);
+        shooterMotorController.setP(0.00015);
+        shooterMotorController.setI(0); 
+        shooterMotorController.setD(0);
+        shooterMotorController.changeControlMode(TalonControlMode.Speed);
         
-
-        shooterShooterEncoder.setDistancePerPulse(1.0/(2048.0/48.0));
-        shooterShooterMotorController.setInverted(true);
         navx = new AHRS(SerialPort.Port.kMXP);
-    	SmartDashboard.putNumber("P", shooterP);
-    	SmartDashboard.putNumber("I", shooterI);
-    	SmartDashboard.putNumber("D", shooterD);
-    	SmartDashboard.putNumber("F", shooterF);
 
     	PDP = new PowerDistributionPanel();
-    
-    	shooterPID = new PIDController(shooterP, shooterI, shooterD,1);
-   
     
     	loaderMotor = new Talon(9);
     	 	LiveWindow.addActuator("Loader", "LoaderMotor", (Talon) loaderMotor);

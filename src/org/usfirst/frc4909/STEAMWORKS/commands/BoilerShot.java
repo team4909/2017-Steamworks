@@ -13,7 +13,6 @@ public class BoilerShot extends Command {
     protected void initialize() {
     	SmartDashboard.putNumber("Target Velocity",2900.0);
     	SmartDashboard.putBoolean("ReadyToShoot", false);
-		Robot.shooter.shooterPID.resetPID();
     }
 
     protected void execute() {
@@ -26,8 +25,7 @@ public class BoilerShot extends Command {
     }
     
     protected void end() {
-		Robot.shooter.shooterPID.resetPID();
-		Robot.shooter.setRPM(0);
+		Robot.shooter.setVoltage(0);
 		
 		SmartDashboard.putBoolean("ReadyToShoot", false);
     }
