@@ -19,7 +19,7 @@ public class Intake extends Subsystem {
     private final SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
     private final SpeedController pivotMotor = RobotMap.intakePivotMotor;
     
-    private final PIDController pivotPID = new PIDController(pP,pI,pD,0.3);
+    public final PIDController pivotPID = new PIDController(pP,pI,pD,0.3);
 
     public void intakeIn(){
     	intakeMotor.set(.5);
@@ -30,33 +30,8 @@ public class Intake extends Subsystem {
     public void intakeStop(){
     	intakeMotor.set(0);
     }
-    public void pivotDown(){
-    	pivotPID.resetPID();
-    	SmartDashboard.putBoolean("pivot", true);
-    	double targetTime=Timer.getFPGATimestamp();
-    	while(Timer.getFPGATimestamp()-targetTime<.5){
-    		pivotPID.atTarget=false;
-        	pP=SmartDashboard.getNumber("pP", 0);
-        	pI=SmartDashboard.getNumber("pI", 0);
-        	pD=SmartDashboard.getNumber("pD", 0);
-        	pivotPID.changePIDGains(pP, pI, pD);
-
-    		double currentAngle=getPivotAngle();
-    		SmartDashboard.putNumber("current angle",currentAngle);
-    		SmartDashboard.putNumber("PID out",pivotPID.calcPID(90, currentAngle, 3));
-
-    		pivotMotor.set((pivotPID.calcPID(90, currentAngle, 3)));
-    		if(!pivotPID.isDone()){
-    				targetTime=Timer.getFPGATimestamp();
-    				
-    		}
-    	}
-    	
-    	SmartDashboard.putBoolean("pivot", false);
-
-    }
+    
     public void pivotUp(){
-    	pivotPID.resetPID();
     	SmartDashboard.putBoolean("pivot", true);
     	double targetTime=Timer.getFPGATimestamp();
     	while(Timer.getFPGATimestamp()-targetTime<.5){
@@ -84,4 +59,12 @@ public class Intake extends Subsystem {
     	return pivotPot.get();
     }
     public void initDefaultCommand() {}
+    
+    public void resetPID(){
+    	pivotPID.resetPID();
+    }
+
+    public void movePivot(double target, double currentAngle, double threshold){
+    	pivotMotor.set((pivotPID.calcPID(target, currentAngle, threshold)));
+    }
 }
