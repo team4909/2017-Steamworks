@@ -24,7 +24,7 @@ public abstract class DrivetrainSubsystem extends Subsystem {
 	
 	public void moveTank(){
 	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, 0.15);
-	    double rightY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, 0.15);
+	    double rightY = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, 0.15);
 	    	
     	if(inversion)
         	this.getRobotDrive().tankDrive(-rightY, -leftY);
