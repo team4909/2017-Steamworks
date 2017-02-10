@@ -4,12 +4,12 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class FrontPegAuto extends InstantCommand {
-    public FrontPegAuto() {
-        super();
+public class UnsetInversionDrive extends InstantCommand {
+    public UnsetInversionDrive() {
+    	requires(Robot.drivetrain);
     }
 
     protected void initialize() {
-    	Robot.drivetrain.driveStraightEncoder(96);
+    	Robot.drivetrain.setInversion(false);
     }
 }

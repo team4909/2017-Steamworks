@@ -13,7 +13,6 @@ public class Shooter extends Subsystem {
     private final Encoder shooterEncoder = RobotMap.shooterShooterEncoder;
     private final SpeedController shooterMotorController = RobotMap.shooterShooterMotorController;
 
-    boolean shooterState = false;
 	private double shooterP = 0.00015;
 	private double shooterI = 0.00000;
 	private double shooterD = 0.00000;
@@ -21,14 +20,6 @@ public class Shooter extends Subsystem {
     
     public PIDController shooterPID=RobotMap.shooterPID;
     
-	public boolean getShooterState() {
-		return shooterState;
-	}
-	
-	public void setShooterState(boolean state) {
-		shooterState = state;
-	}
-	
 	public void setSpeed(double shotVal) {
 		shooterMotorController.set(shotVal);
 	}

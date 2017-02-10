@@ -1,8 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
+import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 public class DriveCommand extends Command {
@@ -10,29 +8,11 @@ public class DriveCommand extends Command {
         requires(Robot.drivetrain);
     }
 
-    protected void initialize() {}
-
     protected void execute() {
     	Robot.drivetrain.moveTank();
-    	/*
-		SmartDashboard.putNumber("X dist",Robot.drivetrain.getDisplacementX());
-		SmartDashboard.putNumber("Y dist",Robot.drivetrain.getDisplacementY());
-		SmartDashboard.putNumber("Z dist",Robot.drivetrain.getDisplacementZ());
-		*/
-    	
-		SmartDashboard.putNumber("Left dist",Robot.drivetrain.getLeftEncDistance());
-		SmartDashboard.putNumber("Right dist",Robot.drivetrain.getRightEncDistance());
-    }
-
-    protected boolean isFinished() {
-        return false;
-    }
-
-    protected void end() {
-    	Robot.drivetrain.stop();
     }
     
-    protected void interrupted() {
-    	end();
+    protected void end() {
+    	Robot.drivetrain.stop();
     }
 }
