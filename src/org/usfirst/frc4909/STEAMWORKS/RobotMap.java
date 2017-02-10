@@ -88,7 +88,7 @@ public class RobotMap {
         LiveWindow.addSensor("Climber", "ClimberEncoder", climberClimberEncoder);
         climberClimberEncoder.setDistancePerPulse(1.0);
         climberClimberEncoder.setPIDSourceType(PIDSourceType.kRate);
-        intakePivotPot = new AnalogPotentiometer(0, 1.0, 0.0);
+        intakePivotPot = new AnalogPotentiometer(0, 3600.0, 0.0);
         LiveWindow.addSensor("Intake", "PivotPot", intakePivotPot);
         
         intakeIntakeMotor = new Talon(7);
