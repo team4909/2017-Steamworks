@@ -1,74 +1,33 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
 import org.usfirst.frc4909.STEAMWORKS.commands.*;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-
+import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
 
 public class OI {
-    public JoystickButton climbJoystickButton;
-    public JoystickButton unclimbJoystickButton;
     public Joystick leftDriveJoystick;
-    public JoystickButton shiftUpJoystickButton;
-    public JoystickButton shiftDownJoystickButton;
     public Joystick rightDriveJoystick;
     public Joystick manipulatorJoystick;
-    public JoystickButton rotateButton;
-    public JoystickButton straightButton;
-    public JoystickButton shootButton;
-    public JoystickButton feedButton;
-    public JoystickButton stopShootButton;
-    public JoystickButton setInvDriveButton;
-    public JoystickButton unsetInvDriveButton;
     
     public OI() {
-        manipulatorJoystick = new Joystick(2);
-        
+    	leftDriveJoystick = new Joystick(0);
         rightDriveJoystick = new Joystick(1);
         
-        shiftDownJoystickButton = new JoystickButton(rightDriveJoystick, 2);
-        shiftDownJoystickButton.whenPressed(new ShiftDownCommand());
-        shiftUpJoystickButton = new JoystickButton(rightDriveJoystick, 1);
-        shiftUpJoystickButton.whenPressed(new ShiftUpCommand());
-        leftDriveJoystick = new Joystick(0);
+        manipulatorJoystick = new Joystick(2);
         
-        setInvDriveButton = new JoystickButton(leftDriveJoystick, 10);
-        setInvDriveButton.whileHeld(new SetInversionDrive());
-        unsetInvDriveButton = new JoystickButton(leftDriveJoystick, 11);
-        unsetInvDriveButton.whileHeld(new UnsetInversionDrive());
+        rightDriveJoystick.buttonPressed(1, new ShiftUpCommand());
+        rightDriveJoystick.buttonPressed(2, new ShiftDownCommand());
         
-        unclimbJoystickButton = new JoystickButton(leftDriveJoystick, 6);
-        unclimbJoystickButton.whileHeld(new UnclimbCommand());
-        climbJoystickButton = new JoystickButton(leftDriveJoystick, 1);
-        climbJoystickButton.whileHeld(new ClimbCommand());
+        leftDriveJoystick.buttonPressed(10, new SetInversionDrive());
+        leftDriveJoystick.buttonPressed(11, new UnsetInversionDrive());
+        
+        leftDriveJoystick.buttonHeld(1, new ClimbCommand());
+        leftDriveJoystick.buttonHeld(6, new UnclimbCommand());
 
+        manipulatorJoystick.buttonPressed(0, new BoilerShot());
+        manipulatorJoystick.buttonPressed(1, new StopShooting());
         
-
-        // SmartDashboard Buttons
-        SmartDashboard.putData("AutonomousCommand", new AutonomousCommand());
-        SmartDashboard.putData("DriveCommand", new DriveCommand());
-        SmartDashboard.putData("ShiftUpCommand", new ShiftUpCommand());
-        SmartDashboard.putData("ShiftDownCommand", new ShiftDownCommand());
-        SmartDashboard.putData("ShootCommand", new BoilerShot());
-        SmartDashboard.putData("ClimbCommand", new ClimbCommand());
-        SmartDashboard.putData("UnclimbCommand", new UnclimbCommand());
-
-        straightButton = new JoystickButton(leftDriveJoystick, 7);
-        straightButton.whenPressed(new DriveDist());
-        
-        shootButton = new JoystickButton(manipulatorJoystick,0);
-        shootButton.whenPressed(new BoilerShot());
-        
-        stopShootButton = new JoystickButton(manipulatorJoystick,1);
-        stopShootButton.whenPressed(new StopShooting());
-        
-        feedButton = new JoystickButton(manipulatorJoystick,2);
-        feedButton.whileHeld(new FeederOn());
-
-
+        manipulatorJoystick.buttonPressed(2, new FeederOn());
     }
-
    
     public Joystick getLeftDriveJoystick() {
         return leftDriveJoystick;
@@ -81,18 +40,4 @@ public class OI {
     public Joystick getManipulatorJoystick() {
         return manipulatorJoystick;
     }
-    
-    public double getLeftDriveY(){
-    	return leftDriveJoystick.getRawAxis(1);
-    }
-    public double getRightDriveY(){
-    	return rightDriveJoystick.getRawAxis(1);
-    }
-    public double getShooterY(){
-    	return manipulatorJoystick.getRawAxis(1);
-    }
-    public double getClimberSpeed(){
-    	return leftDriveJoystick.getRawAxis(3);
-    }
 }
-
