@@ -10,7 +10,7 @@ public class Feeder extends Subsystem {
     private final SpeedController feederMotor = RobotMap.feederFeederMotor;
 
     public void startFeed(){
-    	feederMotor.set(Robot.config.getFeederMaxSpeed());
+    	feederMotor.set(Robot.config.feederSpeed);
     }
     
     public void stopFeed(){

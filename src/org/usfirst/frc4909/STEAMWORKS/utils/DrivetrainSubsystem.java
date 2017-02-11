@@ -23,8 +23,8 @@ public abstract class DrivetrainSubsystem extends Subsystem {
 	public abstract double getRightEncDistance();
 	
 	public void moveTank(){
-	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, 0.15);
-	    double rightY = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, 0.15);
+	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
+	    double rightY = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
 	    	
     	if(inversion)
         	this.getRobotDrive().tankDrive(-rightY, -leftY);
