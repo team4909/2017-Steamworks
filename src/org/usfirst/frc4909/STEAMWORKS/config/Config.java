@@ -5,6 +5,9 @@ public class Config {
 
 	public double joystickDeadzone = 0.15;
 	
+	public double boilerShotVelocity = 2900.0;
+	public double boilerShotMinPercentage = 0.9;
+	
 	public double feederSpeed = 0.5;
 	
 	public double climberMaxSpeed = 0.5;
