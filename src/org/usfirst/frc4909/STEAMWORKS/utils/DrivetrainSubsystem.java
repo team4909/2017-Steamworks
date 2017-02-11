@@ -68,4 +68,8 @@ public abstract class DrivetrainSubsystem extends Subsystem {
     			targetTime=Timer.getFPGATimestamp();
     	}
     }
+    
+    public void rotateRobot(double target, double currentAngle, double threshold){
+		this.getRobotDrive().arcadeDrive(0, rotatePID.calcPID(target, currentAngle, threshold));
+	}
 }
