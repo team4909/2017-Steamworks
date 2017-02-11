@@ -30,8 +30,6 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         config = new Config();
-        
-        SmartDashboard.putBoolean("ShooterOverride", false);
     }
 
     public void disabledInit(){}
