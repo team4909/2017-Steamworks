@@ -1,5 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -29,6 +30,8 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         config = new Config();
+        
+        CameraServer.getInstance().startAutomaticCapture();
     }
 
     public void disabledInit(){}
