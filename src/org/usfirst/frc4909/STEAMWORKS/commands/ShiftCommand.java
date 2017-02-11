@@ -4,10 +4,12 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
-public class ShiftUpCommand extends InstantCommand {
-    public ShiftUpCommand() {
+public class ShiftCommand extends InstantCommand {
+    public ShiftCommand() {
         requires(Robot.drivetrain);
     }
 
-    protected void initialize() {}
+    protected void initialize() {
+    	Robot.drivetrain.shift();
+    }
 }
