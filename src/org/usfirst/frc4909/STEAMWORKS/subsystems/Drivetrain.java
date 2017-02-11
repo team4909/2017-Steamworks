@@ -95,6 +95,10 @@ public class Drivetrain extends DrivetrainSubsystem {
     	SmartDashboard.putBoolean("straightNav", false);
     }
     
+    public void driveStraight(double target, double leftDistance, double rightDistance, double threshold){
+		this.getRobotDrive().tankDrive(encPID.calcPID(target, leftDistance, threshold),encPID.calcPID(target, rightDistance, threshold));
+	}
+    
     /**
      * 
      * @param dist Distance in inches
