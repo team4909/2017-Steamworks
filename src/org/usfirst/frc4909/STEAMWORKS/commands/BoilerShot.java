@@ -11,16 +11,15 @@ public class BoilerShot extends Command {
     }
     
     protected void initialize() {
-    	SmartDashboard.putNumber("Target Velocity",2900.0);
     	SmartDashboard.putBoolean("ReadyToShoot", false);
     }
 
     protected void execute() {
-		Robot.shooter.setRPM(SmartDashboard.getNumber("Target Velocity", 2900.0));
+		Robot.shooter.setRPM(Robot.config.boilerShotVelocity);
 		
-		SmartDashboard.putNumber("currentSpeed", Robot.shooter.getRPM());
+		SmartDashboard.putNumber("CurrentSpeed", Robot.shooter.getRPM());
 		
-		if(Robot.shooter.getRPM() >= SmartDashboard.getNumber("Target Velocity", 2900.0)*0.9)
+		if(Robot.shooter.getRPM() >= Robot.config.boilerShotVelocity * Robot.config.boilerShotMinPercentage)
 			SmartDashboard.putBoolean("ReadyToShoot", true);
     }
     

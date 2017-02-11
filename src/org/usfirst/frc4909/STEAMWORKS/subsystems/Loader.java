@@ -4,9 +4,6 @@ import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;
 
@@ -20,8 +17,6 @@ public class Loader extends Subsystem {
 
     private final PIDController loaderPID = new PIDController(lP,lI,lD,0.3);
 
-	
-	
 	public double getAngle(){
     	return loaderPivotPot.get();
     }
