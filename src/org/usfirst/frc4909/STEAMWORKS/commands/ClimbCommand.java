@@ -9,7 +9,7 @@ public class ClimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.config.getClimberMaxSpeed());
+    	Robot.climber.climb(Robot.config.climberMaxSpeed);
     }
     
     protected void end() {

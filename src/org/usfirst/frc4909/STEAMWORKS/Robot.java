@@ -3,7 +3,6 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
@@ -30,8 +29,6 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         config = new Config();
-        
-        SmartDashboard.putBoolean("ShooterOverride", false);
     }
 
     public void disabledInit(){}
