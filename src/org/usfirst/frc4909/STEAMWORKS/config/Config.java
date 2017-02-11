@@ -12,4 +12,6 @@ public class Config {
 	
 	public double climberMaxSpeed = 0.5;
 	public double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
+	
+	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }
