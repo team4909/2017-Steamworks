@@ -110,4 +110,8 @@ public class Loader extends Subsystem {
 	public double getAngle(){
     	return loaderPivotPot.get();
     }
+	
+	public void moveLoader(double target, double currentAngle, double threshold){
+		loaderMotor.set((loaderPID.calcPID(target, currentAngle, threshold)));
+	}
 }
