@@ -27,6 +27,10 @@ public class OI {
         manipulatorJoystick.buttonPressed(1, new StopShooting());
         
         manipulatorJoystick.buttonPressed(2, new FeederOn());
+        
+        manipulatorJoystick.buttonPressed(3, new HoldGear());
+        manipulatorJoystick.buttonPressed(4, new DropGear());
+        manipulatorJoystick.buttonPressed(5, new CatchGear());
     }
    
     public Joystick getLeftDriveJoystick() {
