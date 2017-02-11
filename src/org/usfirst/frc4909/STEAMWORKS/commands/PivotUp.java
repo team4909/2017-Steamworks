@@ -24,6 +24,7 @@ public class PivotUp extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putBoolean("pivot", true);
     	targetTime=Timer.getFPGATimestamp();
     	Robot.intake.resetPID();
     }
@@ -38,7 +39,7 @@ public class PivotUp extends Command {
 
 		double currentAngle=Robot.intake.getPivotAngle();
 		SmartDashboard.putNumber("current angle",currentAngle);
-		SmartDashboard.putNumber("PID out",pivotPID.calcPID(0, currentAngle, 2));
+		SmartDashboard.putNumber("Pivot PID out",pivotPID.calcPID(0, currentAngle, 2));
 		Robot.intake.movePivot(0, currentAngle, 2);
 		if(!pivotPID.isDone()){
 				targetTime=Timer.getFPGATimestamp(); 
