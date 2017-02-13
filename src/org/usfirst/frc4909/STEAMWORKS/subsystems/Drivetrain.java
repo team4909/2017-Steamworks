@@ -2,6 +2,7 @@ package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -19,6 +20,9 @@ public class Drivetrain extends DrivetrainSubsystem {
     
     private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
+    
+    private final Solenoid leftSolenoid = RobotMap.leftSolenoid;
+    private final Solenoid rightSolenoid = RobotMap.rightSolenoid;
    
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
@@ -38,6 +42,11 @@ public class Drivetrain extends DrivetrainSubsystem {
     
     public double getRightEncDistance(){
     	return (rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    }
+    
+    public void shift(){
+    	leftSolenoid.set(!(leftSolenoid.get()));
+    	rightSolenoid.set(!(rightSolenoid.get()));
     }
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/

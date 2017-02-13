@@ -6,6 +6,7 @@ import com.ctre.CANTalon.TalonControlMode;
 import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class RobotMap {
@@ -42,6 +44,9 @@ public class RobotMap {
     public static double shooterF = 0.00050;
     public static AHRS navx;
 	public static PowerDistributionPanel PDP;
+	public static Compressor compressor;
+	public static Solenoid leftSolenoid;
+	public static Solenoid rightSolenoid;
     
     public static void init() {
         
@@ -50,13 +55,13 @@ public class RobotMap {
         
         drivetrainLeftBackDriveMotorController = new VictorSP(1);
         LiveWindow.addActuator("Drivetrain", "LeftBackDriveMotorController", (VictorSP) drivetrainLeftBackDriveMotorController);
-        
+
         drivetrainRightFrontDriveMotorController = new VictorSP(2);
         LiveWindow.addActuator("Drivetrain", "RightFrontDriveMotorController", (VictorSP) drivetrainRightFrontDriveMotorController);
         
         drivetrainRightBackDriveMotorController = new VictorSP(3);
         LiveWindow.addActuator("Drivetrain", "RightBackDriveMotorController", (VictorSP) drivetrainRightBackDriveMotorController);
-        
+
         drivetrainRobotDrive = new RobotDrive(drivetrainLeftFrontDriveMotorController, drivetrainLeftBackDriveMotorController,
               drivetrainRightFrontDriveMotorController, drivetrainRightBackDriveMotorController);
         
@@ -117,5 +122,10 @@ public class RobotMap {
        LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Spark) intakePivotMotor);
        
        climberSwitch= new DigitalInput(8);
+       
+       Compressor compressor = new Compressor(0);
+       
+       Solenoid leftSolenoid = new Solenoid(0);
+       Solenoid rightSolenoid = new Solenoid(1);
     }
 }
