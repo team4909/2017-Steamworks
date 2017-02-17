@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -29,6 +31,9 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         config = new Config();
+        
+        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+        camera.setResolution(640, 480);
     }
 
     public void disabledInit(){}
