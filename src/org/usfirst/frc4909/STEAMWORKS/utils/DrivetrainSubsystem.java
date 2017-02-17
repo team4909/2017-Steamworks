@@ -31,6 +31,16 @@ public abstract class DrivetrainSubsystem extends Subsystem {
     	else
     		this.getRobotDrive().tankDrive(leftY, rightY);
     }
+	
+	public void moveArcade(){
+		double rot = Robot.oi.getLeftDriveJoystick().getThresholdAxis(0, Robot.config.joystickDeadzone);
+	    double power = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
+	    	
+    	if(inversion) 
+        	this.getRobotDrive().arcadeDrive(-power, -rot);
+    	else
+    		this.getRobotDrive().arcadeDrive(power, rot);
+    }
     
     public boolean getInversion(){
     	return inversion;
