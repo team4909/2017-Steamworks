@@ -45,8 +45,7 @@ public class RobotMap {
     public static AHRS navx;
 	public static PowerDistributionPanel PDP;
 	public static Compressor compressor;
-	public static Solenoid leftSolenoid;
-	public static Solenoid rightSolenoid;
+	public static Solenoid shiftSolenoid;
     
     public static void init() {
         
@@ -125,7 +124,6 @@ public class RobotMap {
        
        Compressor compressor = new Compressor(0);
        
-       Solenoid leftSolenoid = new Solenoid(0);
-       Solenoid rightSolenoid = new Solenoid(1);
+       shiftSolenoid = new Solenoid(0);
     }
 }

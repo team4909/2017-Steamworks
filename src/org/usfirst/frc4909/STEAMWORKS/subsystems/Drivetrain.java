@@ -21,8 +21,7 @@ public class Drivetrain extends DrivetrainSubsystem {
     private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
     
-    private final Solenoid leftSolenoid = RobotMap.leftSolenoid;
-    private final Solenoid rightSolenoid = RobotMap.rightSolenoid;
+    private final Solenoid shiftSolenoid = RobotMap.shiftSolenoid;
    
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
@@ -45,8 +44,7 @@ public class Drivetrain extends DrivetrainSubsystem {
     }
     
     public void shift(){
-    	leftSolenoid.set(!(leftSolenoid.get()));
-    	rightSolenoid.set(!(rightSolenoid.get()));
+    	shiftSolenoid.set(!(shiftSolenoid.get()));
     }
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/
