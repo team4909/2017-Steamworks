@@ -21,10 +21,8 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 public class RobotMap {
-    public static SpeedController drivetrainLeftFrontDriveMotorController;
-    public static SpeedController drivetrainLeftBackDriveMotorController;
-    public static SpeedController drivetrainRightBackDriveMotorController;
-    public static SpeedController drivetrainRightFrontDriveMotorController;
+    public static SpeedController drivetrainLeftDriveMotorController;
+    public static SpeedController drivetrainRightDriveMotorController;
     public static RobotDrive drivetrainRobotDrive;
     public static Encoder drivetrainLeftEncoder;
     public static Encoder drivetrainRightEncoder;
@@ -50,29 +48,20 @@ public class RobotMap {
     
     public static void init() {
         
-        drivetrainLeftFrontDriveMotorController = new VictorSP(0);
-        LiveWindow.addActuator("Drivetrain", "LeftFrontDriveMotorController", (VictorSP) drivetrainLeftFrontDriveMotorController);
+    	drivetrainLeftDriveMotorController = new VictorSP(0);
+        LiveWindow.addActuator("Drivetrain", "LeftFrontDriveMotorController", (VictorSP) drivetrainLeftDriveMotorController);
         
-        drivetrainLeftBackDriveMotorController = new VictorSP(1);
-        LiveWindow.addActuator("Drivetrain", "LeftBackDriveMotorController", (VictorSP) drivetrainLeftBackDriveMotorController);
+        drivetrainRightDriveMotorController = new VictorSP(1);
+        LiveWindow.addActuator("Drivetrain", "RightDriveMotorController", (VictorSP) drivetrainRightDriveMotorController);
 
-        drivetrainRightFrontDriveMotorController = new VictorSP(2);
-        LiveWindow.addActuator("Drivetrain", "RightFrontDriveMotorController", (VictorSP) drivetrainRightFrontDriveMotorController);
+        drivetrainRobotDrive = new RobotDrive(drivetrainLeftDriveMotorController, drivetrainRightDriveMotorController);
         
-        drivetrainRightBackDriveMotorController = new VictorSP(3);
-        LiveWindow.addActuator("Drivetrain", "RightBackDriveMotorController", (VictorSP) drivetrainRightBackDriveMotorController);
-
-        drivetrainRobotDrive = new RobotDrive(drivetrainLeftFrontDriveMotorController, drivetrainLeftBackDriveMotorController,
-              drivetrainRightFrontDriveMotorController, drivetrainRightBackDriveMotorController);
-        
+        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft,true);
+        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight,true);
         drivetrainRobotDrive.setSafetyEnabled(true);
         drivetrainRobotDrive.setExpiration(0.1);
         drivetrainRobotDrive.setSensitivity(0.5);
         drivetrainRobotDrive.setMaxOutput(1.0);
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         drivetrainLeftEncoder = new Encoder(0, 1, true, EncodingType.k4X);
         LiveWindow.addSensor("Drivetrain", "LeftEncoder", drivetrainLeftEncoder);
         drivetrainLeftEncoder.setDistancePerPulse(1.0);

@@ -55,6 +55,9 @@ public class Robot extends IterativeRobot {
         
         visionThread.start();
         config = new Config();
+        
+        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+        camera.setResolution(640, 480);
     }
 
     public void disabledInit(){}
