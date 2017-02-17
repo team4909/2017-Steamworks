@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -43,7 +44,7 @@ public class RobotMap {
     public static AHRS navx;
 	public static PowerDistributionPanel PDP;
 	public static Compressor compressor;
-	public static Solenoid shiftSolenoid;
+	public static DoubleSolenoid shiftSolenoid;
     
     public static void init() {
         
@@ -111,8 +112,8 @@ public class RobotMap {
        
        climberSwitch= new DigitalInput(8);
        
-       Compressor compressor = new Compressor(0);
+       compressor = new Compressor(0);
        
-       shiftSolenoid = new Solenoid(0);
+       shiftSolenoid = new DoubleSolenoid(0,1);
     }
 }
