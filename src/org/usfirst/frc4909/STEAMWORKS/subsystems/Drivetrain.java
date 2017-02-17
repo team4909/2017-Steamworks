@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -21,8 +23,7 @@ public class Drivetrain extends DrivetrainSubsystem {
     private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
     
-    private final Solenoid leftSolenoid = RobotMap.leftSolenoid;
-    private final Solenoid rightSolenoid = RobotMap.rightSolenoid;
+    private final DoubleSolenoid shiftSolenoid = RobotMap.shiftSolenoid;
    
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
@@ -45,8 +46,13 @@ public class Drivetrain extends DrivetrainSubsystem {
     }
     
     public void shift(){
-    	leftSolenoid.set(!(leftSolenoid.get()));
-    	rightSolenoid.set(!(rightSolenoid.get()));
+    	if(shiftSolenoid.get()==Value.kForward)
+        	shiftSolenoid.set(Value.kReverse);
+    	else
+        	shiftSolenoid.set(Value.kForward);
+
+    		
+
     }
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/
