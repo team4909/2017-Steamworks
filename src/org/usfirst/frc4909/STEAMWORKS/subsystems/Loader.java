@@ -1,7 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
-import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PotentiometerPIDSubsystem;
 
@@ -18,10 +18,10 @@ public class Loader extends PotentiometerPIDSubsystem {
     }
     
     public double[] getPositions(){
-    	return Robot.config.loaderAngles;
+    	return Config.loaderAngles;
     }
     
     public PIDConstants getPID(){
-    	return new PIDConstants(0.08, 0, 0, 0.3);
+    	return Config.loaderPID;
     }
 }
