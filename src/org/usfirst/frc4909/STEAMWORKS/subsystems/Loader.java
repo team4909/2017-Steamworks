@@ -7,8 +7,11 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.Timer;
 
 public class Loader extends Subsystem {
+	private double targetTime;
+	
 	private final double lP = 0.08;
 	private final double lI = 0;
 	private final double lD = 0;
@@ -26,9 +29,25 @@ public class Loader extends Subsystem {
 		loaderMotor.set(speed);
 	}
 	
-	public void moveLoader(double target, double threshold){
-		double currentAngle=Robot.loader.getAngle();
+	public void initPID(){
+    	targetTime = Timer.getFPGATimestamp();
+    	
+    	loaderPID.resetPID();
+	}
+	
+	public void setPosition(int position){
+		loaderPID.atTarget = false;
 		
-		loaderMotor.set((loaderPID.calcPID(target, currentAngle, threshold)));
+		double targetAngle = Robot.config.loaderAngles[position];
+		double currentAngle = Robot.loader.getAngle();
+		
+		loaderMotor.set((loaderPID.calcPID(targetAngle, currentAngle, 2)));
+		
+		if(!loaderPID.isDone())
+			targetTime = Timer.getFPGATimestamp();
+	}
+	
+	public boolean isFinished(){
+		return Timer.getFPGATimestamp()-targetTime > .5;
 	}
 }

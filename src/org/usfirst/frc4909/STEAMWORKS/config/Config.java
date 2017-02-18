@@ -14,9 +14,7 @@ public class Config {
 	public double climberMaxSpeed = 0.5;
 	public double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
 	
-	public double dropGearAngle = 1500;
-	public double catchGearAngle = 1350;
-	public double holdGearAngle = 1100;
+	public double[] loaderAngles = {1100, 1350, 1500};
 	
 	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }
