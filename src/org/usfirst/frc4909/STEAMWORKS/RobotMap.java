@@ -114,7 +114,7 @@ public class RobotMap {
     		"Loader",
     		new Spark(9),
   			new AnalogPotentiometer(1, 3600, -2260),
-    		new double[] {0, 250, 400}, // Hold, Catch, Drop // 2650,2270
+    		new double[] {0, 250, 400}, // Hold, Catch, Drop
     		new PIDConstants(0.01, 0, 0, 0.7)
     	);
     	
