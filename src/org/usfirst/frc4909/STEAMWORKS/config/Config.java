@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS.config;
 public class Config {
 	public Config() {}
 
+	
 	public double joystickDeadzone = 0.15;
 	
 	public double boilerShotVelocity = 2900.0;
@@ -14,9 +15,8 @@ public class Config {
 	public double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
 	
 	public double dropGearAngle = 1500;
-	public double holdGearAngle = 1100;
 	public double catchGearAngle = 1350;
-	
+	public double holdGearAngle = 1100;
 	
 	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }
