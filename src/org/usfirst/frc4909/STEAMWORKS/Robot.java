@@ -34,8 +34,7 @@ public class Robot extends IterativeRobot {
 	private RobotDrive drive;
 	
 	private final Object imgLock = new Object();
-    public static Config config;
-    
+  
     Command autonomousCommand;
     SendableChooser autoChooser;
    
@@ -62,8 +61,6 @@ public class Robot extends IterativeRobot {
         });
         
         visionThread.start();
-        
-        config = new Config();
         
         autoChooser = new SendableChooser();
         autoChooser.addDefault("Do Nothing", new DoNothingAuto());

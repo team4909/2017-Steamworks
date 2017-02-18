@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -53,9 +52,6 @@ public class Drivetrain extends DrivetrainSubsystem {
         	shiftSolenoid.set(Value.kReverse);
     	else
         	shiftSolenoid.set(Value.kForward);
-
-    		
-
     }
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/

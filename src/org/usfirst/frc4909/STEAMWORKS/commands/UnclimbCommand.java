@@ -2,6 +2,7 @@ package org.usfirst.frc4909.STEAMWORKS.commands;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.Robot;
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
 
 public class UnclimbCommand extends Command {
     public UnclimbCommand() {
@@ -9,7 +10,7 @@ public class UnclimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.config.unclimberMaxSpeed);
+    	Robot.climber.climb(Config.unclimberMaxSpeed);
     }
 
     protected void end() {

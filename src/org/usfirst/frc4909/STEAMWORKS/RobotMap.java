@@ -1,5 +1,9 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
+import org.usfirst.frc4909.STEAMWORKS.utils.PIDConstants;
+import org.usfirst.frc4909.STEAMWORKS.utils.PotentiometerPIDController;
+
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
 
@@ -20,6 +24,7 @@ import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 
 public class RobotMap {
     public static SpeedController drivetrainLeftDriveMotorController;
@@ -33,9 +38,7 @@ public class RobotMap {
     public static SpeedController intakeIntakeMotor;
     public static SpeedController feederFeederMotor;
     public static SpeedController intakePivotMotor;
-    public static SpeedController loaderMotor;
     public static SpeedController intakeCenterMotor;
-    public static AnalogPotentiometer loaderPivotPot;
     public static DigitalInput climberSwitch;
     public static CANTalon shooterMotorController ;
     public static double shooterP = 0.00015;
@@ -46,6 +49,7 @@ public class RobotMap {
 	public static PowerDistributionPanel PDP;
 	public static Compressor compressor;
 	public static DoubleSolenoid shiftSolenoid;
+	public static PotentiometerPIDController loaderPotPIDController;
     
     public static void init() {
         
@@ -106,11 +110,14 @@ public class RobotMap {
 
     	PDP = new PowerDistributionPanel();
     
-    	loaderMotor = new Spark(9);
-    	LiveWindow.addActuator("Loader", "LoaderMotor", (Spark) loaderMotor);
-    	loaderPivotPot = new AnalogPotentiometer(1, 3600, 0.0);
-    	LiveWindow.addSensor("Loader", "PivotPot", loaderPivotPot);
-       
+    	loaderPotPIDController = new PotentiometerPIDController(
+    		"Loader",
+    		new Spark(9),
+  			new AnalogPotentiometer(1, 3600, -2260),
+    		new double[] {0, 250, 400}, // Hold, Catch, Drop // 2650,2270
+    		new PIDConstants(0.01, 0, 0, 0.7)
+    	);
+    	
        intakePivotMotor= new Spark(8);
        LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Spark) intakePivotMotor);
        

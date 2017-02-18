@@ -22,12 +22,12 @@ public class Intake extends Subsystem {
     public final PIDController pivotPID = new PIDController(pP,pI,pD,0.3);
 
     public void intakeIn(){
-    	intakeMotor.set(.5);
+    	intakeMotor.set(.525);
     	centerMotor.set(-.8);
 
     }
     public void intakeOut(){
-    	intakeMotor.set(-.5);
+    	intakeMotor.set(-.525);
     	centerMotor.set(.8);
 
     }

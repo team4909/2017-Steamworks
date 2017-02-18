@@ -2,6 +2,7 @@ package org.usfirst.frc4909.STEAMWORKS.utils;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 
 import com.kauailabs.navx.frc.AHRS;
@@ -23,8 +24,8 @@ public abstract class DrivetrainSubsystem extends Subsystem {
 	public abstract double getRightEncDistance();
 	
 	public void moveTank(){
-	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
-	    double rightY = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
+	    double leftY = Robot.oi.getLeftDriveJoystick().getThresholdAxis(1, Config.joystickDeadzone);
+	    double rightY = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Config.joystickDeadzone);
 	    	
     	if(inversion)
         	this.getRobotDrive().tankDrive(-rightY, -leftY);
@@ -33,8 +34,8 @@ public abstract class DrivetrainSubsystem extends Subsystem {
     }
 	
 	public void moveArcade(){
-		double rot = Robot.oi.getLeftDriveJoystick().getThresholdAxis(0, Robot.config.joystickDeadzone);
-	    double power = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Robot.config.joystickDeadzone);
+		double rot = Robot.oi.getLeftDriveJoystick().getThresholdAxis(0, Config.joystickDeadzone);
+	    double power = Robot.oi.getRightDriveJoystick().getThresholdAxis(1, Config.joystickDeadzone);
 	    	
     	if(inversion) 
         	this.getRobotDrive().arcadeDrive(-power, -rot);
