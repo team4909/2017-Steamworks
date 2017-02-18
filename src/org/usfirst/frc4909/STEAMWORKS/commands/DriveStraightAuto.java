@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveStraight extends Command {
+public class DriveStraightAuto extends Command {
 	double targetTime;
 	double sP;
 	double sI;
@@ -18,7 +18,7 @@ public class DriveStraight extends Command {
 	double distance;
 	PIDController straightPID = new PIDController(sP,sI,sD,0.5);
 
-    public DriveStraight(double target) {
+    public DriveStraightAuto(double target) {
     	this.distance = target; 
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

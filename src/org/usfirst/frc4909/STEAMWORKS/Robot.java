@@ -6,13 +6,16 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
+import org.usfirst.frc4909.STEAMWORKS.commands.DoNothingAuto;
 import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
+import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
 
 public class Robot extends IterativeRobot {
@@ -31,6 +34,9 @@ public class Robot extends IterativeRobot {
 	private RobotDrive drive;
 	
 	private final Object imgLock = new Object();
+  
+    Command autonomousCommand;
+    SendableChooser autoChooser;
    
     public void robotInit() {
     	RobotMap.init();
@@ -55,6 +61,11 @@ public class Robot extends IterativeRobot {
         });
         
         visionThread.start();
+        
+        autoChooser = new SendableChooser();
+        autoChooser.addDefault("Do Nothing", new DoNothingAuto());
+        // autoChooser.addObject("", object);
+        SmartDashboard.putData("Autonomous mode chooser", autoChooser);
     }
 
     public void disabledInit(){}
@@ -63,7 +74,10 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
 
-    public void autonomousInit() {}
+    public void autonomousInit() {
+    	autonomousCommand =(Command) autoChooser.getSelected();
+    	autonomousCommand.start();
+    }
 
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();

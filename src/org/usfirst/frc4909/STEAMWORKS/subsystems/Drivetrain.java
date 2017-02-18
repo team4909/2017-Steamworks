@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import com.kauailabs.navx.frc.AHRS;
 
+import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.commands.*;
@@ -23,6 +24,8 @@ public class Drivetrain extends DrivetrainSubsystem {
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
     
     private final DoubleSolenoid shiftSolenoid = RobotMap.shiftSolenoid;
+    
+    private final double ENCODER_CONSTANT = 3.0;
    
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
@@ -37,11 +40,11 @@ public class Drivetrain extends DrivetrainSubsystem {
     }
 
     public double getLeftEncDistance(){
-    	return (leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return ENCODER_CONSTANT*(leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
     }
     
     public double getRightEncDistance(){
-    	return (rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return ENCODER_CONSTANT*(rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
     }
     
     public void shift(){
