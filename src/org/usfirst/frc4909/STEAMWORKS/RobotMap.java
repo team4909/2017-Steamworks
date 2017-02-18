@@ -34,6 +34,7 @@ public class RobotMap {
     public static SpeedController feederFeederMotor;
     public static SpeedController intakePivotMotor;
     public static SpeedController loaderMotor;
+    public static SpeedController intakeCenterMotor;
     public static AnalogPotentiometer loaderPivotPot;
     public static DigitalInput climberSwitch;
     public static CANTalon shooterMotorController ;
@@ -80,8 +81,11 @@ public class RobotMap {
         intakePivotPot = new AnalogPotentiometer(0, 3600.0, 0.0);
         LiveWindow.addSensor("Intake", "PivotPot", intakePivotPot);
         
-        intakeIntakeMotor = new Spark(7);
+        intakeIntakeMotor = new Spark(2);
         LiveWindow.addActuator("Intake", "IntakeMotor", (Spark) intakeIntakeMotor);
+        
+        intakeCenterMotor = new Spark(7);
+        LiveWindow.addActuator("Intake", "CenterMotor", (Spark) intakeCenterMotor);
         
         feederFeederMotor = new Spark(6);
         LiveWindow.addActuator("Feeder", "FeederMotor", (Spark) feederFeederMotor);

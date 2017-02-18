@@ -9,7 +9,9 @@ public class ClimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.config.climberMaxSpeed);
+//    	Robot.climber.climb(Robot.config.climberMaxSpeed);
+    	Robot.climber.climb(Robot.oi.getManipulatorJoystick().getRawAxis(1));
+
     }
     
     protected void end() {

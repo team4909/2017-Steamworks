@@ -16,18 +16,25 @@ public class Intake extends Subsystem {
 
     private final AnalogPotentiometer pivotPot = RobotMap.intakePivotPot;
     private final SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
+    private final SpeedController centerMotor = RobotMap.intakeCenterMotor;
     private final SpeedController pivotMotor = RobotMap.intakePivotMotor;
     
     public final PIDController pivotPID = new PIDController(pP,pI,pD,0.3);
 
     public void intakeIn(){
-    	intakeMotor.set(.5);
+//    	intakeMotor.set(.8);
+    	centerMotor.set(-.8);
+
     }
     public void intakeOut(){
-    	intakeMotor.set(-.5);
+//    	intakeMotor.set(-.8);
+    	centerMotor.set(.8);
+
     }
     public void intakeStop(){
     	intakeMotor.set(0);
+    	centerMotor.set(0);
+
     }
     
     public void pivotUp(){

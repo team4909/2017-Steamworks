@@ -18,7 +18,7 @@ public class Climber extends Subsystem {
     private final PowerDistributionPanel PDP = RobotMap.PDP;
 
     public void initDefaultCommand() {
-//    	setDefaultCommand(new ClimbCommand());
+    	setDefaultCommand(new ClimbCommand());
     }
     
     public void climb(double speed){
