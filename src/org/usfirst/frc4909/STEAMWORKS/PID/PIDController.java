@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.PID;
 
+import org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer.PotentiometerPIDController;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -56,6 +58,14 @@ public class PIDController {
 		iGain = i;
 		dGain = d;
 		maxOut = max;
+	}
+	
+	public PIDController(PIDConstants constants){
+		this(constants.p, constants.i, constants.d, constants.max);
+	}
+
+	public PIDController(PotentiometerPIDController potentiometerPIDController) {
+		this(potentiometerPIDController.getPID().p, potentiometerPIDController.getPID().i, potentiometerPIDController.getPID().d, potentiometerPIDController.getPID().max);
 	}
 
 	/**

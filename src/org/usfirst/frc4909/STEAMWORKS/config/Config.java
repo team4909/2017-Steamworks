@@ -1,6 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.config;
 
-import org.usfirst.frc4909.STEAMWORKS.utils.PIDConstants;
+import org.usfirst.frc4909.STEAMWORKS.PID.PIDConstants;
 
 public class Config {
 	public Config() {}
