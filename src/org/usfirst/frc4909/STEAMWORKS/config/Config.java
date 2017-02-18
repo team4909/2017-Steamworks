@@ -15,8 +15,5 @@ public class Config {
 	public static double climberMaxSpeed = 0.5;
 	public static double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
 	
-	public static double[] loaderAngles = {1100, 1350, 1500};
-	public static PIDConstants loaderPID = new PIDConstants(0.01, 0, 0, 0.7);
-	
 	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }	

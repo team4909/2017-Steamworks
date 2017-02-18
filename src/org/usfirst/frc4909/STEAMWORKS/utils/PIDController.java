@@ -9,4 +9,8 @@ public class PIDController extends org.usfirst.frc4909.STEAMWORKS.PID.PIDControl
 	public PIDController(PIDConstants constants){
 		super(constants.p, constants.i, constants.d, constants.max);
 	}
+
+	public PIDController(PotentiometerPIDController potentiometerPIDController) {
+		super(potentiometerPIDController.getPID().p, potentiometerPIDController.getPID().i, potentiometerPIDController.getPID().d, potentiometerPIDController.getPID().max);
+	}
 }
