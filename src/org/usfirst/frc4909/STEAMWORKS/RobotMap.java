@@ -96,19 +96,12 @@ public class RobotMap {
         
         shooterMotorController = new CANTalon(0);
         shooterMotorController.configEncoderCodesPerRev(2048);
-        shooterMotorController.reverseSensor(false);
         shooterMotorController.configNominalOutputVoltage(+0.0f, -0.0f);
         shooterMotorController.configPeakOutputVoltage(+12.0f, -12.0f);
         shooterMotorController.setProfile(0);
         shooterMotorController.setF(0.00050);
-        shooterMotorController.setP(0.00015);
-        shooterMotorController.setI(0); 
-        shooterMotorController.setD(0);
+        shooterMotorController.setPID(0.00015, 0, 0);
         shooterMotorController.changeControlMode(TalonControlMode.Speed);
-        
-        navx = new AHRS(SerialPort.Port.kMXP);
-
-    	PDP = new PowerDistributionPanel();
     
     	loaderPotPIDController = new PotentiometerPIDController(
     		"Loader",
@@ -123,8 +116,11 @@ public class RobotMap {
        
        climberSwitch= new DigitalInput(8);
        
-       compressor = new Compressor(0);
+       PDP = new PowerDistributionPanel();
        
+       navx = new AHRS(SerialPort.Port.kMXP);
+       
+       compressor = new Compressor(0);
        shiftSolenoid = new DoubleSolenoid(0,1);
     }
 }
