@@ -21,11 +21,9 @@ public class CatchGear extends Command {
     }
 
     protected void execute() {
-    	loaderPID.atTarget=false;
-
-		double currentAngle=Robot.loader.getAngle();
+    	loaderPID.atTarget = false;
 		
-		Robot.loader.moveLoader(Robot.config.catchGearAngle, currentAngle, 2);
+		Robot.loader.moveLoader(Robot.config.catchGearAngle, 2);
 		
 		if(!loaderPID.isDone())
 			targetTime=Timer.getFPGATimestamp();

@@ -23,12 +23,10 @@ public class HoldGear extends Command {
     protected void execute() {
     	loaderPID.atTarget=false;
     	
-		double currentAngle=Robot.loader.getAngle();
-		
-		Robot.loader.moveLoader(Robot.config.holdGearAngle, currentAngle, 2);
+		Robot.loader.moveLoader(Robot.config.holdGearAngle, 2);
 		
 		if(!loaderPID.isDone())
-				targetTime=Timer.getFPGATimestamp();
+			targetTime=Timer.getFPGATimestamp();
     }
 
     protected boolean isFinished() {
