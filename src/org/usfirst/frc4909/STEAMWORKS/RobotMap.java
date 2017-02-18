@@ -113,12 +113,12 @@ public class RobotMap {
     	loaderPotPIDController = new PotentiometerPIDController(
     		"Loader",
     		new Spark(9),
-  		new AnalogPotentiometer(1, 3600, -2260),
+    		new AnalogPotentiometer(1, 3600, -2260),
     		new double[] {0, 250, 400}, // Hold, Catch, Drop
     		new PIDConstants(0.01, 0, 0, 0.7)
     	);
     	
-       intakePivotMotor= new Spark(8);
+       intakePivotMotor = new Spark(8);
        LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Spark) intakePivotMotor);
        
        climberSwitch= new DigitalInput(8);
