@@ -3,6 +3,8 @@ package org.usfirst.frc4909.STEAMWORKS.commands;
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+
 /**
  *
  */
@@ -22,6 +24,9 @@ public class DoNothingAuto extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
+    	//Shift into high gear
+    	Robot.drivetrain.shift(Value.kForward);
     }
 
     // Called repeatedly when this Command is scheduled to run

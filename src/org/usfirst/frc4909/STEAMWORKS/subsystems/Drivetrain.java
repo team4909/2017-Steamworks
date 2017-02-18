@@ -18,14 +18,18 @@ import org.usfirst.frc4909.STEAMWORKS.utils.DrivetrainSubsystem;
 public class Drivetrain extends DrivetrainSubsystem {
 	//in inches
 	private double wheelDiameter = 4.0;
-	private double pulsesPerRev = 1440.0;
+	
+	//due to the 3:1 ratio of EVO gear box
+	private final double ENCODER_RATIO = 3.0;
+	
+	private double pulsesPerRev = 1440.0*ENCODER_RATIO;
     
     private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
     
     private final DoubleSolenoid shiftSolenoid = RobotMap.shiftSolenoid;
     
-    private final double ENCODER_CONSTANT = 3.0;
+    
    
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
@@ -40,11 +44,11 @@ public class Drivetrain extends DrivetrainSubsystem {
     }
 
     public double getLeftEncDistance(){
-    	return ENCODER_CONSTANT*(leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return ENCODER_RATIO*(leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
     }
     
     public double getRightEncDistance(){
-    	return ENCODER_CONSTANT*(rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return ENCODER_RATIO*(rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
     }
     
     public void shift(){
@@ -53,6 +57,12 @@ public class Drivetrain extends DrivetrainSubsystem {
     	else
         	shiftSolenoid.set(Value.kForward);
     }
+    
+    public void shift(Value v){
+    	shiftSolenoid.set(v);
+    }
+    
+    
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/
 
@@ -88,7 +98,6 @@ public class Drivetrain extends DrivetrainSubsystem {
     	SmartDashboard.putNumber("nP", navP);
     	SmartDashboard.putNumber("nI", navI);
     	SmartDashboard.putNumber("nD", navD);
-
     	double targetTime=Timer.getFPGATimestamp();
     	while(Timer.getFPGATimestamp()-targetTime<.5){
     		navxPID.atTarget=false;
