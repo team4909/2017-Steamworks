@@ -42,7 +42,8 @@ public class HoldGear extends Command {
 		double currentAngle=Robot.loader.getAngle();
 		SmartDashboard.putNumber("current angle",currentAngle);
 		SmartDashboard.putNumber("loader PID out",loaderPID.calcPID(0, currentAngle, 2));
-		Robot.loader.moveLoader(0, currentAngle, 2);
+		
+		Robot.loader.moveLoader(Robot.config.holdGearAngle, currentAngle, 2);
 		if(!loaderPID.isDone()){
 				targetTime=Timer.getFPGATimestamp(); 
 		}

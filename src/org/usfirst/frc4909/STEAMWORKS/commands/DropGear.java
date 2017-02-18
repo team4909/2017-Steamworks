@@ -42,7 +42,8 @@ public class DropGear extends Command {
 		double currentAngle=Robot.loader.getAngle();
 		SmartDashboard.putNumber("current angle",currentAngle);
 		SmartDashboard.putNumber("loader PID out",loaderPID.calcPID(145, currentAngle, 2));
-		Robot.loader.moveLoader(145, currentAngle, 2);
+		
+		Robot.loader.moveLoader(Robot.config.dropGearAngle, currentAngle, 2);
 		if(!loaderPID.isDone()){
 				targetTime=Timer.getFPGATimestamp(); 
 		}

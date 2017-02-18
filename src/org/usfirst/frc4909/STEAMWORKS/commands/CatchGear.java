@@ -42,7 +42,8 @@ public class CatchGear extends Command {
 		double currentAngle=Robot.loader.getAngle();
 		SmartDashboard.putNumber("current angle",currentAngle);
 		SmartDashboard.putNumber("loader PID out",loaderPID.calcPID(55, currentAngle, 2));
-		Robot.loader.moveLoader(55, currentAngle, 2);
+		
+		Robot.loader.moveLoader(Robot.config.catchGearAngle, currentAngle, 2);
 		if(!loaderPID.isDone()){
 				targetTime=Timer.getFPGATimestamp(); 
 		}
