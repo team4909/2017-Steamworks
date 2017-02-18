@@ -2,7 +2,6 @@ package org.usfirst.frc4909.STEAMWORKS.config;
 
 public class Config {
 	public Config() {}
-
 	
 	public double joystickDeadzone = 0.15;
 	
