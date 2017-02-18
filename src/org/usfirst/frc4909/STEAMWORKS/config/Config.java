@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.config;
 
+import org.usfirst.frc4909.STEAMWORKS.utils.PIDConstants;
+
 public class Config {
 	public Config() {}
 	
@@ -14,6 +16,7 @@ public class Config {
 	public double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
 	
 	public double[] loaderAngles = {1100, 1350, 1500};
+	public PIDConstants loaderPID = new PIDConstants(0.08, 0, 0, 0.3);
 	
 	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }
