@@ -107,9 +107,9 @@ public class RobotMap {
     	PDP = new PowerDistributionPanel();
     
     	loaderMotor = new Spark(9);
-    	 	LiveWindow.addActuator("Loader", "LoaderMotor", (Spark) loaderMotor);
+    	LiveWindow.addActuator("Loader", "LoaderMotor", (Spark) loaderMotor);
     	loaderPivotPot = new AnalogPotentiometer(1, 3600, 0.0);
-       LiveWindow.addSensor("Loader", "PivotPot", loaderPivotPot);
+    	LiveWindow.addSensor("Loader", "PivotPot", loaderPivotPot);
        
        intakePivotMotor= new Spark(8);
        LiveWindow.addActuator("Intake", "IntakePivotMotorController", (Spark) intakePivotMotor);
