@@ -1,8 +1,5 @@
 package org.usfirst.frc4909.STEAMWORKS.utils.devices;
 
-import org.usfirst.frc4909.STEAMWORKS.Robot;
-import org.usfirst.frc4909.STEAMWORKS.config.Config;
-
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {

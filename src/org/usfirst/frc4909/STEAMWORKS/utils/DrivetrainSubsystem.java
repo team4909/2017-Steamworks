@@ -1,7 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.utils;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
-import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.NavX;
@@ -16,15 +15,15 @@ public abstract class DrivetrainSubsystem extends Subsystem {
 	public abstract double getRightEncDistance();
 	
 	public void moveTank(){
-	    double leftY = Robot.oi.leftDriveJoystick.getThresholdAxis(1, Config.joystickDeadzone);
-	    double rightY = Robot.oi.rightDriveJoystick.getThresholdAxis(1, Config.joystickDeadzone);
+	    double leftY = Robot.oi.leftDriveJoystick.getThresholdAxis(1);
+	    double rightY = Robot.oi.rightDriveJoystick.getThresholdAxis(1);
 	    	
     	this.getRobotDrive().tankDrive(leftY, rightY);
     }
 	
 	public void moveArcade(){
-	    double power = 	Robot.oi.leftDriveJoystick.getThresholdAxis(1, Config.joystickDeadzone);
-		double rot = 	Robot.oi.leftDriveJoystick.getThresholdAxis(0, Config.joystickDeadzone);
+	    double power = 	Robot.oi.leftDriveJoystick.getThresholdAxis(1);
+		double rot = 	Robot.oi.leftDriveJoystick.getThresholdAxis(0);
 	    	
     	this.getRobotDrive().arcadeDrive(power, rot);
     }

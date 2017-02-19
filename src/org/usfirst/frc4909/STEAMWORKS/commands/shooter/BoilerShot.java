@@ -1,7 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.commands.shooter;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
-import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,21 +11,21 @@ public class BoilerShot extends Command {
     }
     
     protected void initialize() {
-    	SmartDashboard.putBoolean("ReadyToShoot", false);
+    	SmartDashboard.putBoolean("Ready To Shoot", false);
     }
 
     protected void execute() {
-		Robot.shooter.setRPM(Config.boilerShotVelocity);
+		Robot.shooter.setRPM(2900.0);
 		
-		SmartDashboard.putNumber("CurrentSpeed", Robot.shooter.getRPM());
+		SmartDashboard.putNumber("Current Shooter RPM", Robot.shooter.getRPM());
 		
-		if(Robot.shooter.getRPM() >= Config.boilerShotVelocity * Config.boilerShotMinPercentage)
-			SmartDashboard.putBoolean("ReadyToShoot", true);
+		if(Robot.shooter.getRPM() >= 2900.0 * 0.9)
+			SmartDashboard.putBoolean("Ready To Shoot", true);
     }
     
     protected void end() {
 		Robot.shooter.setVoltage(0);
 		
-		SmartDashboard.putBoolean("ReadyToShoot", false);
+		SmartDashboard.putBoolean("Ready To Shoot", false);
     }
 }

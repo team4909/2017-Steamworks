@@ -11,7 +11,7 @@ public class FeederOn extends Command {
     }
 
     protected void initialize() {
-    	if(!SmartDashboard.getBoolean("Ready To Shoot", true) && !SmartDashboard.getBoolean("ShooterOverride",true))
+    	if(!SmartDashboard.getBoolean("Ready To Shoot", true) && !SmartDashboard.getBoolean("Shooter Override", true))
     		end();
     }
 
