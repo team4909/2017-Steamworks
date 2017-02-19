@@ -2,7 +2,6 @@ package org.usfirst.frc4909.STEAMWORKS.utils.devices;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
@@ -10,7 +9,9 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 public class Devices {
 	public Devices() {}
 
-	public static SpeedController addMotor (String subsystem, String name, SpeedController motor){
+	public static SpeedController addMotor (String subsystem, String name, edu.wpi.first.wpilibj.SpeedController rawMotor){
+		SpeedController motor = new SpeedController(rawMotor);
+		
         LiveWindow.addActuator(subsystem, subsystem + name, (LiveWindowSendable) motor);
 		
 		return motor;

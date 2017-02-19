@@ -2,8 +2,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
-import org.usfirst.frc4909.STEAMWORKS.utils.devices.Devices;
-import org.usfirst.frc4909.STEAMWORKS.utils.devices.SpeedController;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.*;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
@@ -20,7 +19,6 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.RobotDrive;
 
 public class RobotMap {
 	public static PowerDistributionPanel PDP;
@@ -67,7 +65,7 @@ public class RobotMap {
         intakeIntakeMotor = 					Devices.addMotor("Intake", "IntakeMotorController", new Spark(2));
         climberClimberMotorController = 		Devices.addMotor("Climber", "MotorController", new Spark(5));
         feederFeederMotor = 					Devices.addMotor("Feeder", "MotorController", new Spark(6));
-        intakeCenterMotor = 					Devices.addMotor("Intake", "CenterMotorController", new Spark(7));
+        intakeCenterMotor =						intakeIntakeMotor.addSlaveMotor(new Spark(7), -1.52);
         
         // CAN
         shooterMotorController = new CANTalon(0);
@@ -99,12 +97,8 @@ public class RobotMap {
         );
 
         // Robot Drive
-        drivetrainRobotDrive = new RobotDrive(drivetrainLeftDriveMotorController, drivetrainRightDriveMotorController);
-        
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearLeft,true);
-        drivetrainRobotDrive.setInvertedMotor(RobotDrive.MotorType.kRearRight,true);
-        drivetrainRobotDrive.setSafetyEnabled(true);
-       
+        drivetrainRobotDrive = new RobotDrive(drivetrainLeftDriveMotorController, drivetrainRightDriveMotorController, true, true);
+      
         shooterMotorController.configEncoderCodesPerRev(2048);
         shooterMotorController.configNominalOutputVoltage(+0.0f, -0.0f);
         shooterMotorController.configPeakOutputVoltage(+12.0f, -12.0f);
