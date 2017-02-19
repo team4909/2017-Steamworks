@@ -10,7 +10,7 @@ public class ClimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.oi.getManipulatorJoystick().getThresholdAxis(1, Config.joystickDeadzone));
+    	Robot.climber.climb(Robot.oi.manipulatorJoystick.getThresholdAxis(1, Config.joystickDeadzone));
     }
     
     protected void end() {

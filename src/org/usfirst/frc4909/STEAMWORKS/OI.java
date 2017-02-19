@@ -34,16 +34,4 @@ public class OI {
         manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
         manipulatorJoystick.buttonPressed(11, new IntakeOut());
     }
-   
-    public Joystick getLeftDriveJoystick() {
-        return leftDriveJoystick;
-    }
-
-    public Joystick getRightDriveJoystick() {
-        return rightDriveJoystick;
-    }
-
-    public Joystick getManipulatorJoystick() {
-        return manipulatorJoystick;
-    }
 }
