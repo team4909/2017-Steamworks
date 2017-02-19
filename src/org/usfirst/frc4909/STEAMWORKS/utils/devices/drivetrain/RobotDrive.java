@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.utils.devices;
+package org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain;
 
 import edu.wpi.first.wpilibj.SpeedController;
 

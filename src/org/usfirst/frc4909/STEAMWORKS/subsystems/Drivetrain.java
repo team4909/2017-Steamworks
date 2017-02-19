@@ -8,8 +8,8 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
-import org.usfirst.frc4909.STEAMWORKS.utils.devices.NavX;
-import org.usfirst.frc4909.STEAMWORKS.utils.devices.RobotDrive;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.NavX;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.RobotDrive;
 
 public class Drivetrain extends Subsystem {
 	//in inches
@@ -70,6 +70,4 @@ public class Drivetrain extends Subsystem {
     public void shiftHigh(){
     	shiftSolenoid.set(Value.kForward);
     }
-    
-    
 }

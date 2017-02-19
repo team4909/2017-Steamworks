@@ -1,5 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.utils.devices;
 
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.NavX;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.SpeedController;
 
 import edu.wpi.first.wpilibj.DigitalInput;
