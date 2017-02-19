@@ -11,7 +11,7 @@ public class ShiftCommand extends InstantCommand {
     }
 
     protected void initialize() {
-    	Robot.drivetrain.shift();
+    	Robot.drivetrain.robotDrive.shift();
     	
     	SmartDashboard.putNumber("Times Shifted", SmartDashboard.getNumber("Shifts", 0) + 1);
     }

@@ -4,7 +4,7 @@ import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.Position.PotentiometerPIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.NavX;
-import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.RobotDrive;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.*;
 
 import com.ctre.CANTalon.TalonControlMode;
@@ -46,7 +46,7 @@ public class RobotMap {
 	public static PotentiometerPIDController intakePivotPotPIDController;
 	public static PotentiometerPIDController loaderPotPIDController;
 	
-    public static RobotDrive drivetrainRobotDrive;
+    public static ShiftingRobotDrive drivetrainRobotDrive;
     
     public static void init() {
     	// PDP Interface
@@ -74,8 +74,6 @@ public class RobotMap {
         
         // Pneumatics
         compressor = 							new Compressor(0);
-        shiftSolenoid = 						new DoubleSolenoid(0,1);
-        
         // Potentiometer PID Controllers
         intakePivotPotPIDController = new PotentiometerPIDController(
            	"Intake",
@@ -94,7 +92,13 @@ public class RobotMap {
         );
 
         // Robot Drive
-        drivetrainRobotDrive = new RobotDrive(drivetrainLeftDriveMotorController, drivetrainRightDriveMotorController, true, true);
+        drivetrainRobotDrive = new ShiftingRobotDrive(
+        	drivetrainLeftDriveMotorController,
+        	drivetrainRightDriveMotorController,
+        	true, // Invert Motor Controllers
+        	true, // Enable Safety
+        	new DoubleSolenoid(0,1)
+        );
         
         // Configure Shooter Motor
         shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
