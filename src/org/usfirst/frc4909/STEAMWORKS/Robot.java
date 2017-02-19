@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.DoNothingAuto;
-import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
