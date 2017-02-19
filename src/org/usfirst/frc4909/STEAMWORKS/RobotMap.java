@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.Devices;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.SpeedController;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
@@ -11,7 +12,6 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Encoder;
