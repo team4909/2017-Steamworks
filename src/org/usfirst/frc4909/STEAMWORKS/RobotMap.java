@@ -53,10 +53,10 @@ public class RobotMap {
     
     public static void init() {
     	// PDP Interface
-        PDP = new PowerDistributionPanel();
+        PDP = 									new PowerDistributionPanel();
         
         // NavX Board
-        navx = new AHRS(SerialPort.Port.kMXP);
+        navx = 									new AHRS(SerialPort.Port.kMXP);
     	
     	// PWM Outputs
     	drivetrainLeftDriveMotorController = 	Devices.addMotor("Drivetrain", "LeftDriveMotorController", new VictorSP(0));
@@ -68,16 +68,16 @@ public class RobotMap {
         intakeCenterMotor =						intakeIntakeMotor.addSlaveMotor(new Spark(7), -1.52);
         
         // CAN
-        shooterMotorController = new CANTalon(0);
+        shooterMotorController = 				new CANTalon(0);
         
         // DIO
-        drivetrainLeftEncoder = Devices.addEncoder("Drivetrain", "LeftEncoder", new Encoder(0, 1, true, EncodingType.k4X), 1.0);
-        drivetrainRightEncoder = Devices.addEncoder("Drivetrain", "RightEncoder", new Encoder(2, 3, false, EncodingType.k4X), 1.0);
-        climberSwitch= Devices.addDigitalInput(8);
+        drivetrainLeftEncoder = 				Devices.addEncoder("Drivetrain", "LeftEncoder", new Encoder(0, 1, true, EncodingType.k4X), 1.0);
+        drivetrainRightEncoder = 				Devices.addEncoder("Drivetrain", "RightEncoder", new Encoder(2, 3, false, EncodingType.k4X), 1.0);
+        climberSwitch= 							Devices.addDigitalInput(8);
         
         // Pneumatics
-        compressor = new Compressor(0);
-        shiftSolenoid = new DoubleSolenoid(0,1);
+        compressor = 							new Compressor(0);
+        shiftSolenoid = 						new DoubleSolenoid(0,1);
         
         // Potentiometer PID Controllers
         intakePivotPotPIDController = new PotentiometerPIDController(
