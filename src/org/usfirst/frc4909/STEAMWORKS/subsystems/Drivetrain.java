@@ -4,19 +4,21 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
 
+import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
-import org.usfirst.frc4909.STEAMWORKS.utils.DrivetrainSubsystem;
-import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
-import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.NavX;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.RobotDrive;
 
-public class Drivetrain extends DrivetrainSubsystem {
+public class Drivetrain extends Subsystem {
 	//in inches
 	private double wheelDiameter = 4.0;
 	private double pulsesPerRev = 1440.0;
-    
+
+	public RobotDrive robotDrive = RobotMap.drivetrainRobotDrive;
+	public NavX navx = RobotMap.navx;
+	
     private final Encoder leftEncoder = RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder = RobotMap.drivetrainRightEncoder;
     
@@ -28,14 +30,24 @@ public class Drivetrain extends DrivetrainSubsystem {
         setDefaultCommand(new DriveCommand());
     }
 
-	public RobotDrive getRobotDrive() {
-		return RobotMap.drivetrainRobotDrive;
-	}
-	
-	public NavX getNavX(){
-    	return RobotMap.navx;
+	public void moveTank(){
+	    double leftY = Robot.oi.leftDriveJoystick.getThresholdAxis(1);
+	    double rightY = Robot.oi.rightDriveJoystick.getThresholdAxis(1);
+	    	
+    	robotDrive.tankDrive(leftY, rightY);
     }
-
+	
+	public void moveArcade(){
+	    double power = 	Robot.oi.leftDriveJoystick.getThresholdAxis(1);
+		double rot = 	Robot.oi.leftDriveJoystick.getThresholdAxis(0);
+	    	
+		robotDrive.arcadeDrive(power, rot);
+    }
+    
+    public void stop(){
+    	robotDrive.stop();
+    }
+	
     public double getLeftEncDistance(){
     	return ENCODER_CONSTANT*(leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
     }
@@ -59,11 +71,5 @@ public class Drivetrain extends DrivetrainSubsystem {
     	shiftSolenoid.set(Value.kForward);
     }
     
-    /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/
-    private final PIDConstants encPIDConstants = new PIDConstants(0.15, 0, 0, 0.8);
-    private final PIDController encPID = new PIDController(encPIDConstants);
     
-    public void driveStraight(double target, double leftDistance, double rightDistance, double threshold){
-		this.getRobotDrive().tankDrive(encPID.calcPID(target, leftDistance, threshold),encPID.calcPID(target, rightDistance, threshold));
-	}
 }

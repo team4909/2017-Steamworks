@@ -10,6 +10,6 @@ public class InvertDrive extends InstantCommand {
     }
 
     protected void initialize() {
-    	Robot.drivetrain.getRobotDrive().invert();
+    	Robot.drivetrain.robotDrive.invert();
     }
 }
