@@ -1,9 +1,9 @@
 package org.usfirst.frc4909.STEAMWORKS.utils;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
 import com.kauailabs.navx.frc.AHRS;
 

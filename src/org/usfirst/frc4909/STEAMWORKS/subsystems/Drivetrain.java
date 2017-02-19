@@ -11,9 +11,9 @@ import com.kauailabs.navx.frc.AHRS;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.commands.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.DrivetrainSubsystem;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
 public class Drivetrain extends DrivetrainSubsystem {
 	//in inches

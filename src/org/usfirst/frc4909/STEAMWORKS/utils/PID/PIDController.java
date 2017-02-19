@@ -1,6 +1,6 @@
-package org.usfirst.frc4909.STEAMWORKS.PID;
+package org.usfirst.frc4909.STEAMWORKS.utils.PID;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer.PotentiometerPIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 

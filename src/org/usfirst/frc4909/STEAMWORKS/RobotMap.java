@@ -1,8 +1,8 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDConstants;
-import org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer.PotentiometerPIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.Devices;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
 
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;

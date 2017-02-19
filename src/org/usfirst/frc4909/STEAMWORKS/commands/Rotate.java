@@ -1,7 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.commands;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;

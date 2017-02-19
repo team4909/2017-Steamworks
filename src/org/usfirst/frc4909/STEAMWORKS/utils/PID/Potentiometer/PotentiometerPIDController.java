@@ -1,6 +1,6 @@
-package org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer;
+package org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDConstants;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;

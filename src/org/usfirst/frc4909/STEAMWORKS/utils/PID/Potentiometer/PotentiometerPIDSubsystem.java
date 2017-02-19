@@ -1,7 +1,7 @@
-package org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer;
+package org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer;
 
-import org.usfirst.frc4909.STEAMWORKS.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
 import edu.wpi.first.wpilibj.Timer;
 
