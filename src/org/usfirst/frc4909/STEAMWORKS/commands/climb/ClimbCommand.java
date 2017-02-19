@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.climb;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.Robot;

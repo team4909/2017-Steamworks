@@ -1,7 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
-import org.usfirst.frc4909.STEAMWORKS.commands.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.climb.*;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
