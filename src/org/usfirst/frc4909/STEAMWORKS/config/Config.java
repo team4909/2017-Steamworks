@@ -8,8 +8,5 @@ public class Config {
 	
 	public static double feederSpeed = 0.5;
 	
-	public static double climberMaxSpeed = 0.5;
-	public static double unclimberMaxSpeed = 0.5 * climberMaxSpeed;
-	
 	/* Set Shooter (set in robot map, move to subsystem), Loader, Intake, and Drivetrain PID Constants*/
 }	
