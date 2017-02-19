@@ -4,7 +4,7 @@ import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.SpeedController;
 
-public class Intake extends Subsystem {
+public class IntakePolycord extends Subsystem {
     private final SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
     
     public void intakeIn(){

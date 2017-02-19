@@ -8,7 +8,8 @@ public class DoNothingAuto extends Command {
     	requires(Robot.climber);
     	requires(Robot.drivetrain);
     	requires(Robot.feeder);
-    	requires(Robot.intake);
+    	requires(Robot.intakePolycord);
+    	requires(Robot.intakePivot);
     	requires(Robot.loader);
     	requires(Robot.shooter);
     }

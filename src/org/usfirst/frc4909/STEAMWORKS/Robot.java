@@ -22,7 +22,8 @@ public class Robot extends IterativeRobot {
     
     public static Drivetrain drivetrain;
     public static Climber climber;
-    public static Intake intake;
+    public static IntakePolycord intakePolycord;
+    public static IntakePivot intakePivot;
     public static Feeder feeder;
     public static Shooter shooter;
     public static Loader loader;
@@ -40,7 +41,8 @@ public class Robot extends IterativeRobot {
     	
         drivetrain = new Drivetrain();
         climber = new Climber();
-        intake = new Intake();
+        intakePivot = new IntakePivot();
+        intakePolycord = new IntakePolycord();
         feeder = new Feeder();
         shooter = new Shooter();
         loader = new Loader();
