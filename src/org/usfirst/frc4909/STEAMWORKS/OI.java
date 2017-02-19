@@ -16,29 +16,22 @@ public class OI {
         
         rightDriveJoystick.buttonPressed(1, new ShiftCommand());
         
+        leftDriveJoystick.buttonHeld(1, new ClimbCommand());
+        leftDriveJoystick.buttonHeld(6, new UnclimbCommand());
         leftDriveJoystick.buttonPressed(10, new SetInversionDrive());
         leftDriveJoystick.buttonPressed(11, new UnsetInversionDrive());
         
-        leftDriveJoystick.buttonHeld(1, new ClimbCommand());
-        leftDriveJoystick.buttonHeld(6, new UnclimbCommand());
-
         manipulatorJoystick.buttonPressed(1, new BoilerShot());
-        manipulatorJoystick.buttonPressed(8, new StopShooting());
-        
-        manipulatorJoystick.buttonPressed(6, new FeederOn());
-        
-        manipulatorJoystick.buttonPressed(7, new HoldGear());
-        manipulatorJoystick.buttonPressed(4, new DropGear());
-        manipulatorJoystick.buttonPressed(5, new CatchGear());
-        manipulatorJoystick.buttonPressed(9, new LoaderOpenManual());
-        manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
-
-        
         manipulatorJoystick.buttonPressed(2, new IntakeIn());
         manipulatorJoystick.buttonPressed(3, new IntakeOff());
+        manipulatorJoystick.buttonPressed(4, new DropGear());
+        manipulatorJoystick.buttonPressed(5, new CatchGear());
+        manipulatorJoystick.buttonPressed(6, new FeederOn());
+        manipulatorJoystick.buttonPressed(7, new HoldGear());
+        manipulatorJoystick.buttonPressed(8, new StopShooting());
+        manipulatorJoystick.buttonPressed(9, new LoaderOpenManual());
+        manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
         manipulatorJoystick.buttonPressed(11, new IntakeOut());
-
-        
     }
    
     public Joystick getLeftDriveJoystick() {
