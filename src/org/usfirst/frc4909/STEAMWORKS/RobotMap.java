@@ -2,7 +2,6 @@ package org.usfirst.frc4909.STEAMWORKS;
 
 import org.usfirst.frc4909.STEAMWORKS.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.PID.Potentiometer.PotentiometerPIDController;
-import org.usfirst.frc4909.STEAMWORKS.config.Config;
 import org.usfirst.frc4909.STEAMWORKS.utils.Devices;
 
 import com.ctre.CANTalon;
@@ -10,22 +9,22 @@ import com.ctre.CANTalon.TalonControlMode;
 
 import com.kauailabs.navx.frc.AHRS;
 
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
-import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.CounterBase.EncodingType;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
-import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.VictorSP;
-import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 public class RobotMap {
 	public static PowerDistributionPanel PDP;
+	
     public static AHRS navx;
 	
     public static SpeedController drivetrainLeftDriveMotorController;

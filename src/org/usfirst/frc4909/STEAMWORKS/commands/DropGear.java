@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class DropGear extends Command {
     public DropGear() {
-    	requires(Robot.intake);
+    	requires(Robot.loader);
     }
 
     protected void initialize() {
