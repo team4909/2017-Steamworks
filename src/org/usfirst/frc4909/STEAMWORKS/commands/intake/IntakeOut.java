@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.intake;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 /**
  *
  */
-public class IntakeIn extends InstantCommand {
+public class IntakeOut extends InstantCommand {
 
-    public IntakeIn() {
+    public IntakeOut() {
         super();
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -17,7 +17,7 @@ public class IntakeIn extends InstantCommand {
 
     // Called once when the command executes
     protected void initialize() {
-    	Robot.intake.intakeIn();
+    	Robot.intake.intakeOut();
     }
 
 }

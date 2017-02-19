@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.drive;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

@@ -1,11 +1,11 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.loader;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class CatchGear extends Command {
-    public CatchGear() {
+public class DropGear extends Command {
+    public DropGear() {
     	requires(Robot.loader);
     }
 
@@ -14,7 +14,7 @@ public class CatchGear extends Command {
     }
 
     protected void execute() {
-    	Robot.loader.setPosition(1);
+    	Robot.loader.setPosition(2);
     }
 
     protected boolean isFinished() {

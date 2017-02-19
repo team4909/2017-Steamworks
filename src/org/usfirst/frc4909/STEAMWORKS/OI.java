@@ -1,6 +1,9 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
-import org.usfirst.frc4909.STEAMWORKS.commands.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.intake.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.loader.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.shooter.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
 
 public class OI {

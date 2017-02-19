@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.drive;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 

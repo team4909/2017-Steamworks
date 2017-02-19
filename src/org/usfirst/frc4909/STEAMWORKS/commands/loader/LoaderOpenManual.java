@@ -1,15 +1,14 @@
-package org.usfirst.frc4909.STEAMWORKS.commands;
+package org.usfirst.frc4909.STEAMWORKS.commands.loader;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
-
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 /**
  *
  */
-public class LoaderCloseManual extends Command {
+public class LoaderOpenManual extends Command {
 
-    public LoaderCloseManual() {
+    public LoaderOpenManual() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,13 +19,12 @@ public class LoaderCloseManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.loader.setSpeed(-.3);
-
+    	Robot.loader.setSpeed(.3);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.oi.manipulatorJoystick.getRawButton(10);
+        return !Robot.oi.manipulatorJoystick.getRawButton(9);
     }
 
     // Called once after isFinished returns true
@@ -34,7 +32,5 @@ public class LoaderCloseManual extends Command {
     	Robot.loader.setSpeed(0);
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
 
 }
