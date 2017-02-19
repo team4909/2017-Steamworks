@@ -13,4 +13,14 @@ public class CANTalon extends com.ctre.CANTalon {
 		super(deviceNumber, controlPeriodMs, enablePeriodMs);
 	}
 
+	public void setEncoderPIDF(int codesPerRev, double p, double i, double d, double f){
+		this.configEncoderCodesPerRev(codesPerRev);
+        this.setPID(p, i, d);
+        this.setF(f);
+	}
+	
+	public void configVoltages(double forwardsNomVoltage, double backwardsNomVoltage, double forwardsPeakVoltage, double backwardsPeakVoltage){
+	    this.configNominalOutputVoltage(forwardsNomVoltage, backwardsNomVoltage);
+	    this.configPeakOutputVoltage(forwardsPeakVoltage, backwardsPeakVoltage);
+	}
 }

@@ -93,13 +93,11 @@ public class RobotMap {
 
         // Robot Drive
         drivetrainRobotDrive = new RobotDrive(drivetrainLeftDriveMotorController, drivetrainRightDriveMotorController, true, true);
-      
-        shooterMotorController.configEncoderCodesPerRev(2048);
-        shooterMotorController.configNominalOutputVoltage(+0.0f, -0.0f);
-        shooterMotorController.configPeakOutputVoltage(+12.0f, -12.0f);
+        
+        // Configure Shooter Motor
+        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
         shooterMotorController.setProfile(0);
-        shooterMotorController.setF(0.00050);
-        shooterMotorController.setPID(0.00015, 0, 0);
+        shooterMotorController.setEncoderPIDF(2048, 0.00015, 0, 0, 0.00050);
         shooterMotorController.changeControlMode(TalonControlMode.Speed);
     }
 }
