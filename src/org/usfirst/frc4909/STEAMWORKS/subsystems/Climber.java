@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Climber extends Subsystem {
     private final SpeedController climberMotorController = RobotMap.climberClimberMotorController;
-    private final DigitalInput climbSwitch=RobotMap.climberSwitch;
+    private final DigitalInput climbSwitch = RobotMap.climberSwitch;
     private final PowerDistributionPanel PDP = RobotMap.PDP;
 
     public void initDefaultCommand() {

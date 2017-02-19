@@ -16,8 +16,6 @@ public class OI {
         
         rightDriveJoystick.buttonPressed(1, new ShiftCommand());
         
-        leftDriveJoystick.buttonHeld(1, new ClimbCommand());
-        leftDriveJoystick.buttonHeld(6, new UnclimbCommand());
         leftDriveJoystick.buttonPressed(10, new SetInversionDrive());
         leftDriveJoystick.buttonPressed(11, new UnsetInversionDrive());
         
