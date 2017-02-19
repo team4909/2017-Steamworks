@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  * Simple PID Controller that assumes regular loop intervals .
  *
- * @author Team 1241
+ * Modified from Base by Team 1241
  */
 public class PIDController {
 
@@ -105,6 +105,12 @@ public class PIDController {
 		pGain = kP;
 		iGain = kI;
 		dGain = kD;
+	}
+	
+	public void changePIDGains(PIDConstants consts) {
+		pGain = consts.p;
+		iGain = consts.i;
+		dGain = consts.d;
 	}
 
 	/**

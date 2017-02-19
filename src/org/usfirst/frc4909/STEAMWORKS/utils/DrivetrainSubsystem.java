@@ -2,12 +2,13 @@ package org.usfirst.frc4909.STEAMWORKS.utils;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.NavX;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.RobotDrive;
 
 public abstract class DrivetrainSubsystem extends Subsystem {
-	private final PIDController rotatePID = new PIDController(0, 0, 0,.5);
+	private final PIDController rotatePID = new PIDController(new PIDConstants(0, 0, 0, 0.5));
 	
 	public abstract RobotDrive getRobotDrive();
 	public abstract NavX getNavX();

@@ -17,18 +17,14 @@ public class DriveStraightAuto extends Command {
 
     public DriveStraightAuto(double target) {
     	this.distance = target; 
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() {    
-    SmartDashboard.putBoolean("straight", true);
-	targetTime=Timer.getFPGATimestamp();
-	straightPID.resetPID();
+    	SmartDashboard.putBoolean("straight", true);
+    	targetTime=Timer.getFPGATimestamp();
+		straightPID.resetPID();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	straightPID.atTarget=false;
     	sP=SmartDashboard.getNumber("sP", 0);
@@ -48,19 +44,7 @@ public class DriveStraightAuto extends Command {
 		}
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
         return Timer.getFPGATimestamp()-targetTime>.5;
-        }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    	SmartDashboard.putBoolean("straight", false);
-
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
     }
 }
