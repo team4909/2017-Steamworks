@@ -17,7 +17,6 @@ public class DoNothingAuto extends Command {
     	requires(Robot.intake);
     	requires(Robot.loader);
     	requires(Robot.shooter);
-    	
     }
 
     // Called just before this Command runs the first time
