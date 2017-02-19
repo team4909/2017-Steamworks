@@ -20,7 +20,14 @@ public class Devices {
         LiveWindow.addSensor(subsystem, subsystem + name, (LiveWindowSendable) enc);
 		
 		return enc;
-	}	
+	}
+	
+	public static Encoder addEncoder (String subsystem, String name, Encoder enc, double distancePerPulse){
+		enc.setDistancePerPulse(distancePerPulse);
+        LiveWindow.addSensor(subsystem, subsystem + name, (LiveWindowSendable) enc);
+		
+		return enc;
+	}
 	
 	public static Potentiometer addPotentiometer (String subsystem, String name, Potentiometer pot){
         LiveWindow.addSensor(subsystem, subsystem + name, (LiveWindowSendable) pot);
