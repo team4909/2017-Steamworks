@@ -11,8 +11,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
-import org.usfirst.frc4909.STEAMWORKS.commands.auto.DoNothing;
-import org.usfirst.frc4909.STEAMWORKS.commands.auto.DriveStraightAuto;
+import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
@@ -65,7 +64,8 @@ public class Robot extends IterativeRobot {
         // Autonomous Chooser
         autoChooser = new SendableChooser<Command>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
-        autoChooser.addDefault("Drive Straight", new DriveStraightAuto(0));
+        autoChooser.addDefault("Break Baseline", new BreakBaseline());
+        autoChooser.addDefault("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 

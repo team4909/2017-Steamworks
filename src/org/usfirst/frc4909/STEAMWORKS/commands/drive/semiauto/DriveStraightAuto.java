@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands.auto;
+package org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
@@ -7,9 +7,6 @@ import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- *
- */
 public class DriveStraightAuto extends Command {
 	double targetTime;
 	double sP;
