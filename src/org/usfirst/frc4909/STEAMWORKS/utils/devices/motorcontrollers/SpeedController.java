@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.utils.devices;
+package org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers;
 
 import java.util.ArrayList;
 

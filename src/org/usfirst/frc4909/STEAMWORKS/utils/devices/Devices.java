@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.utils.devices;
 
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.SpeedController;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -38,5 +40,9 @@ public class Devices {
 	
 	public static DigitalInput addDigitalInput (int channel){
 		return new DigitalInput(channel);
+	}
+	
+	public static NavX addNavX (edu.wpi.first.wpilibj.SerialPort.Port kmxp){
+		return new NavX(kmxp);
 	}
 }

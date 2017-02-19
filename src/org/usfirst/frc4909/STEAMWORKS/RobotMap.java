@@ -3,27 +3,26 @@ package org.usfirst.frc4909.STEAMWORKS;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.*;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.*;
 
-import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
 
-import com.kauailabs.navx.frc.AHRS;
-
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.SerialPort;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class RobotMap {
 	public static PowerDistributionPanel PDP;
 	
-    public static AHRS navx;
+    public static NavX navx;
 	
     public static SpeedController drivetrainLeftDriveMotorController;
     public static SpeedController drivetrainRightDriveMotorController;
@@ -52,8 +51,8 @@ public class RobotMap {
         PDP = 									new PowerDistributionPanel();
         
         // NavX Board
-        navx = 									new AHRS(SerialPort.Port.kMXP);
-    	
+        navx = 									Devices.addNavX(SerialPort.Port.kMXP);
+        
     	// PWM Outputs
     	drivetrainLeftDriveMotorController = 	Devices.addMotor("Drivetrain", "LeftDriveMotorController", new VictorSP(0));
     	drivetrainRightDriveMotorController = 	Devices.addMotor("Drivetrain", "RightDriveMotorController", new VictorSP(1));
