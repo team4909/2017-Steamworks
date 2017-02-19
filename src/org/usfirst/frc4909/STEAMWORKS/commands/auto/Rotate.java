@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands.drive;
+package org.usfirst.frc4909.STEAMWORKS.commands.auto;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;

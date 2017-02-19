@@ -3,8 +3,8 @@ package org.usfirst.frc4909.STEAMWORKS.commands.auto;
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
-public class DoNothingAuto extends Command {
-    public DoNothingAuto() {
+public class DoNothing extends Command {
+    public DoNothing() {
     	requires(Robot.climber);
     	requires(Robot.drivetrain);
     	requires(Robot.feeder);

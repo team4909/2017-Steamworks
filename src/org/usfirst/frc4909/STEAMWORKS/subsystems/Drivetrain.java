@@ -47,10 +47,18 @@ public class Drivetrain extends DrivetrainSubsystem {
     }
     
     public void shift(){
-    	if(shiftSolenoid.get()==Value.kForward)
-        	shiftSolenoid.set(Value.kReverse);
-    	else
+    	if(shiftSolenoid.get() == Value.kReverse)
         	shiftSolenoid.set(Value.kForward);
+    	else
+        	shiftSolenoid.set(Value.kReverse);
+    }
+    
+    public void shiftLow(){
+    	shiftSolenoid.set(Value.kReverse);
+    }
+    
+    public void shiftHigh(){
+    	shiftSolenoid.set(Value.kForward);
     }
     
     /*** Work on Moving Everything Below this into the Shared Drivetrain Code, After Being Tested***/
