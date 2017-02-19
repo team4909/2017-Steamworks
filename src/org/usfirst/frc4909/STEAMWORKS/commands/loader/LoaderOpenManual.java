@@ -4,11 +4,14 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 public class LoaderOpenManual extends Command {
-    public LoaderOpenManual() {}
+    public LoaderOpenManual() {
+    	requires(Robot.loader);
+    }
     
     protected void execute() {
     	Robot.loader.setSpeed(-0.3);
     }
+    
     protected boolean isFinished() {
         return !Robot.oi.manipulatorJoystick.getRawButton(9);
     }

@@ -1,8 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.config;
 
 public class Config {
-	public Config() {}
-	
 	public static double joystickDeadzone = 0.15;
 	
 	public static double boilerShotVelocity = 2900.0;
