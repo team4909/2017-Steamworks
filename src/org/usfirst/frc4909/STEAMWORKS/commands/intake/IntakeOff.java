@@ -14,5 +14,4 @@ public class IntakeOff extends InstantCommand {
     protected void initialize() {
     	Robot.intakePolycord.intakeStop();
     }
-
 }
