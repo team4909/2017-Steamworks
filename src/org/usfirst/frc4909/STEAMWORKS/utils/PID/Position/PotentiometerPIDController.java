@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer;
+package org.usfirst.frc4909.STEAMWORKS.utils.PID.Position;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 

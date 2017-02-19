@@ -1,7 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
-import org.usfirst.frc4909.STEAMWORKS.utils.PID.Potentiometer.PotentiometerPIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.PID.Position.PotentiometerPIDController;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.*;
 
