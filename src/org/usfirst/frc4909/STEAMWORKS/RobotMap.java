@@ -46,10 +46,6 @@ public class RobotMap {
 	public static PotentiometerPIDController loaderPotPIDController;
 	
     public static RobotDrive drivetrainRobotDrive;
-    public static double shooterP = 0.00015;
-    public static double shooterI = 0.00000;
-    public static double shooterD = 0.00000;
-    public static double shooterF = 0.00050;
     
     public static void init() {
     	// PDP Interface
@@ -83,7 +79,7 @@ public class RobotMap {
         intakePivotPotPIDController = new PotentiometerPIDController(
            	"Intake",
            	new Spark(8),
-            new AnalogPotentiometer(1, 3600, 0),
+            new AnalogPotentiometer(0, 3600, 0),
             new double[] {0, 90}, // Up, Down
         	new PIDConstants(0.0005, 0, 0, 1.0)
         );
