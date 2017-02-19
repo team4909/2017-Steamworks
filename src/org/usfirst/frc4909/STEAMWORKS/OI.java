@@ -19,8 +19,7 @@ public class OI {
         
         rightDriveJoystick.buttonPressed(1, new ShiftCommand());
         
-        leftDriveJoystick.buttonPressed(10, new SetInversionDrive());
-        leftDriveJoystick.buttonPressed(11, new UnsetInversionDrive());
+        leftDriveJoystick.buttonPressed(1, new InvertDrive());
         
         manipulatorJoystick.buttonPressed(1, new BoilerShot());
         manipulatorJoystick.buttonPressed(2, new IntakeIn());

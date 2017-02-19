@@ -1,8 +1,13 @@
 package org.usfirst.frc4909.STEAMWORKS.utils.devices;
 
+import org.usfirst.frc4909.STEAMWORKS.Robot;
+import org.usfirst.frc4909.STEAMWORKS.config.Config;
+
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
+	private boolean inversion = false;
+	
 	public RobotDrive(SpeedController leftMotor, SpeedController rightMotor) {
 		super(leftMotor, rightMotor);
 	}
@@ -30,5 +35,27 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	    this.setInvertedMotor(RobotDrive.MotorType.kRearRight, inverted);
 	    
 	    this.setSafetyEnabled(safety);
+	}
+	
+	public void tankDrive(double leftY, double rightY){
+		if(inversion) 
+        	super.tankDrive(-rightY, -leftY);
+    	else
+    		super.tankDrive(leftY, rightY);
+    }
+	
+	public void arcadeDrive(double power, double rot){
+		if(inversion) 
+        	super.arcadeDrive(-power, -rot);
+    	else
+    		super.arcadeDrive(power, rot);
+    }
+	
+	public void invert(){
+		inversion = !inversion;
+	}
+	
+	public void stop(){
+		this.drive(0, 0);
 	}
 }

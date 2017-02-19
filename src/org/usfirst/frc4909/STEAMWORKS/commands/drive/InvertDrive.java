@@ -4,12 +4,12 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class UnsetInversionDrive extends InstantCommand {
-    public UnsetInversionDrive() {
+public class InvertDrive extends InstantCommand {
+    public InvertDrive() {
     	requires(Robot.drivetrain);
     }
 
     protected void initialize() {
-    	Robot.drivetrain.setInversion(false);
+    	Robot.drivetrain.getRobotDrive().invert();
     }
 }

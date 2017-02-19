@@ -3,16 +3,15 @@ package org.usfirst.frc4909.STEAMWORKS.subsystems;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import com.kauailabs.navx.frc.AHRS;
 
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.DrivetrainSubsystem;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.NavX;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.RobotDrive;
 
 public class Drivetrain extends DrivetrainSubsystem {
 	//in inches
@@ -34,7 +33,7 @@ public class Drivetrain extends DrivetrainSubsystem {
 		return RobotMap.drivetrainRobotDrive;
 	}
 	
-	public AHRS getNavX(){
+	public NavX getNavX(){
     	return RobotMap.navx;
     }
 
