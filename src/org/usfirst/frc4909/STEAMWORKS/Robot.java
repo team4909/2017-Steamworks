@@ -3,7 +3,6 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -19,26 +18,25 @@ import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
 
 public class Robot extends IterativeRobot {
     public static OI oi;
+    
     public static Drivetrain drivetrain;
     public static Climber climber;
     public static Intake intake;
     public static Feeder feeder;
     public static Shooter shooter;
     public static Loader loader;
+    
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
-	
 	private VisionThread visionThread;
-	private double centerX = 0.0;
-	private RobotDrive drive;
-	
 	private final Object imgLock = new Object();
   
+    SendableChooser<Command> autoChooser;
     Command autonomousCommand;
-    SendableChooser autoChooser;
    
     public void robotInit() {
     	RobotMap.init();
+    	
         drivetrain = new Drivetrain();
         climber = new Climber();
         intake = new Intake();
@@ -47,6 +45,7 @@ public class Robot extends IterativeRobot {
         loader = new Loader();
         oi = new OI();
         
+        // Base for Vision, Single Cam
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
         
@@ -54,17 +53,16 @@ public class Robot extends IterativeRobot {
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
                 synchronized (imgLock) {
-                    centerX = r.x + (r.width / 2);
+                    System.out.println("Center X: " + (r.x + (r.width / 2)));
                 }
             }
         });
-        
         visionThread.start();
         
-        autoChooser = new SendableChooser();
+        // Autonomous Chooser
+        autoChooser = new SendableChooser<Command>();
         autoChooser.addDefault("Do Nothing", new DoNothingAuto());
-        // autoChooser.addObject("", object);
-        SmartDashboard.putData("Autonomous mode chooser", autoChooser);
+        SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 
     public void disabledInit(){}
@@ -74,7 +72,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand =(Command) autoChooser.getSelected();
+    	autonomousCommand = (Command) autoChooser.getSelected();
     	autonomousCommand.start();
     }
 
