@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -13,7 +14,6 @@ import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
-import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
 
 public class Robot extends IterativeRobot {
@@ -32,8 +32,8 @@ public class Robot extends IterativeRobot {
 	private VisionThread visionThread;
 	private final Object imgLock = new Object();
   
-    SendableChooser<Command> autoChooser;
-    Command autonomousCommand;
+    SendableChooser<CommandGroup> autoChooser;
+    CommandGroup autonomousCommand;
    
     public void robotInit() {
     	RobotMap.init();
@@ -62,7 +62,7 @@ public class Robot extends IterativeRobot {
         visionThread.start();
         
         // Autonomous Chooser
-        autoChooser = new SendableChooser<Command>();
+        autoChooser = new SendableChooser<CommandGroup>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
         autoChooser.addDefault("Break Baseline", new BreakBaseline());
         autoChooser.addDefault("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand = (CommandGroup) autoChooser.getSelected();
     	autonomousCommand.start();
     }
 
