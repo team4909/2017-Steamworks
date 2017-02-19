@@ -26,11 +26,15 @@ public class ShiftingRobotDrive extends RobotDrive {
         	shiftSolenoid.set(Value.kReverse);
     }
     
-    public void shiftLow(){
-    	shiftSolenoid.set(Value.kReverse);
-    }
-    
-    public void shiftHigh(){
-    	shiftSolenoid.set(Value.kForward);
+	public static enum Gear {
+		Low,
+		High
+	}
+	
+    public void shift(Gear gear){
+    	if(gear == Gear.High)
+    		shiftSolenoid.set(Value.kForward);
+    	else
+    		shiftSolenoid.set(Value.kReverse);
     }
 }

@@ -10,18 +10,18 @@ import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.NavX;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive;
 
 public class Drivetrain extends Subsystem {
-	//in inches
-	private double wheelDiameter 	= 4.0;
-	private double pulsesPerRev 	= 1440.0;
-
-	public ShiftingRobotDrive robotDrive = RobotMap.drivetrainRobotDrive;
-	public NavX navx = RobotMap.navx;
+	public ShiftingRobotDrive robotDrive 	= RobotMap.drivetrainRobotDrive;
+	public NavX navx 						= RobotMap.navx;
 	
     private final Encoder leftEncoder 	= RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder 	= RobotMap.drivetrainRightEncoder;
+	private final double ENCODER_RATIO 	= 3.0;
+	private final double pulsesPerRev 	= 1440.0 * ENCODER_RATIO;
+	
+	// in inches
+	private final double wheelDiameter 	= 4.0;
+	private final double wheelCircumference = Math.PI * wheelDiameter;
     
-    private final double ENCODER_CONSTANT = 3.0;
-   
     public void initDefaultCommand() {
         setDefaultCommand(new DriveCommand());
     }
@@ -45,10 +45,10 @@ public class Drivetrain extends Subsystem {
     }
 	
     public double getLeftEncDistance(){
-    	return ENCODER_CONSTANT*(leftEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return (leftEncoder.getRaw()/pulsesPerRev) * wheelCircumference;
     }
     
     public double getRightEncDistance(){
-    	return ENCODER_CONSTANT*(rightEncoder.getRaw()/pulsesPerRev)*(Math.PI*wheelDiameter);
+    	return (rightEncoder.getRaw()/pulsesPerRev) * wheelCircumference;
     }
 }

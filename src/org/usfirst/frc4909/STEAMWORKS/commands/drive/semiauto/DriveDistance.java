@@ -4,10 +4,10 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDCommand;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 
-public class DriveStraightAuto extends PIDCommand {
+public class DriveDistance extends PIDCommand {
 	double target;
 
-    public DriveStraightAuto(double targetDist) {
+    public DriveDistance(double targetDist) {
     	this.target = targetDist; 
     	
     	this.pidController.changePIDGains(new PIDConstants(0.15, 0, 0, 0.8));
