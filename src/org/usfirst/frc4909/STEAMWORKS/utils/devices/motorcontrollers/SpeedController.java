@@ -2,7 +2,10 @@ package org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers;
 
 import java.util.ArrayList;
 
-public class SpeedController implements edu.wpi.first.wpilibj.SpeedController {
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+import edu.wpi.first.wpilibj.tables.ITable;
+
+public class SpeedController implements edu.wpi.first.wpilibj.SpeedController, LiveWindowSendable {
 	protected final edu.wpi.first.wpilibj.SpeedController speedController;
 	
 	private ArrayList<SlaveSpeedController> slaveMotors = new ArrayList<SlaveSpeedController>();
@@ -75,5 +78,41 @@ public class SpeedController implements edu.wpi.first.wpilibj.SpeedController {
 		slaveMotors.add(motor);
 		
 		return motor;
+	}
+
+	@Override
+	public void initTable(ITable subtable) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public ITable getTable() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSmartDashboardType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void updateTable() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startLiveWindowMode() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void stopLiveWindowMode() {
+		// TODO Auto-generated method stub
+		
 	}
 }

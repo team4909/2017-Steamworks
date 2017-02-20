@@ -8,11 +8,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class PlaceFrontGearEncoder extends CommandGroup {
     public PlaceFrontGearEncoder (){
-    	addSequential(new HoldGear());
-    	addSequential(new ShiftToState(Gear.High));
-    	addSequential(new DriveDistance(10));
-    	addSequential(new DropGear());
-    	addSequential(new DriveDistance(-5));
-    	addSequential(new HoldGear());
+    	//addSequential(new HoldGear());
+    	//addSequential(new ShiftToState(Gear.High));
+    	//addSequential(new DriveDistance(10));
+    	//addSequential(new DropGear());
+    	//addSequential(new DriveDistance(-5));
+    	//addSequential(new HoldGear());
+    	
+    	addSequential(new Rotate(90));
     }
 }

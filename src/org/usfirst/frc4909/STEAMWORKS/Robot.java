@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -27,13 +28,15 @@ public class Robot extends IterativeRobot {
     public static Shooter shooter;
     public static Loader loader;
     
+    /*
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
 	private VisionThread visionThread;
 	private final Object imgLock = new Object();
+	*/
   
-    SendableChooser<CommandGroup> autoChooser;
-    CommandGroup autonomousCommand;
+    SendableChooser<Object> autoChooser;
+    Command autonomousCommand;
    
     public void robotInit() {
     	RobotMap.init();
@@ -47,7 +50,7 @@ public class Robot extends IterativeRobot {
         loader = new Loader();
         oi = new OI();
         
-        // Base for Vision, Single Cam
+        /* Base for Vision, Single Cam
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
         
@@ -59,13 +62,13 @@ public class Robot extends IterativeRobot {
                 }
             }
         });
-        visionThread.start();
+        visionThread.start();*/
         
         // Autonomous Chooser
-        autoChooser = new SendableChooser<CommandGroup>();
+        autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
-        autoChooser.addDefault("Break Baseline", new BreakBaseline());
-        autoChooser.addDefault("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
+        autoChooser.addObject("Break Baseline", new BreakBaseline());
+        autoChooser.addObject("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
     }
 
@@ -76,8 +79,9 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand = (CommandGroup) autoChooser.getSelected();
-    	autonomousCommand.start();
+    	autonomousCommand = (Command) autoChooser.getSelected();
+    	
+        if (autonomousCommand != null) autonomousCommand.start();
     }
 
     public void autonomousPeriodic() {
