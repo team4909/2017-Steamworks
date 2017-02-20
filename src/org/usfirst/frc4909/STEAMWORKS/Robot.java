@@ -4,7 +4,6 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -28,12 +27,10 @@ public class Robot extends IterativeRobot {
     public static Shooter shooter;
     public static Loader loader;
     
-    /*
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
 	private VisionThread visionThread;
 	private final Object imgLock = new Object();
-	*/
   
     SendableChooser<Object> autoChooser;
     Command autonomousCommand;
@@ -50,19 +47,21 @@ public class Robot extends IterativeRobot {
         loader = new Loader();
         oi = new OI();
         
-        /* Base for Vision, Single Cam
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+        camera.setExposureManual(20);
         
         visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
+            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
             if (!pipeline.filterContoursOutput().isEmpty()) {
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
                 synchronized (imgLock) {
-                    System.out.println("Center X: " + (r.x + (r.width / 2)));
+                    SmartDashboard.putNumber("Center X", (r.x + (r.width / 2)));
+                    SmartDashboard.putNumber("Center Y", (r.y + (r.height / 2)));
                 }
             }
         });
-        visionThread.start();*/
+        visionThread.start();
         
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
