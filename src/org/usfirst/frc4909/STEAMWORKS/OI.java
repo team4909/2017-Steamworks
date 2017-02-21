@@ -32,7 +32,7 @@ public class OI {
         manipulatorGamepad.buttonPressed(4, new CatchGear());
 
         manipulatorGamepad.buttonPressed(5, new ClimbCommand());
-//      manipulatorGamepad.buttonPressed(6, new ToggleShooter());
+        manipulatorGamepad.buttonPressed(6, new BoilerShot());
 
         manipulatorGamepad.buttonHeld(7, new IntakeIn());
         manipulatorGamepad.buttonHeld(8, new FeederOn());
@@ -51,5 +51,5 @@ public class OI {
 //        manipulatorJoystick.buttonPressed(9, new LoaderOpenManual());
 //        manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
 //        manipulatorJoystick.buttonPressed(11, new IntakeOut());
-//    }
+    }
 }

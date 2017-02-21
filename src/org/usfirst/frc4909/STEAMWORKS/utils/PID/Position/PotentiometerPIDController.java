@@ -24,6 +24,18 @@ public class PotentiometerPIDController {
     	LiveWindow.addSensor(subsystem, subsystem + "Pot", pot);
 	}
 	
+	public PotentiometerPIDController(String subsystem, SpeedController initMotor, boolean inverted, AnalogPotentiometer initPot, double[] initPositions, PIDConstants initConstants) {
+		motor = initMotor;
+		motor.setInverted(inverted);
+		pot = initPot;
+		
+		positions = initPositions;
+		constants = initConstants;
+		
+    	LiveWindow.addActuator(subsystem, subsystem + "Motor", (LiveWindowSendable) motor);
+    	LiveWindow.addSensor(subsystem, subsystem + "Pot", pot);
+	}
+	
 	public SpeedController getMotor(){
 		return motor;
 	}
