@@ -8,8 +8,8 @@ public class Joystick extends edu.wpi.first.wpilibj.Joystick {
 		super(port);
 	}
 
-	public double getThresholdAxis(int axis, double threshold){
-		if(Math.abs(this.getRawAxis(axis)) > Math.abs(threshold))
+	public double getThresholdAxis(int axis){
+		if(Math.abs(this.getRawAxis(axis)) > Math.abs(0.15))
 			return this.getRawAxis(axis);
 		else
 			return 0.0;
