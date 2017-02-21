@@ -34,8 +34,8 @@ public class Drivetrain extends Subsystem {
     }
 	
 	public void moveArcade(){
-	    double power 	= Robot.oi.leftDriveJoystick.getThresholdAxis(1);
-		double rot 		= Robot.oi.leftDriveJoystick.getThresholdAxis(0);
+	    double power 	= Robot.oi.driveGamepad.getThresholdAxis(1);
+		double rot 		= Robot.oi.driveGamepad.getThresholdAxis(2);
 	    	
 		robotDrive.arcadeDrive(power, rot);
     }

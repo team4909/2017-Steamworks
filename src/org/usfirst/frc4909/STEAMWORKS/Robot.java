@@ -94,15 +94,7 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-    	SmartDashboard.putNumber("Pivot Angle", Robot.intakePivot.getAngle());
-    	SmartDashboard.putNumber("Loader Angle", Robot.loader.getAngle());
-    	SmartDashboard.putNumber("Shooter RPM", Robot.shooter.getRPM());
-
-//      RobotMap.shooterMotorController.changeControlMode(TalonControlMode.Speed);
-//    	RobotMap.shooterMotorController.set(3000);
-    //	RobotMap.shooterMotorController.set((-Robot.oi.manipulatorJoystick.getRawAxis(2)+1)/2);
-    	
-    	RobotMap.shooterMotorController.set(0.5);
+    	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	
         Scheduler.getInstance().run();
     }

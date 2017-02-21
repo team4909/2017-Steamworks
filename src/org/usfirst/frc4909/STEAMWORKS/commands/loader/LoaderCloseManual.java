@@ -13,7 +13,7 @@ public class LoaderCloseManual extends Command {
     }
     
     protected boolean isFinished() {
-        return !Robot.oi.manipulatorJoystick.getRawButton(10);
+        return true; //return !Robot.oi.manipulatorJoystick.getRawButton(10);
     }
 
     protected void end() {

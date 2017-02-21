@@ -61,7 +61,7 @@ public class RobotMap {
 
         intakeIntakeMotor = 					Devices.addMotor("Intake", "IntakeMotorController", new Spark(2));
         climberClimberMotorController = 		Devices.addMotor("Climber", "MotorController", new Spark(5));
-        feederFeederMotor = 					Devices.addMotor("Feeder", "MotorController", new Spark(6));
+        feederFeederMotor = 					Devices.addMotor("Feeder", "MotorController", new Spark(3));
         intakeCenterMotor =						intakeIntakeMotor.addSlaveMotor(new Spark(7), -1.52);
         
         // CAN
@@ -80,8 +80,8 @@ public class RobotMap {
            	new Spark(8),
            	true,
             new AnalogPotentiometer(2, 3600, 0),
-            new double[] {1674, 1750}, // Up, Down
-        	new PIDConstants(0.05, 0, 0.01, 0.5)
+            new double[] {1627, 1710}, // Up, Down
+        	new PIDConstants(0.05, 0, 0, 1.0)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(
