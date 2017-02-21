@@ -80,7 +80,7 @@ public class RobotMap {
            	new Spark(8),
            	true,
             new AnalogPotentiometer(2, 3600, 0),
-            new double[] {1674, 1755}, // Up, Down
+            new double[] {1674, 1750}, // Up, Down
         	new PIDConstants(0.05, 0, 0.01, 0.5)
         );
         
@@ -102,9 +102,11 @@ public class RobotMap {
         );
         
         // Configure Shooter Motor
-        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
-        shooterMotorController.setProfile(0);
-        shooterMotorController.setEncoderPIDF(2048, 0.00015, 0, 0, 0.00050);
-        shooterMotorController.changeControlMode(TalonControlMode.Speed);
+        shooterMotorController.setInverted(true);
+//        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
+//        shooterMotorController.setProfile(0);
+        //20,.0005,0,0,.0005
+//        shooterMotorController.setEncoderPIDF(20, 0.005, 0, 0, 0.50);
+//        shooterMotorController.changeControlMode(TalonControlMode.PercentVbus);
     }
 }
