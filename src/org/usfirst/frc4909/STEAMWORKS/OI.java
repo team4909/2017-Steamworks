@@ -25,7 +25,7 @@ public class OI {
         
         manipulatorGamepad = new Joystick(3);
 
-//      manipulatorGamepad.buttonPressed(1, new TogglePivotIntake());
+        manipulatorGamepad.buttonPressed(1, new Pivot());
         
         manipulatorGamepad.buttonPressed(2, new DropGear());
         manipulatorGamepad.buttonPressed(3, new HoldGear());
@@ -34,10 +34,10 @@ public class OI {
         manipulatorGamepad.buttonPressed(5, new ClimbCommand());
 //      manipulatorGamepad.buttonPressed(6, new ToggleShooter());
 
-//      manipulatorGamepad.buttonHeld(7, new IntakeIn());
-      manipulatorGamepad.buttonHeld(8, new FeederOn());
+        manipulatorGamepad.buttonHeld(7, new IntakeIn());
+        manipulatorGamepad.buttonHeld(8, new FeederOn());
       
-//    manipulatorGamepad.buttonHeld(9, new IntakeOut());
+        manipulatorGamepad.buttonHeld(9, new IntakeOut());
 
         
 //        manipulatorJoystick.buttonPressed(1, new BoilerShot());

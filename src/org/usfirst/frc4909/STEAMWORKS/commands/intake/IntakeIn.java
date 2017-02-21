@@ -11,7 +11,13 @@ public class IntakeIn extends InstantCommand {
         requires(Robot.intakePolycord);
     }
 
-    protected void initialize() {
+    public void start() {
+    	super.start();
+    	
     	Robot.intakePolycord.intakeIn();
+    }
+    
+    protected void end() {
+    	Robot.intakePolycord.intakeStop();
     }
 }

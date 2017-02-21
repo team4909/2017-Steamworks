@@ -14,7 +14,7 @@ public class Pivot extends Command {
     }
 
     protected void execute() {
-    	if(Robot.intakePivot.currentPosition == -1 || Robot.intakePivot.currentPosition == 1)
+    	if(Robot.intakePivot.currentPosition != 0)
     		Robot.intakePivot.setPosition(0);
     	else
     		Robot.intakePivot.setPosition(1);
