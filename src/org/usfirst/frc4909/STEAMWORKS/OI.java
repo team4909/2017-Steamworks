@@ -10,12 +10,14 @@ public class OI {
     public Joystick leftDriveJoystick;
     public Joystick rightDriveJoystick;
     public Joystick manipulatorJoystick;
+    public Joystick oManipulatorJoystick;
     
     public OI() {
     	leftDriveJoystick = new Joystick(0);
         rightDriveJoystick = new Joystick(1);
         
         manipulatorJoystick = new Joystick(2);
+        oManipulatorJoystick = new Joystick(3);
         
         rightDriveJoystick.buttonPressed(1, new ShiftCommand());
         
@@ -32,5 +34,8 @@ public class OI {
         manipulatorJoystick.buttonPressed(9, new LoaderOpenManual());
         manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
         manipulatorJoystick.buttonPressed(11, new IntakeOut());
+
+        oManipulatorJoystick.buttonPressed(1, new PivotUp());
+        oManipulatorJoystick.buttonPressed(2, new PivotDown());
     }
 }

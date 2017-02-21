@@ -78,9 +78,10 @@ public class RobotMap {
         intakePivotPotPIDController = new PotentiometerPIDController(
            	"Intake",
            	new Spark(8),
-            new AnalogPotentiometer(0, 3600, 0),
-            new double[] {0, 90}, // Up, Down
-        	new PIDConstants(0.0005, 0, 0, 1.0)
+           	true,
+            new AnalogPotentiometer(2, 3600, 0),
+            new double[] {1674, 1755}, // Up, Down
+        	new PIDConstants(0.05, 0, 0.01, 0.5)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(

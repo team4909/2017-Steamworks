@@ -18,6 +18,6 @@ public class PivotDown extends Command {
     }
 
     protected boolean isFinished() {
-        return Robot.intakePivot.isFinished();
+        return false; //Robot.intakePivot.isFinished();
     }
 }

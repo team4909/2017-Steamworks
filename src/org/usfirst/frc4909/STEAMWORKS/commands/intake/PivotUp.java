@@ -18,6 +18,6 @@ public class PivotUp extends Command {
     }
 
     protected boolean isFinished() {
-        return Robot.intakePivot.isFinished();
+        return false; //return Robot.intakePivot.isFinished();
     }
 }
