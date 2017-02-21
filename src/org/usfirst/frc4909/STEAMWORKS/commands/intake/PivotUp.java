@@ -5,8 +5,8 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 public class PivotUp extends Command {
 	public PivotUp() {
-		requires(Robot.intakePolycord);
-		requires(Robot.intakePivot);
+//		requires(Robot.intakePolycord);
+//		requires(Robot.intakePivot);
 	}
 
 	protected void initialize() {
