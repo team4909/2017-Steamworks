@@ -79,7 +79,7 @@ public class RobotMap {
            	"Intake",
            	new Spark(8),
             new AnalogPotentiometer(0, 3600, 0),
-            new double[] {0, 90}, // Up, Down
+            new double[] {1674, 1750}, // Up, Down
         	new PIDConstants(0.0005, 0, 0, 1.0)
         );
         

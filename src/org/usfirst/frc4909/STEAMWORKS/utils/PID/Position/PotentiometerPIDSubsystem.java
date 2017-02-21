@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Timer;
 
 public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	private double targetTime;
+	public int currentPosition = -1;
 	
     public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
 	
@@ -28,6 +29,8 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	
 	public void setPosition(int position){
 		potPIDcontroller.atTarget = false;
+		
+		currentPosition = position;
 		
 		double targetAngle = this.getPotentiometerPIDController().getPositions()[position];
 		double currentAngle = this.getAngle();

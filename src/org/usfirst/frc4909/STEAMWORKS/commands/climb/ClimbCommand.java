@@ -9,7 +9,7 @@ public class ClimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.oi.manipulatorJoystick.getThresholdAxis(1));
+    	Robot.climber.climb(1.0);
     }
     
     protected void end() {
