@@ -13,11 +13,11 @@ public class FeederOn extends Command {
     public void start() {
     	super.start();
     	
-    	if(!SmartDashboard.getBoolean("Ready To Shoot", true) && !SmartDashboard.getBoolean("Shooter Override", true))
-    		end();
+    	if(SmartDashboard.getBoolean("Ready To Shoot", false))
+        	Robot.feeder.startFeed();
     }
 
-    protected void execute() {
-    	Robot.feeder.startFeed();
+    protected void end() {
+    	Robot.feeder.stopFeed();
     }
 }
