@@ -27,6 +27,7 @@ public class PotentiometerPIDController {
 	public PotentiometerPIDController(String subsystem, SpeedController initMotor, boolean inverted, AnalogPotentiometer initPot, double[] initPositions, PIDConstants initConstants) {
 		motor = initMotor;
 		motor.setInverted(inverted);
+    
 		pot = initPot;
 		
 		positions = initPositions;

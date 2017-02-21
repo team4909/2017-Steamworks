@@ -10,7 +10,7 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	public int currentPosition = -1;
 	
     public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
-	
+    
 	public abstract PotentiometerPIDController getPotentiometerPIDController();
 	
 	public double getAngle(){

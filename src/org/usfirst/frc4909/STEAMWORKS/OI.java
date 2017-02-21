@@ -10,6 +10,7 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
 public class OI {
     public Joystick leftDriveJoystick;
     public Joystick rightDriveJoystick;
+  
     public Joystick driveGamepad;
     public Joystick manipulatorGamepad;
     

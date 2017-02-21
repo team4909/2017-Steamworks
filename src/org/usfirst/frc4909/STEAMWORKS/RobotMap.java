@@ -102,9 +102,11 @@ public class RobotMap {
         );
         
         // Configure Shooter Motor
-        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
-        shooterMotorController.setProfile(0);
-        shooterMotorController.setEncoderPIDF(2048, 0.00015, 0, 0, 0.00050);
-        shooterMotorController.changeControlMode(TalonControlMode.Speed);
+        shooterMotorController.setInverted(true);
+//        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
+//        shooterMotorController.setProfile(0);
+        //20,.0005,0,0,.0005
+//        shooterMotorController.setEncoderPIDF(20, 0.005, 0, 0, 0.50);
+//        shooterMotorController.changeControlMode(TalonControlMode.PercentVbus);
     }
 }

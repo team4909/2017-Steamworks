@@ -16,6 +16,8 @@ import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
 
+import com.ctre.CANTalon.TalonControlMode;
+
 public class Robot extends IterativeRobot {
     public static OI oi;
     
@@ -74,6 +76,7 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){}
 
     public void disabledPeriodic() {
+    	
         Scheduler.getInstance().run();
     }
 
@@ -89,6 +92,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {}
 
+    
     public void teleopPeriodic() {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	

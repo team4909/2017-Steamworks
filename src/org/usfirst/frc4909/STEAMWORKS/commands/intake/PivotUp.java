@@ -5,8 +5,8 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 public class PivotUp extends Command {
 	public PivotUp() {
-		requires(Robot.intakePolycord);
-		requires(Robot.intakePivot);
+//		requires(Robot.intakePolycord);
+//		requires(Robot.intakePivot);
 	}
 
 	protected void initialize() {
@@ -18,6 +18,6 @@ public class PivotUp extends Command {
     }
 
     protected boolean isFinished() {
-        return Robot.intakePivot.isFinished();
+        return false; //return Robot.intakePivot.isFinished();
     }
 }
