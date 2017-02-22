@@ -81,7 +81,7 @@ public class RobotMap {
            	true,
             new AnalogPotentiometer(2, 3600, 0),
             new double[] {1610, 1693}, // Up, Down
-        	new PIDConstants(0.03, 0, 0, 0.7)
+        	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(
