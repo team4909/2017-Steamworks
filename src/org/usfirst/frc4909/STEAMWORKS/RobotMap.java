@@ -80,7 +80,7 @@ public class RobotMap {
            	new Spark(8),
            	true,
             new AnalogPotentiometer(2, 3600, 0),
-            new double[] {1610, 1693}, // Up, Down
+            new double[] {1610, 1686}, // Up, Down
         	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
@@ -88,7 +88,7 @@ public class RobotMap {
         	"Loader",
         	new Spark(9),
         	new AnalogPotentiometer(1, 3600, -2260),
-        	new double[] {0, 250, 400}, // Hold, Catch, Drop
+        	new double[] {0, 250, 400, 55}, // Hold, Catch, Drop, Peg
             new PIDConstants(0.01, 0, 0, 0.7)
         );
 

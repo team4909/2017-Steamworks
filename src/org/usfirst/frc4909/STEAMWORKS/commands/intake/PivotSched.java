@@ -5,7 +5,7 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 public class PivotSched extends Command {
 	public PivotSched() {
-		requires(Robot.intakePolycord);
+//		requires(Robot.intakePolycord);
 		requires(Robot.intakePivot);
 	}
 	
