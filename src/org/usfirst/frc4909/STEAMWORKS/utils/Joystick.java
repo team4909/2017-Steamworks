@@ -24,6 +24,12 @@ public class Joystick extends edu.wpi.first.wpilibj.Joystick {
 	public void buttonHeld(int button, Command command){
 		JoystickButton newButton = new JoystickButton(this, button);
 		
-		newButton.whenPressed(command);
+		newButton.whileHeld(command);
+	}
+	
+	public void buttonToggled(int button, Command command){
+		JoystickButton newButton = new JoystickButton(this, button);
+		
+		newButton.toggleWhenPressed(command);
 	}
 }

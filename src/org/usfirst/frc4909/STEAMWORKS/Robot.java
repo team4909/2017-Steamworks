@@ -95,6 +95,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
+    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
         Scheduler.getInstance().run();
     }

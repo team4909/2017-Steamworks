@@ -33,7 +33,7 @@ public class OI {
         manipulatorGamepad.buttonPressed(4, new CatchGear());
 
         manipulatorGamepad.buttonPressed(5, new ClimbCommand());
-        manipulatorGamepad.buttonPressed(6, new BoilerShot());
+        manipulatorGamepad.buttonToggled(6, new BoilerShot());
 
         manipulatorGamepad.buttonHeld(7, new IntakeIn());
         manipulatorGamepad.buttonHeld(8, new FeederOn());
