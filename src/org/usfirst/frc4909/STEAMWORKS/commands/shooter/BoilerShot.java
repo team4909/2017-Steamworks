@@ -15,7 +15,7 @@ public class BoilerShot extends Command {
     }
 
     protected void execute() {
-		//Robot.shooter.setRPM(2900.0);
+    	//Robot.shooter.setRPM(270.0);
 		Robot.shooter.setVoltage(0.5);
 		SmartDashboard.putNumber("Current Shooter RPM", Robot.shooter.getRPM());
 		

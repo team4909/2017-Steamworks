@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
 
@@ -87,6 +88,8 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+    	(new PivotSched()).start();
+    	
         Scheduler.getInstance().run();
     }
 
@@ -94,6 +97,8 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
+    	(new PivotSched()).start();
+    	
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
