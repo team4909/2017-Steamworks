@@ -8,11 +8,11 @@ public class IntakePolycord extends Subsystem {
     private final SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
     
     public void intakeIn(){
-    	intakeMotor.set(.525);
+    	intakeMotor.set(.7);
     }
     
     public void intakeOut(){
-    	intakeMotor.set(-.525);
+    	intakeMotor.set(-.7);
     }
     
     public void intakeStop(){

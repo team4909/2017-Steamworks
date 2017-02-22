@@ -65,7 +65,7 @@ public class RobotMap {
         intakeCenterMotor =						intakeIntakeMotor.addSlaveMotor(new Spark(7), -1.52);
         
         // CAN
-        shooterMotorController = 				new CANTalon(0);
+        shooterMotorController = 				new CANTalon(2);
         
         // DIO
         drivetrainLeftEncoder = 				Devices.addEncoder("Drivetrain", "LeftEncoder", new Encoder(0, 1, true, EncodingType.k4X), 1.0);
@@ -80,15 +80,15 @@ public class RobotMap {
            	new Spark(8),
            	true,
             new AnalogPotentiometer(2, 3600, 0),
-            new double[] {1627, 1710}, // Up, Down
-        	new PIDConstants(0.05, 0, 0, 1.0)
+            new double[] {1610, 1686}, // Up, Down
+        	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(
         	"Loader",
         	new Spark(9),
         	new AnalogPotentiometer(1, 3600, -2260),
-        	new double[] {0, 250, 400}, // Hold, Catch, Drop
+        	new double[] {0, 250, 400, 55}, // Hold, Catch, Drop, Peg
             new PIDConstants(0.01, 0, 0, 0.7)
         );
 
@@ -103,10 +103,10 @@ public class RobotMap {
         
         // Configure Shooter Motor
         shooterMotorController.setInverted(true);
-//        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
+        shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
 //        shooterMotorController.setProfile(0);
         //20,.0005,0,0,.0005
-//        shooterMotorController.setEncoderPIDF(20, 0.005, 0, 0, 0.50);
+        shooterMotorController.setEncoderPIDF(20, 0.005, 0, 0, 0);
 //        shooterMotorController.changeControlMode(TalonControlMode.PercentVbus);
     }
 }
