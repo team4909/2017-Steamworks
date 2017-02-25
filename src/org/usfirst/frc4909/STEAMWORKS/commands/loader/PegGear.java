@@ -13,6 +13,7 @@ public class PegGear extends Command {
     protected void initialize() {
     	Robot.loader.targetPosition = 3;
     	SmartDashboard.putString("Loader Position", "Prep for Peg");
+    	
     }
 
     protected void execute() {}
