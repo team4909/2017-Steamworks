@@ -14,10 +14,9 @@ import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
+import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
-
-import com.ctre.CANTalon.TalonControlMode;
 
 public class Robot extends IterativeRobot {
     public static OI oi;
@@ -72,6 +71,20 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Break Baseline", new BreakBaseline());
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+        
+        //Indicators Initialized
+        SmartDashboard.putBoolean("Ready to Shoot", false);
+        SmartDashboard.putBoolean("Agitator On", false);
+        SmartDashboard.putBoolean("Intake Pivot Down", false);
+        SmartDashboard.putBoolean("Climber Limit Switch State", false);
+        SmartDashboard.putString("Loader Position", "Hold");
+        
+        //Manual Overrides Initialized
+        SmartDashboard.putBoolean("Shooter Manual Override", false);
+        SmartDashboard.putBoolean("Intake Pivot Manual Override", false);
+        SmartDashboard.putBoolean("Loader Pivot Manual Override", false);
+        SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
+
     }
 
     public void disabledInit(){}
@@ -89,6 +102,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousPeriodic() {
     	(new PivotSched()).start();
+    	(new LoaderSched()).start();
     	
         Scheduler.getInstance().run();
     }
@@ -98,6 +112,7 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	(new PivotSched()).start();
+    	(new LoaderSched()).start();
     	//RobotMap.intakeIntakeMotor.set(.525);
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());

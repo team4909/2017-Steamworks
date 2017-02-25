@@ -8,8 +8,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class FeederOn extends Command {
     public FeederOn() {
-       
-        
         requires(Robot.feeder);
     }
 
@@ -19,12 +17,18 @@ public class FeederOn extends Command {
 //    	Robot.intakePolycord.intakeIn();
 //    }
     protected void execute(){
-    	Robot.feeder.startFeed();
+    	if(SmartDashboard.getBoolean("Ready to Shoot", true) || SmartDashboard.getBoolean("Shooter Manual Override", true)){
+    		Robot.feeder.startFeed();
+    		SmartDashboard.putBoolean("Agitator On", true);
+    	}
     }
+    
     protected boolean isFinished(){
-    	return !Robot.oi.manipulatorGamepad.getRawButton(8);
+    	return !Robot.oi.manipulatorGamepad.getRawButton(7);
     }
+    
     protected void end() {
     	Robot.feeder.stopFeed();
+    	SmartDashboard.putBoolean("Agitator On", false);
     }
 }

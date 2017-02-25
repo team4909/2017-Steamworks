@@ -7,10 +7,7 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 
 public class IntakeIn extends Command {
     public IntakeIn() {
-       
-        
         requires(Robot.intakePolycord);
-        System.out.println("IntakeIn");
     }
 
 //    public void start() {
@@ -18,21 +15,17 @@ public class IntakeIn extends Command {
 //    	
 //    	Robot.intakePolycord.intakeIn();
 //    }
+    
     protected void execute(){
     	Robot.intakePolycord.intakeIn();
-    	System.out.println("EXE");
     }
     protected boolean isFinished(){
-    	boolean done = !Robot.oi.manipulatorGamepad.getRawButton(7);
-    	System.out.println("IsFinished "+done);
-    	return done;
+    	return !Robot.oi.manipulatorGamepad.getRawButton(8);
     }
     protected void end() {
     	Robot.intakePolycord.intakeStop();
-    	System.out.println("end");
     }
     protected void interrupted() {
-    	System.out.println("interrupted");
     	end();
     	
     }
