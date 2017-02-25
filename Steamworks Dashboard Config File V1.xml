@@ -1,0 +1,64 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Loader Position" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="64" y="464"/>
+		<width>192</width>
+		<height>50</height>
+	</widget>
+	<widget field="Climber Limit Switch Disable" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="19" y="668"/>
+	</widget>
+	<widget field="Loader Pivot Manual Override" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="7" y="636"/>
+	</widget>
+	<widget field="Tank Drive Enabled" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="58" y="727"/>
+	</widget>
+	<widget field="Shooter Manual Override" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="29" y="605"/>
+	</widget>
+	<widget field="Intake Pivot Manual Override" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.CheckBox">
+		<location x="9" y="698"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="268" y="23"/>
+		<width>801</width>
+		<height>751</height>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
+	<widget field="Climber Limit Switch State" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="25" y="358"/>
+		<width>234</width>
+		<height>100</height>
+	</widget>
+	<widget field="Ready to Shoot" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="22" y="132"/>
+		<width>191</width>
+		<height>101</height>
+	</widget>
+	<widget field="Agitator On" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="23" y="243"/>
+		<width>170</width>
+		<height>105</height>
+	</widget>
+	<widget field="Intake Pivot Down" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="19" y="17"/>
+		<width>207</width>
+		<height>105</height>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
+		<location x="1091" y="15"/>
+		<width>802</width>
+		<height>768</height>
+		<property name="Camera Choice" value=""/>
+	</static-widget>
+	<widget field="Autonomous Mode Chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="9" y="503"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+	<hidden field="Center Y"/>
+	<hidden field="Center X"/>
+	<hidden field="Is Empty"/>
+</xml>
