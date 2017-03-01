@@ -1,4 +1,4 @@
-package org.usfirst.frc4909.STEAMWORKS.commands.climb;
+package org.usfirst.frc4909.STEAMWORKS.commands.shooter;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
@@ -8,12 +8,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class ClimbManual extends Command {
+public class ShootManual extends Command {
 
-    public ClimbManual() {
+    public ShootManual() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.climber);
+    	requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
@@ -22,13 +22,12 @@ public class ClimbManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.climber.getSwitch() && !SmartDashboard.getBoolean("Climber Limit Switch Disable", false) && Robot.oi.climberJoystick.getThresholdAxis(1)>=0)
-    		Robot.climber.climb(0);
+    	double adjustedAxis = (Robot.oi.climberJoystick.getRawAxis(3)+1)/2;
+    	if(adjustedAxis<.15)
+    		adjustedAxis=0;
     	
-    	else
-    		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1));
-    	
-    	SmartDashboard.putBoolean("Climber Limit Switch State", Robot.climber.getSwitch());
+    	if(SmartDashboard.getBoolean("Shooter Manual Override", false))
+    		Robot.shooter.setVoltage(adjustedAxis);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,4 +41,6 @@ public class ClimbManual extends Command {
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
+    protected void interrupted() {
+    }
 }

@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS.commands.loader;
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CatchGear extends Command {
     public CatchGear() {
@@ -10,14 +11,14 @@ public class CatchGear extends Command {
     }
 
     protected void initialize() {
-    	Robot.loader.initPID();
+    	Robot.loader.targetPosition = 1;
+    	SmartDashboard.putString("Loader Position", "Catch");
+
     }
 
-    protected void execute() {
-    	Robot.loader.setPosition(1);
-    }
+    protected void execute() {}
 
     protected boolean isFinished() {
-        return Robot.loader.isFinished();
+        return true;
     }
 }

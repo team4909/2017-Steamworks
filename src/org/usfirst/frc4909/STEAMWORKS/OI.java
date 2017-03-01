@@ -11,50 +11,45 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
 public class OI {
     public Joystick leftDriveJoystick;
     public Joystick rightDriveJoystick;
-  
     public Joystick driveGamepad;
     public Joystick manipulatorGamepad;
+    public Joystick climberJoystick;
     
     public OI() {
+    	
+    	//Joystick Intializations
     	leftDriveJoystick = new Joystick(0);
         rightDriveJoystick = new Joystick(1);
-        leftDriveJoystick.buttonPressed(1, new InvertDrive());
-        rightDriveJoystick.buttonPressed(1, new ShiftCommand());
-        rightDriveJoystick.buttonPressed(4, new ClimbManual());
-
         driveGamepad = new Joystick(2);
-        driveGamepad.buttonPressed(1, new InvertDrive());
-        driveGamepad.buttonPressed(3, new ShiftCommand());
-        
         manipulatorGamepad = new Joystick(3);
+        climberJoystick = new Joystick(4);
 
-        manipulatorGamepad.buttonPressed(1, new PegGear());
+    	//Tank Drivetrain
+        leftDriveJoystick.buttonPressed(1, new InvertDrive());		//Trigger (Left Joystick)
+        rightDriveJoystick.buttonPressed(1, new ShiftCommand());	//Trigger (Right Joystick)
+//        rightDriveJoystick.buttonPressed(3, new lineUpToPeg());	-->Uncomment once/if this exists
 
-        manipulatorGamepad.buttonPressed(2, new DropGear());
-        manipulatorGamepad.buttonPressed(3, new CatchGear());
-        manipulatorGamepad.buttonPressed(4, new HoldGear());
+        //Arcade Drivetrain
+        driveGamepad.buttonPressed(7, new InvertDrive());			//Left Trigger
+        driveGamepad.buttonPressed(8, new ShiftCommand());			//Right Trigger
+//        driveGamepad.buttonPressed(6, new lineUpToPeg()); -->Uncomment once/if this exists
         
-
-        manipulatorGamepad.buttonPressed(5, new Pivot());
-        manipulatorGamepad.buttonToggled(6, new BoilerShot());
-
-        manipulatorGamepad.buttonPressed(7, new IntakeIn());
+        //Loader
+        manipulatorGamepad.buttonPressed(2, new PegGear()); 		//A
+        manipulatorGamepad.buttonPressed(1, new DropGear());		//X
+        manipulatorGamepad.buttonPressed(4, new CatchGear());		//Y
+        manipulatorGamepad.buttonPressed(3, new HoldGear());		//B
         
-        manipulatorGamepad.buttonPressed(8, new FeederOn());
-      
-        manipulatorGamepad.buttonPressed(9, new IntakeOut());
+        //Shooting
+        manipulatorGamepad.buttonToggled(5, new BoilerShot());		//Left Bumper
+        manipulatorGamepad.buttonPressed(7, new FeederOn()); 		//Left Trigger, whileHeld
 
+        //Intake Polycord
+        manipulatorGamepad.buttonPressed(8, new IntakeIn());		//Right Trigger, whileHeld
+        manipulatorGamepad.buttonPressed(9, new IntakeOut());		//Right Bumper, whileHeld
         
-//        manipulatorJoystick.buttonPressed(1, new BoilerShot());
-//        manipulatorJoystick.buttonPressed(2, new IntakeIn());
-//        manipulatorJoystick.buttonPressed(3, new IntakeOff());
-//        manipulatorJoystick.buttonPressed(4, new DropGear());
-//        manipulatorJoystick.buttonPressed(5, new CatchGear());
-//        manipulatorJoystick.buttonPressed(6, new FeederOn());
-//        manipulatorJoystick.buttonPressed(7, new HoldGear());
-//        manipulatorJoystick.buttonPressed(8, new StopShooting());
-//        manipulatorJoystick.buttonPressed(9, new LoaderOpenManual());
-//        manipulatorJoystick.buttonPressed(10, new LoaderCloseManual());
-//        manipulatorJoystick.buttonPressed(11, new IntakeOut());
+        //Intake Pivot
+        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Trigger
+        
     }
 }
