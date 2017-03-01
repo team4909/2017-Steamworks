@@ -71,7 +71,6 @@ public class Robot extends IterativeRobot {
                 }
             }
         });
-        visionThread.start();
 
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
@@ -97,7 +96,8 @@ public class Robot extends IterativeRobot {
 
 //    @SuppressWarnings("deprecation")
 	public void disabledInit(){
-//        visionThread.stop();
+		stop();
+//		visionThread.run();
 
     }
 
@@ -120,6 +120,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
+        visionThread.start();
 
     }
 
@@ -137,5 +138,11 @@ public class Robot extends IterativeRobot {
 
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public void stop() {
+        Thread waitThread = visionThread;
+        visionThread = null;
+        waitThread.interrupt();
     }
 }
