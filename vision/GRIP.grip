@@ -101,8 +101,8 @@
   <codeGenerationSettings>
     <language>Java</language>
     <className>GripPipeline</className>
-    <implementWpilibPipeline>false</implementWpilibPipeline>
-    <saveDir>C:\Users\Bionics\GRIP</saveDir>
+    <implementWpilibPipeline>true</implementWpilibPipeline>
+    <saveDir>C:\Users\Bionics\workspace\2017-Steamworks\src\org\usfirst\frc4909\STEAMWORKS\vision</saveDir>
     <packageName>org.usfirst.frc4909.steamworks.vision</packageName>
     <moduleName>grip</moduleName>
   </codeGenerationSettings>
