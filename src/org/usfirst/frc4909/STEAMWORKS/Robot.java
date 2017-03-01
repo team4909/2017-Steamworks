@@ -16,7 +16,7 @@ import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
-import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
+import org.usfirst.frc4909.STEAMWORKS.vision.GripPipeline;
 
 public class Robot extends IterativeRobot {
     public static OI oi;
@@ -51,15 +51,24 @@ public class Robot extends IterativeRobot {
         
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        camera.setExposureManual(20);
-        
-        visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
+        camera.setExposureManual(10);
+        camera.setWhiteBalanceManual(4500);
+
+        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
-            if (!pipeline.filterContoursOutput().isEmpty()) {
-                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+//            if (!pipeline.filterContoursOutput().isEmpty()) {
+            
+            if (pipeline.filterContoursOutput().size()>1) {
+
+                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
                 synchronized (imgLock) {
-                    SmartDashboard.putNumber("Center X", (r.x + (r.width / 2)));
-                    SmartDashboard.putNumber("Center Y", (r.y + (r.height / 2)));
+                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
+                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
+                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
+                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
+                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
+
                 }
             }
         });
