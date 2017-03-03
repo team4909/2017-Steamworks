@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -36,6 +37,8 @@ public class Robot extends IterativeRobot {
   
     SendableChooser<Object> autoChooser;
     Command autonomousCommand;
+    
+    Preferences prefs;
    
     public void robotInit() {
     	RobotMap.init();
@@ -93,11 +96,14 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Intake Pivot Manual Override", false);
         SmartDashboard.putBoolean("Loader Pivot Manual Override", false);
         SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
+        
+       prefs=Preferences.getInstance();
+     
 
     }
 
     public void disabledInit(){}
-
+    
     public void disabledPeriodic() {
     	
         Scheduler.getInstance().run();
@@ -126,6 +132,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
     	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+    	
     	
         Scheduler.getInstance().run();
     }
