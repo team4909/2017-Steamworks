@@ -10,9 +10,9 @@ public class PlaceFrontGearEncoder extends CommandGroup {
     public PlaceFrontGearEncoder (){
     	addParallel(new HoldGear());
     	addSequential(new ShiftToState(Gear.Low));
-    	addSequential(new DriveDistance(10));
+    	addSequential(new DriveDistance(114));
     	addSequential(new DropGear());
-    	addSequential(new DriveDistance(-5));
+    	addSequential(new DriveDistance(-60));
     	addSequential(new HoldGear());
     	
     	addSequential(new Rotate(90));
