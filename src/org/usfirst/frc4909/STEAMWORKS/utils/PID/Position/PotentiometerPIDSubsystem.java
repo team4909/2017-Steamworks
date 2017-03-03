@@ -7,9 +7,10 @@ import edu.wpi.first.wpilibj.Timer;
 
 public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	private double targetTime;
+	public int targetPosition = 0;
 	
     public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
-	
+    
 	public abstract PotentiometerPIDController getPotentiometerPIDController();
 	
 	public double getAngle(){
@@ -24,6 +25,10 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
     	targetTime = Timer.getFPGATimestamp();
     	
     	potPIDcontroller.resetPID();
+	}
+	
+	public void setTargetPosition(int position){
+		targetPosition = position;
 	}
 	
 	public void setPosition(int position){

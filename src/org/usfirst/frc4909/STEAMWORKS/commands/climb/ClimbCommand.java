@@ -1,6 +1,9 @@
 package org.usfirst.frc4909.STEAMWORKS.commands.climb;
 
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
+
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 
 public class ClimbCommand extends Command {
@@ -9,7 +12,13 @@ public class ClimbCommand extends Command {
     }
 
     protected void execute() {
-    	Robot.climber.climb(Robot.oi.manipulatorJoystick.getThresholdAxis(1));
+    	Robot.climber.climb(1.0);
+    	SmartDashboard.putBoolean("Climber Limit Switch State", Robot.climber.getSwitch());
+
+    }
+    
+    protected boolean isFinished(){
+    	return Robot.climber.getSwitch();
     }
     
     protected void end() {

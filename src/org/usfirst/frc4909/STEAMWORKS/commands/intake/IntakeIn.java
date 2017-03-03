@@ -1,17 +1,32 @@
 package org.usfirst.frc4909.STEAMWORKS.commands.intake;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
+import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
 import edu.wpi.first.wpilibj.command.InstantCommand;
 
-public class IntakeIn extends InstantCommand {
+public class IntakeIn extends Command {
     public IntakeIn() {
-        super();
-        
         requires(Robot.intakePolycord);
     }
 
-    protected void initialize() {
+//    public void start() {
+//    	super.start();
+//    	
+//    	Robot.intakePolycord.intakeIn();
+//    }
+    
+    protected void execute(){
     	Robot.intakePolycord.intakeIn();
+    }
+    protected boolean isFinished(){
+    	return !Robot.oi.manipulatorGamepad.getRawButton(8);
+    }
+    protected void end() {
+    	Robot.intakePolycord.intakeStop();
+    }
+    protected void interrupted() {
+    	end();
+    	
     }
 }

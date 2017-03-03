@@ -15,12 +15,14 @@ public class BoilerShot extends Command {
     }
 
     protected void execute() {
-		Robot.shooter.setRPM(2900.0);
-		
-		SmartDashboard.putNumber("Current Shooter RPM", Robot.shooter.getRPM());
-		
-		if(Robot.shooter.getRPM() >= 2900.0 * 0.9)
-			SmartDashboard.putBoolean("Ready To Shoot", true);
+    	//Robot.shooter.setRPM(270.0);
+    	if(!SmartDashboard.getBoolean("Shooter Manual Override", false)){
+			Robot.shooter.setVoltage(0.85);
+			SmartDashboard.putNumber("Current Shooter RPM", Robot.shooter.getRPM());
+			
+			if(Robot.shooter.getRPM() >= 2900.0 * 0.9)
+				SmartDashboard.putBoolean("Ready To Shoot", true);
+	    }
     }
     
     protected void end() {

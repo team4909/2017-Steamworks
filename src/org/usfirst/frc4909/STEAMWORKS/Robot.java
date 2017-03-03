@@ -13,8 +13,10 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.opencv.core.Rect;
 import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
+import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
-import org.usfirst.frc4909.STEAMWORKS.vision.Pipeline;
+import org.usfirst.frc4909.STEAMWORKS.vision.GripPipeline;
 
 public class Robot extends IterativeRobot {
     public static OI oi;
@@ -49,15 +51,24 @@ public class Robot extends IterativeRobot {
         
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
         camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        camera.setExposureManual(20);
-        
-        visionThread = new VisionThread(camera, new Pipeline(), pipeline -> {
+        camera.setExposureManual(10);
+        camera.setWhiteBalanceManual(4500);
+
+        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
             SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
-            if (!pipeline.filterContoursOutput().isEmpty()) {
-                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+//            if (!pipeline.filterContoursOutput().isEmpty()) {
+            
+            if (pipeline.filterContoursOutput().size()>1) {
+
+                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
                 synchronized (imgLock) {
-                    SmartDashboard.putNumber("Center X", (r.x + (r.width / 2)));
-                    SmartDashboard.putNumber("Center Y", (r.y + (r.height / 2)));
+                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
+                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
+                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
+                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
+                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
+
                 }
             }
         });
@@ -69,11 +80,26 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Break Baseline", new BreakBaseline());
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+        
+        //Indicators Initialized
+        SmartDashboard.putBoolean("Ready to Shoot", false);
+        SmartDashboard.putBoolean("Agitator On", false);
+        SmartDashboard.putBoolean("Intake Pivot Down", false);
+        SmartDashboard.putBoolean("Climber Limit Switch State", false);
+        SmartDashboard.putString("Loader Position", "Hold");
+        
+        //Manual Overrides Initialized
+        SmartDashboard.putBoolean("Shooter Manual Override", false);
+        SmartDashboard.putBoolean("Intake Pivot Manual Override", false);
+        SmartDashboard.putBoolean("Loader Pivot Manual Override", false);
+        SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
+
     }
 
     public void disabledInit(){}
 
     public void disabledPeriodic() {
+    	
         Scheduler.getInstance().run();
     }
 
@@ -84,12 +110,23 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+    	(new PivotSched()).start();
+    	(new LoaderSched()).start();
+    	
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {}
 
+    
     public void teleopPeriodic() {
+    	(new PivotSched()).start();
+    	(new LoaderSched()).start();
+    	//RobotMap.intakeIntakeMotor.set(.525);
+    	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
+    	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
+    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+    	
         Scheduler.getInstance().run();
     }
 

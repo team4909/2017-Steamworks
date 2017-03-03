@@ -5,6 +5,8 @@ import org.usfirst.frc4909.STEAMWORKS.utils.PID.Position.PotentiometerPIDControl
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.Position.PotentiometerPIDSubsystem;
 
 public class IntakePivot extends PotentiometerPIDSubsystem {
+	public IntakePivot(){}
+	
 	public PotentiometerPIDController getPotentiometerPIDController() {
 		return RobotMap.intakePivotPotPIDController;
 	}

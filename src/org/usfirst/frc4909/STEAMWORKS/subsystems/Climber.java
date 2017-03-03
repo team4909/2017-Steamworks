@@ -13,7 +13,7 @@ public class Climber extends Subsystem {
     private final DigitalInput climbSwitch = RobotMap.climberSwitch;
 
     public void initDefaultCommand() {
-    	setDefaultCommand(new ClimbCommand());
+    	setDefaultCommand(new ClimbManual());
     }
     
     public void climb(double speed){

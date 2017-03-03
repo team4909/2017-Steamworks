@@ -5,15 +5,15 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class CatchGear extends Command {
-    public CatchGear() {
+public class PegGear extends Command {
+    public PegGear() {
     	requires(Robot.loader);
     }
 
     protected void initialize() {
-    	Robot.loader.targetPosition = 1;
-    	SmartDashboard.putString("Loader Position", "Catch");
-
+    	Robot.loader.targetPosition = 3;
+    	SmartDashboard.putString("Loader Position", "Prep for Peg");
+    	
     }
 
     protected void execute() {}
