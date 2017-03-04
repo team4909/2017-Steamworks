@@ -25,6 +25,6 @@ public class Shooter extends Subsystem {
 	}
 	
 	public double getRPM(){
-		return shooterMotorController.getEncVelocity();
+		return shooterMotorController.getSpeed()*600.0/1024;
 	}
 }
