@@ -81,7 +81,7 @@ public class Robot extends IterativeRobot {
         autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
         autoChooser.addObject("Break Baseline", new BreakBaseline());
-        autoChooser.addObject("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
+        autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
         //Indicators Initialized

@@ -8,18 +8,32 @@ import org.usfirst.frc4909.STEAMWORKS.commands.loader.HoldGear;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive.Gear;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
-public class PlaceLeftGearEncoder extends CommandGroup {
+public class PlaceBoilerGearEncoder extends CommandGroup {
 
-    public PlaceLeftGearEncoder() {
+    public PlaceBoilerGearEncoder() {
     	addParallel(new HoldGear());
     	addSequential(new ShiftToState(Gear.Low));
-    	addSequential(new DriveDistance(120));
-    	addSequential(new DropGear());
-    	addSequential(new DriveDistance(-60));
-    	addSequential(new HoldGear());
+    	addSequential(new DriveDistance(73.236));
+    	addSequential(new WaitCommand(.2));
+
+    	addSequential(new Rotate(-60));
+    	addSequential(new WaitCommand(.2));
+
+    	addSequential(new DriveDistance(63.393));
+    	addSequential(new WaitCommand(.2));
+
+    	addParallel(new DropGear());
     	
-    	addSequential(new Rotate(90));
+    	addSequential(new DriveDistance(4));
+    	addSequential(new WaitCommand(.5));
+
+    	addSequential(new DriveDistance(-10));
+
       
     }
 }
+//73.236 in
+//-60 degrees
+//63.393 in
