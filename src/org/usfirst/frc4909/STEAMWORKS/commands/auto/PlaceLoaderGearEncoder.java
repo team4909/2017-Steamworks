@@ -15,23 +15,20 @@ public class PlaceLoaderGearEncoder extends CommandGroup {
     public PlaceLoaderGearEncoder() {
     	addParallel(new HoldGear());
     	addSequential(new ShiftToState(Gear.Low));
+    	
     	addSequential(new DriveDistance(36));
-    	addSequential(new WaitCommand(.2));
     	
     	addSequential(new Rotate(-30));
-    	addSequential(new WaitCommand(.2));
 
       	addSequential(new DriveDistance(57.128));
-    	addSequential(new WaitCommand(.2));
 
     	addSequential(new Rotate(60));
-    	addSequential(new WaitCommand(.2));
 
     	addSequential(new DriveDistance(39.349));
-    	addSequential(new WaitCommand(.2));
 
     	addParallel(new DropGear());
     	addSequential(new DriveDistance(4));
+    	
     	addSequential(new WaitCommand(.5));
 
     	addSequential(new DriveDistance(-10));

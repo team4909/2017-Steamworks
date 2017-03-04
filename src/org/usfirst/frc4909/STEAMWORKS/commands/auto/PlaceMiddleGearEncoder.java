@@ -13,10 +13,10 @@ public class PlaceMiddleGearEncoder extends CommandGroup {
     	addSequential(new ShiftToState(Gear.Low));
     	
     	addSequential(new DriveDistance(71.452));
-    	addSequential(new WaitCommand(.2));
 
     	addParallel(new DropGear());
     	addSequential(new DriveDistance(4));
+    	
     	addSequential(new WaitCommand(.5));
 
     	addSequential(new DriveDistance(-10));

@@ -15,18 +15,16 @@ public class PlaceBoilerGearEncoder extends CommandGroup {
     public PlaceBoilerGearEncoder() {
     	addParallel(new HoldGear());
     	addSequential(new ShiftToState(Gear.Low));
+    	
     	addSequential(new DriveDistance(73.236));
-    	addSequential(new WaitCommand(.2));
 
     	addSequential(new Rotate(-60));
-    	addSequential(new WaitCommand(.2));
 
     	addSequential(new DriveDistance(63.393));
-    	addSequential(new WaitCommand(.2));
 
     	addParallel(new DropGear());
-    	
     	addSequential(new DriveDistance(4));
+    	
     	addSequential(new WaitCommand(.5));
 
     	addSequential(new DriveDistance(-10));
