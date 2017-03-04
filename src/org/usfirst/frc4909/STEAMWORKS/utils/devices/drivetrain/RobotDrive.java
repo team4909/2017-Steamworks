@@ -52,6 +52,13 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 		inversion = !inversion;
 	}
 	
+	//true = gear side
+	//false = intake side
+
+	public void invert(boolean state){
+		inversion = state;
+	}
+	
 	public void stop(){
 		this.drive(0, 0);
 	}

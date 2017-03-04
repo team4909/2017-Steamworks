@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class PlaceMiddleGearEncoder extends CommandGroup {
     public PlaceMiddleGearEncoder (){
     	addParallel(new HoldGear());
+    	addSequential(new InvertToState(true));
+
     	addSequential(new ShiftToState(Gear.Low));
     	
     	addSequential(new DriveDistance(71.452));

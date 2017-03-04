@@ -1,5 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
@@ -50,5 +51,13 @@ public class Drivetrain extends Subsystem {
     
     public double getRightEncDistance(){
     	return (rightEncoder.getRaw()/pulsesPerRev) * wheelCircumference;
+    }
+    
+    public double voltageRamp(double time){
+    	return (.02/time);		//.02 can be replaced with time of loop if .02 is too inaccurate
+    }
+    
+    public boolean isBlue(){
+    	return DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue;
     }
 }
