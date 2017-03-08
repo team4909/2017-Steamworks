@@ -3,6 +3,7 @@ package org.usfirst.frc4909.STEAMWORKS;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -36,6 +37,8 @@ public class Robot extends IterativeRobot {
   
     SendableChooser<Object> autoChooser;
     Command autonomousCommand;
+    
+    Preferences prefs;
    
     public void robotInit() {
     	RobotMap.init();
@@ -76,7 +79,7 @@ public class Robot extends IterativeRobot {
         autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
         autoChooser.addObject("Break Baseline", new BreakBaseline());
-        autoChooser.addObject("Place Front Gear with Encoders", new PlaceFrontGearEncoder());
+        autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
         //Indicators Initialized
@@ -91,6 +94,9 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Intake Pivot Manual Override", false);
         SmartDashboard.putBoolean("Loader Pivot Manual Override", false);
         SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
+        
+       prefs=Preferences.getInstance();
+     
 
     }
 
@@ -99,8 +105,7 @@ public class Robot extends IterativeRobot {
 		stop();
 //		visionThread.run();
 
-    }
-
+    
     public void disabledPeriodic() {
     	
         Scheduler.getInstance().run();
@@ -132,6 +137,7 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
     	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+    	
     	
         Scheduler.getInstance().run();
     }

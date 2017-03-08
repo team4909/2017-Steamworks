@@ -7,10 +7,12 @@ import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.NavX;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.motorcontrollers.*;
 
+import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SerialPort;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -79,16 +81,23 @@ public class RobotMap {
            	"Intake",
            	new Spark(8),
            	true,
-            new AnalogPotentiometer(2, 3600, 0),
-            new double[] {1610, 1686}, // Up, Down
+            new AnalogPotentiometer(2, 3600, Preferences.getInstance().getInt("intakeOffsetPref", 0)),
+            new double[] {
+            		Preferences.getInstance().getDouble("DoubleakeUpPref",1610), 
+            		Preferences.getInstance().getDouble("DoubleakeDownPref",1686)}, // Up, Down
         	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(
         	"Loader",
         	new Spark(9),
-        	new AnalogPotentiometer(1, 3600, -2260),
-        	new double[] {0, 250, 400, 55}, // Hold, Catch, Drop, Peg
+        	new AnalogPotentiometer(1, 3600, Preferences.getInstance().getDouble("loaderOffsetPref",-2260)),
+        	new double[] {
+        			Preferences.getInstance().getDouble("loaderHoldPref", 0),
+        			Preferences.getInstance().getDouble("loaderCatchPref",250),
+        			Preferences.getInstance().getDouble("loaderDropPref", 400),
+        			Preferences.getInstance().getDouble("loaderPegPref", 55)}, // Hold, Catch, Drop, Peg
+        			
             new PIDConstants(0.01, 0, 0, 0.7)
         );
 
@@ -102,11 +111,15 @@ public class RobotMap {
         );
         
         // Configure Shooter Motor
-        shooterMotorController.setInverted(true);
+        shooterMotorController.setFeedbackDevice(FeedbackDevice.QuadEncoder);
+
+        shooterMotorController.setInverted(false);
+        shooterMotorController.reverseSensor(false);
+
         shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
 //        shooterMotorController.setProfile(0);
         //20,.0005,0,0,.0005
-        shooterMotorController.setEncoderPIDF(20, 0.005, 0, 0, 0);
-//        shooterMotorController.changeControlMode(TalonControlMode.PercentVbus);
+        shooterMotorController.setEncoderPIDF(1024, 0.0021, 0, 0, 0.027);
+        shooterMotorController.changeControlMode(TalonControlMode.Speed);
     }
 }
