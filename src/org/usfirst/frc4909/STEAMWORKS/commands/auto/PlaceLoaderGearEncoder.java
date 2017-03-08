@@ -1,6 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.commands.auto;
 
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.DriveDistance;
+import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.InvertToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.Rotate;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.ShiftToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.DropGear;
@@ -14,6 +15,8 @@ public class PlaceLoaderGearEncoder extends CommandGroup {
 
     public PlaceLoaderGearEncoder() {
     	addParallel(new HoldGear());
+    	addSequential(new InvertToState(true));
+
     	addSequential(new ShiftToState(Gear.Low));
     	
     	addSequential(new DriveDistance(36));
