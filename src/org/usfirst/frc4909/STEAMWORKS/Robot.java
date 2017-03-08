@@ -62,7 +62,6 @@ public class Robot extends IterativeRobot {
 //            if (!pipeline.filterContoursOutput().isEmpty()) {
             
             if (pipeline.filterContoursOutput().size()>1) {
-
                 Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
                 Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
                 synchronized (imgLock) {
@@ -75,8 +74,7 @@ public class Robot extends IterativeRobot {
                 }
             }
         });
-        visionThread.start();
-        
+
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
@@ -102,7 +100,11 @@ public class Robot extends IterativeRobot {
 
     }
 
-    public void disabledInit(){}
+//    @SuppressWarnings("deprecation")
+	public void disabledInit(){
+		stop();
+//		visionThread.run();
+
     
     public void disabledPeriodic() {
     	
@@ -122,7 +124,10 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
     }
 
-    public void teleopInit() {}
+    public void teleopInit() {
+        visionThread.start();
+
+    }
 
     
     public void teleopPeriodic() {
@@ -139,5 +144,11 @@ public class Robot extends IterativeRobot {
 
     public void testPeriodic() {
         LiveWindow.run();
+    }
+    
+    public void stop() {
+        Thread waitThread = visionThread;
+        visionThread = null;
+        waitThread.interrupt();
     }
 }
