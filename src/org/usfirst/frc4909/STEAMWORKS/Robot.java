@@ -133,6 +133,8 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
+        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
+
     	//RobotMap.intakeIntakeMotor.set(.525);
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());

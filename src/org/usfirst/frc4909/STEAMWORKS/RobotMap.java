@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.SerialPort;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
@@ -44,6 +45,7 @@ public class RobotMap {
 
 	public static Compressor compressor;
 	public static DoubleSolenoid shiftSolenoid;
+	public static Solenoid shiftSolenoidSingle;
 
 	public static PotentiometerPIDController intakePivotPotPIDController;
 	public static PotentiometerPIDController loaderPotPIDController;
@@ -107,7 +109,8 @@ public class RobotMap {
         	drivetrainRightDriveMotorController,
         	true, // Invert Motor Controllers
         	true, // Enable Safety
-        	new DoubleSolenoid(0,1) // Shifting Solenoid
+        	//new DoubleSolenoid(0,1) // Shifting Solenoid
+        	new Solenoid(0)
         );
         
         // Configure Shooter Motor
