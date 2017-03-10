@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 
 public class ShiftingRobotDrive extends RobotDrive {
 	private DoubleSolenoid shiftSolenoid;
-	public Solenoid shiftSolenoidSingle;
+	private Solenoid shiftSolenoidSingle;
 	private boolean single = false;
 
 	public ShiftingRobotDrive(SpeedController leftMotor, SpeedController rightMotor, boolean inverted, boolean safety,
@@ -48,6 +48,16 @@ public class ShiftingRobotDrive extends RobotDrive {
 
 	public static enum Gear {
 		Low, High
+	}
+	
+	public boolean getSingleState(){
+		return shiftSolenoidSingle.get();
+	}
+	
+	public Gear getState(){
+		if(getSingleState())
+			return Gear.High;
+		return Gear.Low;
 	}
 
 	public void shift(Gear gear) {
