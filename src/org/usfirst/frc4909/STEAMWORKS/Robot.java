@@ -52,28 +52,28 @@ public class Robot extends IterativeRobot {
         loader = new Loader();
         oi = new OI();
         
-        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        camera.setExposureManual(10);
-        camera.setWhiteBalanceManual(4500);
+//        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+//        camera.setExposureManual(10);
+//        camera.setWhiteBalanceManual(4500);
 
-        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
-//            if (!pipeline.filterContoursOutput().isEmpty()) {
-            
-            if (pipeline.filterContoursOutput().size()>1) {
-                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
-                synchronized (imgLock) {
-                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
-                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
-                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
-                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
-                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
-
-                }
-            }
-        });
+//        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
+//            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
+////            if (!pipeline.filterContoursOutput().isEmpty()) {
+//            
+//            if (pipeline.filterContoursOutput().size()>1) {
+//                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+//                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
+//                synchronized (imgLock) {
+//                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
+//                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
+//                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
+//                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
+//                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
+//
+//                }
+//            }
+//        });
 
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
@@ -102,9 +102,9 @@ public class Robot extends IterativeRobot {
 
 //    @SuppressWarnings("deprecation")
 	public void disabledInit(){
-		stop();
+//		stop();
 //		visionThread.run();
-
+	}
     
     public void disabledPeriodic() {
     	
@@ -125,7 +125,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-        visionThread.start();
+//        visionThread.start();
 
     }
 

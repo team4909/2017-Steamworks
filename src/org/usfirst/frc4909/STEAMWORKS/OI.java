@@ -49,7 +49,7 @@ public class OI {
         manipulatorGamepad.buttonPressed(9, new IntakeOut());		//Right Bumper, whileHeld
         
         //Intake Pivot
-        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Trigger
+        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Bumper
         
     }
 }
