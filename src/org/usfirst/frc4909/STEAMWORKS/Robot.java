@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
     public static Feeder feeder;
     public static Shooter shooter;
     public static Loader loader;
+    public static LEDControl leds;
     
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
@@ -50,6 +51,7 @@ public class Robot extends IterativeRobot {
         feeder = new Feeder();
         shooter = new Shooter();
         loader = new Loader();
+        leds = new LEDControl();
         oi = new OI();
         
 //        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
