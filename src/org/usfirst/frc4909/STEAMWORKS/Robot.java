@@ -80,6 +80,8 @@ public class Robot extends IterativeRobot {
         autoChooser.addDefault("Do Nothing", new DoNothing());
         autoChooser.addObject("Break Baseline", new BreakBaseline());
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
+        autoChooser.addObject("Place Loading Station Side Auto", new PlaceLoaderGearEncoder());
+
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
         //Indicators Initialized
@@ -113,8 +115,8 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	Robot.drivetrain.navx.zeroYaw();
-//    	autonomousCommand = (Command) autoChooser.getSelected();
-    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
+    	autonomousCommand = (Command) autoChooser.getSelected();
+//    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
 
         if (autonomousCommand != null) autonomousCommand.start();
     }

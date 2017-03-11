@@ -15,7 +15,7 @@ public class PlaceBoilerGearEncoder extends CommandGroup {
 
     public PlaceBoilerGearEncoder() {
     	addParallel(new HoldGear());
-    	addSequential(new InvertToState(true));
+    	addSequential(new InvertToState(false));
 
     	addSequential(new ShiftToState(Gear.Low));
     	

@@ -6,17 +6,19 @@ import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDCommand;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDConstants;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 public class DriveDistance extends PIDCommand {
 	double target;
 	double initAngle;
 	double maxPow;
-	PIDController rotatePID;
+	PIDController rotatePID =new PIDController( new PIDConstants(1, 0, 0, 0.4));
+;
 
     public DriveDistance(double targetDist) {
     	this.target = targetDist; 
     	
-    	this.pidController.changePIDGains(new PIDConstants(0.05, 0, 0, 0.8));
-    	rotatePID.changePIDGains( new PIDConstants(0.05, 0, 0.2, 0.4));
+    	this.pidController.changePIDGains(new PIDConstants(0.08, 0, 0, 1));
 
     	
     }
@@ -27,9 +29,11 @@ public class DriveDistance extends PIDCommand {
 
     	maxPow = 0;
 //    	initAngle = Robot.drivetrain.navx.getYaw();
-    	rotatePID.resetPID();
+    	this.rotatePID.resetPID();
+    	initAngle = Robot.drivetrain.navx.getYaw();
     }
     protected void usePID() {
+    	SmartDashboard.putNumber("Auto Stage", target);
     	
 		double leftDistance 	= Robot.drivetrain.getLeftEncDistance();
 		double rightDistance 	= Robot.drivetrain.getRightEncDistance();
@@ -51,7 +55,7 @@ public class DriveDistance extends PIDCommand {
 //		);	
 		Robot.drivetrain.robotDrive.arcadeDrive(
 				(leftPow+rightPow)/2,
-				rotatePID.calcPID(initAngle, Robot.drivetrain.navx.getYaw(), 1)
+				this.rotatePID.calcPID(initAngle, Robot.drivetrain.navx.getYaw(), 1)
 			);	
 		
     }
