@@ -2,6 +2,7 @@ package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
@@ -58,6 +59,6 @@ public class Drivetrain extends Subsystem {
     }
     
     public boolean isBlue(){
-    	return DriverStation.getInstance().getAlliance() == DriverStation.Alliance.Blue;
+    	return Robot.teamChooser.getSelected() == DriverStation.Alliance.Blue;
     }
 }

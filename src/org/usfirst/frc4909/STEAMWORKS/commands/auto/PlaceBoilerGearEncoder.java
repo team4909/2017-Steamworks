@@ -21,17 +21,16 @@ public class PlaceBoilerGearEncoder extends CommandGroup {
     	
     	addSequential(new DriveDistance(73.236));
 
-    	addSequential(new Rotate(-60));
+    	addSequential(new Rotate(-54,true));
 
-    	addSequential(new DriveDistance(63.393));
+    	addSequential(new DriveDistance(62.393));
 
-    	addParallel(new DropGear());
+    	addSequential(new DropGear());
     	addSequential(new DriveDistance(4));
     	
     	addSequential(new WaitCommand(.5));
 
     	addSequential(new DriveDistance(-10));
-
       
     }
 }

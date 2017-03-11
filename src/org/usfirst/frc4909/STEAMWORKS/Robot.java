@@ -4,8 +4,10 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.hal.AllianceStationID;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -37,6 +39,7 @@ public class Robot extends IterativeRobot {
 	private final Object imgLock = new Object();
   
     SendableChooser<Object> autoChooser;
+    public static SendableChooser<Alliance> teamChooser;
     Command autonomousCommand;
     
     Preferences prefs;
@@ -84,8 +87,12 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
         autoChooser.addObject("Place Loading Station Side Auto", new PlaceLoaderGearEncoder());
         autoChooser.addObject("Place Gear Boiler Side", new PlaceBoilerGearEncoder());
+        teamChooser = new SendableChooser<Alliance>();
+        teamChooser.addDefault("Blue", Alliance.Blue);
+        teamChooser.addObject("Red", Alliance.Red);
 
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
+        SmartDashboard.putData("Alliance", teamChooser);
         
         //Indicators Initialized
         SmartDashboard.putBoolean("Ready to Shoot", false);
