@@ -55,8 +55,15 @@ public class ShiftingRobotDrive extends RobotDrive {
 	}
 	
 	public Gear getState(){
+		if(single){
 		if(getSingleState())
 			return Gear.High;
+		return Gear.Low;
+		}
+		else
+			if(shiftSolenoid.get() == Value.kForward){
+				return Gear.High;
+			}
 		return Gear.Low;
 	}
 

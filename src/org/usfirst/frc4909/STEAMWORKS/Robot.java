@@ -112,21 +112,27 @@ public class Robot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-    	autonomousCommand = (Command) autoChooser.getSelected();
-    	
+    	Robot.drivetrain.navx.zeroYaw();
+//    	autonomousCommand = (Command) autoChooser.getSelected();
+    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
+
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
     public void autonomousPeriodic() {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
-    	
+    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
 //        visionThread.start();
+    	Robot.drivetrain.navx.zeroYaw();
 
+    	RobotMap.drivetrainLeftEncoder.reset();
+    	RobotMap.drivetrainRightEncoder.reset();
     }
 
     
@@ -134,7 +140,8 @@ public class Robot extends IterativeRobot {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
         SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
-
+        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
     	//RobotMap.intakeIntakeMotor.set(.525);
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());

@@ -43,7 +43,7 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	
 	public void arcadeDrive(double power, double rot){
 		if(inversion) 
-        	super.arcadeDrive(-power, -rot);
+        	super.arcadeDrive(-power, rot);
     	else
     		super.arcadeDrive(power, rot);
     }
@@ -52,8 +52,8 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 		inversion = !inversion;
 	}
 	
-	//true = gear side
-	//false = intake side
+	//true = intake side
+	//false = gear side
 
 	public void invert(boolean state){
 		inversion = state;
