@@ -31,6 +31,7 @@ public class DriveDistance extends PIDCommand {
 //    	initAngle = Robot.drivetrain.navx.getYaw();
     	this.rotatePID.resetPID();
     	initAngle = Robot.drivetrain.navx.getYaw();
+    	SmartDashboard.putNumber("Init Angle", initAngle);
     }
     protected void usePID() {
     	SmartDashboard.putNumber("Auto Stage", target);

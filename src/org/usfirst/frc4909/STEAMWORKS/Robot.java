@@ -109,12 +109,12 @@ public class Robot extends IterativeRobot {
 	}
     
     public void disabledPeriodic() {
-    	
+    	Robot.drivetrain.navx.reset();
+
         Scheduler.getInstance().run();
     }
 
     public void autonomousInit() {
-    	Robot.drivetrain.navx.zeroYaw();
     	autonomousCommand = (Command) autoChooser.getSelected();
 //    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
 
@@ -126,6 +126,8 @@ public class Robot extends IterativeRobot {
     	(new LoaderSched()).start();
     	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
+        SmartDashboard.putNumber("Current Angle", drivetrain.navx.getYaw());
+
         Scheduler.getInstance().run();
     }
 

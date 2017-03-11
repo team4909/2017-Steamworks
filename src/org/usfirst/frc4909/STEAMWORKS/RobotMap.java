@@ -85,8 +85,8 @@ public class RobotMap {
            	true,
             new AnalogPotentiometer(2, 3600, Preferences.getInstance().getInt("intakeOffsetPref", 0)),
             new double[] {
-            		Preferences.getInstance().getDouble("DoubleakeUpPref",1610), 
-            		Preferences.getInstance().getDouble("DoubleakeDownPref",1686)}, // Up, Down
+            		Preferences.getInstance().getDouble("IntakeakeUpPref",1610), 
+            		Preferences.getInstance().getDouble("IntakeDownPref",1686)}, // Up, Down
         	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
