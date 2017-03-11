@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PegGear extends Command {
     public PegGear() {
-    	requires(Robot.loader);
+//    	requires(Robot.loader);
     }
 
     protected void initialize() {

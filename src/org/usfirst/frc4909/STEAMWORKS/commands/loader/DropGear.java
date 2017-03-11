@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DropGear extends Command {
     public DropGear() {
-    	requires(Robot.loader);
+//    	requires(Robot.loader);
     }
 
     protected void initialize() {

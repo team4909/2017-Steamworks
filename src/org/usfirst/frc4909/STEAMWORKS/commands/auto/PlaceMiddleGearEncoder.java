@@ -19,7 +19,7 @@ public class PlaceMiddleGearEncoder extends CommandGroup {
     	addSequential(new Rotate(-5));
     	addSequential(new DriveDistance(3));
     	addSequential(new Rotate(5));
-    	addParallel(new DropGear());
+    	addSequential(new DropGear());
 
     	addSequential(new DriveDistance(3));
     	addSequential(new Rotate(0));
