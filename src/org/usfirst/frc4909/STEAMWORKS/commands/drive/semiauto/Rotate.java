@@ -9,16 +9,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Rotate extends PIDCommand {
 	double target;
 	double maxPow;
+	boolean autoRan;
+
 
 	boolean useAlliance = false;
     public Rotate(double targetAngle) {
+        autoRan=false;
+
     	this.target = targetAngle; 
     	
     	this.pidController.changePIDGains(new PIDConstants(0.14, 0, 0.1, 0.6));
     }
     //Angles are based on red side, negate if blue
     public Rotate(double targetAngle, boolean usingAlliance) {
-    		
+        autoRan=false;
+
     	this.target = targetAngle; 
     	
     	this.pidController.changePIDGains(new PIDConstants(0.14, 0, 0.1, 0.6));
@@ -28,9 +33,11 @@ public class Rotate extends PIDCommand {
     
     protected void initialize(){
     	super.initialize();
-    	if(useAlliance && Robot.drivetrain.isBlue())
+    	if(useAlliance && Robot.drivetrain.isBlue() && !autoRan)
     		this.target = -this.target;
     	maxPow = 0;
+    	autoRan=true;
+
 
     }
     protected void usePID() {

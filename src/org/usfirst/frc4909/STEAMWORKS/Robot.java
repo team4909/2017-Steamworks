@@ -108,7 +108,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
         
        prefs=Preferences.getInstance();
-     
 
     }
 
