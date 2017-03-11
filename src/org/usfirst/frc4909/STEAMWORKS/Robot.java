@@ -83,6 +83,7 @@ public class Robot extends IterativeRobot {
         autoChooser.addObject("Break Baseline", new BreakBaseline());
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
         autoChooser.addObject("Place Loading Station Side Auto", new PlaceLoaderGearEncoder());
+        autoChooser.addObject("Place Gear Boiler Side", new PlaceBoilerGearEncoder());
 
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
