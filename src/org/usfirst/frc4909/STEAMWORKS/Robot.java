@@ -102,11 +102,15 @@ public class Robot extends IterativeRobot {
 
 //    @SuppressWarnings("deprecation")
 	public void disabledInit(){
-		stop();
+//		stop();
+	}
 //		visionThread.run();
 
     
     public void disabledPeriodic() {
+    	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
+    	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
+    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
         Scheduler.getInstance().run();
     }
@@ -125,7 +129,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-        visionThread.start();
+//        visionThread.start();
 
     }
 

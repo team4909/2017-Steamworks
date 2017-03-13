@@ -83,19 +83,19 @@ public class RobotMap {
            	true,
             new AnalogPotentiometer(2, 3600, Preferences.getInstance().getInt("intakeOffsetPref", 0)),
             new double[] {
-            		Preferences.getInstance().getDouble("DoubleakeUpPref",1610), 
-            		Preferences.getInstance().getDouble("DoubleakeDownPref",1686)}, // Up, Down
+            		Preferences.getInstance().getDouble("DoubleakeUpPref",1825), 
+            		Preferences.getInstance().getDouble("DoubleakeDownPref",1895)}, // Up, Down
         	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
         loaderPotPIDController = new PotentiometerPIDController(
         	"Loader",
         	new Spark(9),
-        	new AnalogPotentiometer(1, 3600, Preferences.getInstance().getDouble("loaderOffsetPref",-2260)),
+        	new AnalogPotentiometer(1, 3600, Preferences.getInstance().getDouble("loaderOffsetPref",-2270)),
         	new double[] {
         			Preferences.getInstance().getDouble("loaderHoldPref", 0),
         			Preferences.getInstance().getDouble("loaderCatchPref",250),
-        			Preferences.getInstance().getDouble("loaderDropPref", 400),
+        			Preferences.getInstance().getDouble("loaderDropPref", 390),
         			Preferences.getInstance().getDouble("loaderPegPref", 55)}, // Hold, Catch, Drop, Peg
         			
             new PIDConstants(0.01, 0, 0, 0.7)
