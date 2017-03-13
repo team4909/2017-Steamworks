@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class CatchGear extends Command {
     public CatchGear() {
-    	requires(Robot.loader);
+//    	requires(Robot.loader);
     }
 
     protected void initialize() {

@@ -10,9 +10,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class BreakBaseline extends CommandGroup {
     public BreakBaseline (){
-    	addParallel(new HoldGear());
-    	addSequential(new InvertToState(true));
+    //	addParallel(new HoldGear());
+    	addSequential(new InvertToState(false));
     	addSequential(new ShiftToState(Gear.Low));
-    	addSequential(new DriveDistance(10));
+    	addSequential(new DriveDistance(120));
+    	System.out.println("******FINISHED MOVING******");
     }
 }

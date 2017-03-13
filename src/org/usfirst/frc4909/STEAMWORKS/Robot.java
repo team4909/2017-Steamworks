@@ -29,6 +29,7 @@ public class Robot extends IterativeRobot {
     public static Feeder feeder;
     public static Shooter shooter;
     public static Loader loader;
+    public static LEDControl leds;
     
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
@@ -50,36 +51,39 @@ public class Robot extends IterativeRobot {
         feeder = new Feeder();
         shooter = new Shooter();
         loader = new Loader();
+        leds = new LEDControl();
         oi = new OI();
         
-        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        camera.setExposureManual(10);
-        camera.setWhiteBalanceManual(4500);
+//        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+//        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
+//        camera.setExposureManual(10);
+//        camera.setWhiteBalanceManual(4500);
 
-        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
-//            if (!pipeline.filterContoursOutput().isEmpty()) {
-            
-            if (pipeline.filterContoursOutput().size()>1) {
-                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
-                synchronized (imgLock) {
-                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
-                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
-                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
-                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
-                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
-
-                }
-            }
-        });
+//        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
+//            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
+////            if (!pipeline.filterContoursOutput().isEmpty()) {
+//            
+//            if (pipeline.filterContoursOutput().size()>1) {
+//                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
+//                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
+//                synchronized (imgLock) {
+//                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
+//                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
+//                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
+//                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
+//                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
+//
+//                }
+//            }
+//        });
 
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
         autoChooser.addObject("Break Baseline", new BreakBaseline());
         autoChooser.addObject("Place Front Gear with Encoders", new PlaceMiddleGearEncoder());
+        autoChooser.addObject("Place Loading Station Side Auto", new PlaceLoaderGearEncoder());
+
         SmartDashboard.putData("Autonomous Mode Chooser", autoChooser);
         
         //Indicators Initialized
@@ -103,40 +107,51 @@ public class Robot extends IterativeRobot {
 //    @SuppressWarnings("deprecation")
 	public void disabledInit(){
 //		stop();
-	}
 //		visionThread.run();
-
+	}
     
     public void disabledPeriodic() {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
     	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
+    	Robot.drivetrain.navx.reset();
+
         Scheduler.getInstance().run();
     }
 
     public void autonomousInit() {
     	autonomousCommand = (Command) autoChooser.getSelected();
-    	
+//    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
+
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
     public void autonomousPeriodic() {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
-    	
+    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
+        SmartDashboard.putNumber("Current Angle", drivetrain.navx.getYaw());
+
         Scheduler.getInstance().run();
     }
 
     public void teleopInit() {
 //        visionThread.start();
+    	Robot.drivetrain.navx.zeroYaw();
 
+    	RobotMap.drivetrainLeftEncoder.reset();
+    	RobotMap.drivetrainRightEncoder.reset();
     }
 
     
     public void teleopPeriodic() {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
+        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
+        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
     	//RobotMap.intakeIntakeMotor.set(.525);
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());

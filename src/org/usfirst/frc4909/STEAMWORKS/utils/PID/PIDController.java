@@ -111,6 +111,7 @@ public class PIDController {
 		pGain = consts.p;
 		iGain = consts.i;
 		dGain = consts.d;
+		maxOut = consts.max;
 	}
 
 	/**

@@ -1,5 +1,8 @@
 <xml version="1.0">
 <dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="2" y="0"/>
+	</static-widget>
 	<widget field="Loader Position" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
 		<location x="64" y="464"/>
 		<width>192</width>
@@ -21,7 +24,7 @@
 		<location x="9" y="698"/>
 	</widget>
 	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.CameraServerViewer">
-		<location x="266" y="17"/>
+		<location x="259" y="11"/>
 		<width>820</width>
 		<height>764</height>
 		<property name="Camera Choice" value=""/>
@@ -32,17 +35,17 @@
 		<height>100</height>
 	</widget>
 	<widget field="Ready to Shoot" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
-		<location x="22" y="132"/>
+		<location x="20" y="144"/>
 		<width>191</width>
 		<height>101</height>
 	</widget>
 	<widget field="Agitator On" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
-		<location x="23" y="243"/>
+		<location x="21" y="248"/>
 		<width>170</width>
 		<height>105</height>
 	</widget>
 	<widget field="Intake Pivot Down" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
-		<location x="19" y="13"/>
+		<location x="19" y="35"/>
 		<width>207</width>
 		<height>105</height>
 	</widget>
@@ -66,6 +69,7 @@
 	<hidden field="current angle"/>
 	<hidden field="Current Shooter RPM"/>
 	<hidden field="Log Goal Ready"/>
+	<hidden field="Current Gear"/>
 	<hidden field="Shifts"/>
 	<hidden field="ShootCommand"/>
 	<hidden field="AutonomousCommand"/>

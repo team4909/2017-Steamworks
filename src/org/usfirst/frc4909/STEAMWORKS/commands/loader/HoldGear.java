@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class HoldGear extends Command {
     public HoldGear() {
-    	requires(Robot.loader);
+//    	requires(Robot.loader);
     }
 
     protected void initialize() {

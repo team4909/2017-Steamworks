@@ -17,7 +17,7 @@ public class Drivetrain extends Subsystem {
     private final Encoder leftEncoder 	= RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder 	= RobotMap.drivetrainRightEncoder;
 	private final double ENCODER_RATIO 	= 3.0;
-	private final double pulsesPerRev 	= 1440.0 * ENCODER_RATIO;
+	private final double pulsesPerRev 	= 1440.0 / ENCODER_RATIO;
 	
 	// in inches
 	private final double wheelDiameter 	= 4.0;

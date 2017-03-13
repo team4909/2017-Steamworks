@@ -4,6 +4,13 @@ import org.usfirst.frc4909.STEAMWORKS.commands.climb.ClimbCommand;
 import org.usfirst.frc4909.STEAMWORKS.commands.climb.ClimbManual;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorBlue;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorCyan;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorGreen;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorPurple;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorRed;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorWhite;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorYellow;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.shooter.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
@@ -34,6 +41,15 @@ public class OI {
         driveGamepad.buttonPressed(8, new ShiftCommand());			//Right Trigger
 //        driveGamepad.buttonPressed(6, new lineUpToPeg()); -->Uncomment once/if this exists
         
+        //Human Player LEDs
+        driveGamepad.buttonPressed(1, new ColorBlue());
+        driveGamepad.buttonPressed(2, new ColorGreen());
+        driveGamepad.buttonPressed(3, new ColorRed());
+        driveGamepad.buttonPressed(10, new ColorWhite());
+        driveGamepad.buttonPressed(4, new ColorCyan());
+        driveGamepad.buttonPressed(9, new ColorPurple());
+        
+        
         //Loader
         manipulatorGamepad.buttonPressed(2, new PegGear()); 		//A
         manipulatorGamepad.buttonPressed(1, new DropGear());		//X
@@ -49,7 +65,7 @@ public class OI {
         manipulatorGamepad.buttonPressed(9, new IntakeOut());		//Right Bumper, whileHeld
         
         //Intake Pivot
-        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Trigger
+        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Bumper
         
     }
 }

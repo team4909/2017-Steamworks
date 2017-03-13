@@ -14,22 +14,22 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class PlaceLoaderGearEncoder extends CommandGroup {
 
     public PlaceLoaderGearEncoder() {
-    	addParallel(new HoldGear());
-    	addSequential(new InvertToState(true));
+//    	addParallel(new HoldGear());
+    	addSequential(new InvertToState(false));
 
     	addSequential(new ShiftToState(Gear.Low));
     	
     	addSequential(new DriveDistance(36));
     	
-    	addSequential(new Rotate(-30));
+    	addSequential(new Rotate(-30,true));
 
       	addSequential(new DriveDistance(57.128));
 
-    	addSequential(new Rotate(60));
+    	addSequential(new Rotate(60,true));
 
     	addSequential(new DriveDistance(39.349));
 
-    	addParallel(new DropGear());
+//    	addParallel(new DropGear());
     	addSequential(new DriveDistance(4));
     	
     	addSequential(new WaitCommand(.5));
