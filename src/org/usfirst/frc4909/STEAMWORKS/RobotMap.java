@@ -109,8 +109,8 @@ public class RobotMap {
         	drivetrainRightDriveMotorController,
         	true, // Invert Motor Controllers
         	true, // Enable Safety
-        	new DoubleSolenoid(0,1) // Shifting Solenoid
-        	//new Solenoid(0)
+//        	new DoubleSolenoid(0,1) // Shifting Solenoid
+        	new Solenoid(0)
         );
         
         // Configure Shooter Motor
