@@ -24,7 +24,7 @@ public class FeederOn extends Command {
     }
     
     protected boolean isFinished(){
-    	return !Robot.oi.manipulatorGamepad.getRawButton(7);
+    	return !Robot.oi.manipulatorGamepad.getRawButton(8);
     }
     
     protected void end() {

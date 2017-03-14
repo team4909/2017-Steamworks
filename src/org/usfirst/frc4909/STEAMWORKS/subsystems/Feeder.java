@@ -9,7 +9,7 @@ public class Feeder extends Subsystem {
     private final SpeedController feederMotor = RobotMap.feederFeederMotor;
 
     public void startFeed(){
-    	feederMotor.set(-0.8);
+    	feederMotor.set(-0.5);
     }
     
     public void stopFeed(){

@@ -57,15 +57,15 @@ public class OI {
         manipulatorGamepad.buttonPressed(3, new HoldGear());		//B
         
         //Shooting
-        manipulatorGamepad.buttonToggled(5, new BoilerShot());		//Left Bumper
-        manipulatorGamepad.buttonPressed(7, new FeederOn()); 		//Left Trigger, whileHeld
+        manipulatorGamepad.buttonToggled(6, new BoilerShot());		//Left Bumper
+        manipulatorGamepad.buttonPressed(8, new FeederOn()); 		//Left Trigger, whileHeld
 
         //Intake Polycord
-        manipulatorGamepad.buttonPressed(8, new IntakeIn());		//Right Trigger, whileHeld
+        manipulatorGamepad.buttonPressed(7, new IntakeIn());		//Right Trigger, whileHeld
         manipulatorGamepad.buttonPressed(9, new IntakeOut());		//Right Bumper, whileHeld
         
         //Intake Pivot
-        manipulatorGamepad.buttonPressed(6, new Pivot());			//Right Bumper
+        manipulatorGamepad.buttonPressed(5, new Pivot());			//Right Bumper
         
     }
 }

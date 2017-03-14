@@ -37,7 +37,21 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 		double targetAngle = this.getPotentiometerPIDController().getPositions()[position];
 		double currentAngle = this.getAngle();
 		double pow = potPIDcontroller.calcPID(targetAngle, currentAngle, 2);
-		if(pow>0)
+		this.getPotentiometerPIDController().getMotor().set(pow);
+		
+		if(!potPIDcontroller.isDone())
+			targetTime = Timer.getFPGATimestamp();
+	}
+	//true for + slow, false for - slow
+	public void setPosition(int position, boolean slowDirection){
+		potPIDcontroller.atTarget = false;
+		
+		double targetAngle = this.getPotentiometerPIDController().getPositions()[position];
+		double currentAngle = this.getAngle();
+		double pow = potPIDcontroller.calcPID(targetAngle, currentAngle, 2);
+		if(pow>0 && slowDirection)
+			pow=pow*.5;
+		else if (pow<0 && !slowDirection)
 			pow=pow*.5;
 		this.getPotentiometerPIDController().getMotor().set(pow);
 		

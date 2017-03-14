@@ -11,7 +11,7 @@ public class Shooter extends Subsystem {
 	private CANTalon shooterMotorController = RobotMap.shooterMotorController;
 	
 	public void initDefaultCommand(){
-		setDefaultCommand(new ShootManual());
+//		setDefaultCommand(new ShootManual());
 	}
 	
 	public void setRPM(double rpm) {
@@ -26,5 +26,11 @@ public class Shooter extends Subsystem {
 	
 	public double getRPM(){
 		return shooterMotorController.getSpeed()*600.0/1024;
+	}
+	public void enable(){
+		shooterMotorController.enable();
+	}
+	public void disable(){
+		shooterMotorController.disable();
 	}
 }

@@ -155,7 +155,7 @@ public class Robot extends IterativeRobot {
     	//RobotMap.intakeIntakeMotor.set(.525);
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
     	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
-    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+//    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
     	
         Scheduler.getInstance().run();

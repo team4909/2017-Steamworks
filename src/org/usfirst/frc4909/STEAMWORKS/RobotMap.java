@@ -85,8 +85,8 @@ public class RobotMap {
            	true,
             new AnalogPotentiometer(2, 3600, Preferences.getInstance().getInt("intakeOffsetPref", 0)),
             new double[] {
-            		Preferences.getInstance().getDouble("DoubleakeUpPref",1825), 
-            		Preferences.getInstance().getDouble("DoubleakeDownPref",1895)}, // Up, Down
+            		Preferences.getInstance().getDouble("DoubleakeUpPref",2122), 
+            		Preferences.getInstance().getDouble("DoubleakeDownPref",2222)}, // Up, Down
         	new PIDConstants(0.023, 0, 0, 0.7)
         );
         
@@ -116,13 +116,13 @@ public class RobotMap {
         // Configure Shooter Motor
         shooterMotorController.setFeedbackDevice(FeedbackDevice.QuadEncoder);
 
-        shooterMotorController.setInverted(false);
+        shooterMotorController.setInverted(true);
         shooterMotorController.reverseSensor(false);
 
         shooterMotorController.configVoltages(+0.0f, -0.0f,+12.0f, -12.0f);
 //        shooterMotorController.setProfile(0);
         //20,.0005,0,0,.0005
-        shooterMotorController.setEncoderPIDF(1024, 0.0021, 0, 0, 0.027);
+        shooterMotorController.setEncoderPIDF(1024, 0.004, 0, 0, 0.028);
         shooterMotorController.changeControlMode(TalonControlMode.Speed);
     }
 }
