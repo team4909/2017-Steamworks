@@ -7,16 +7,16 @@ import edu.wpi.first.wpilibj.command.InstantCommand;
 /**
  *
  */
-public class ColorBlue extends InstantCommand {
+public class ColorReset extends InstantCommand {
 
-    public ColorBlue() {
+    public ColorReset() {
         super();
         requires(Robot.leds);
     }
 
     // Called once when the command executes
     protected void initialize() {
-    	Robot.leds.setColor(false, false, true);
+    	Robot.leds.reset();
     }
 
 }
