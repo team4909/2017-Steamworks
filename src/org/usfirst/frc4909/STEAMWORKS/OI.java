@@ -9,6 +9,7 @@ import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorCyan;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorGreen;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorPurple;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorRed;
+import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorReset;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorWhite;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorYellow;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.*;
@@ -45,9 +46,9 @@ public class OI {
         driveGamepad.buttonPressed(1, new ColorBlue());
         driveGamepad.buttonPressed(2, new ColorGreen());
         driveGamepad.buttonPressed(3, new ColorRed());
-        driveGamepad.buttonPressed(10, new ColorWhite());
-        driveGamepad.buttonPressed(4, new ColorCyan());
-        driveGamepad.buttonPressed(9, new ColorPurple());
+        driveGamepad.buttonPressed(10, new ColorPurple());
+        driveGamepad.buttonPressed(4, new ColorWhite());
+        driveGamepad.buttonPressed(9, new ColorReset());
         
         
         //Loader
