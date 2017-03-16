@@ -1,7 +1,5 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
-import edu.wpi.cscore.UsbCamera;
-import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
@@ -11,13 +9,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
-import org.opencv.core.Rect;
-import org.opencv.imgproc.Imgproc;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
-import org.usfirst.frc4909.STEAMWORKS.vision.GripPipeline;
 
 public class Robot extends IterativeRobot {
     public static OI oi;

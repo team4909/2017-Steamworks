@@ -1,7 +1,6 @@
 package org.usfirst.frc4909.STEAMWORKS.subsystems;
 
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
-import org.usfirst.frc4909.STEAMWORKS.commands.shooter.ShootManual;
 import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 
 import com.ctre.CANTalon;

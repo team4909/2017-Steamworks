@@ -1,17 +1,13 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
-import org.usfirst.frc4909.STEAMWORKS.commands.climb.ClimbCommand;
-import org.usfirst.frc4909.STEAMWORKS.commands.climb.ClimbManual;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorBlue;
-import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorCyan;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorGreen;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorPurple;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorRed;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorReset;
 import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorWhite;
-import org.usfirst.frc4909.STEAMWORKS.commands.led.ColorYellow;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.shooter.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.Joystick;
