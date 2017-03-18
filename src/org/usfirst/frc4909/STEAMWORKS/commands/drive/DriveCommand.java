@@ -10,11 +10,11 @@ public class DriveCommand extends Command {
     public DriveCommand() {
         requires(Robot.drivetrain);
         
-    	SmartDashboard.putBoolean("Tank Drive Enabled", true);
+    	SmartDashboard.putBoolean("Tank Drive Enabled", false);
     }
 
     protected void execute() {
-    	boolean tankDrive = SmartDashboard.getBoolean("Tank Drive Enabled", true);
+    	boolean tankDrive = SmartDashboard.getBoolean("Tank Drive Enabled", false);
     	
     	if(tankDrive)
     		Robot.drivetrain.moveTank();

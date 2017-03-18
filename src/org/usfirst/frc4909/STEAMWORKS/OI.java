@@ -40,18 +40,19 @@ public class OI {
         
         //Human Player LEDs
         driveGamepad.buttonPressed(1, new ColorBlue());
-        driveGamepad.buttonPressed(2, new ColorGreen());
+        driveGamepad.buttonPressed(10, new ColorGreen());
         driveGamepad.buttonPressed(3, new ColorRed());
-        driveGamepad.buttonPressed(10, new ColorPurple());
-        driveGamepad.buttonPressed(4, new ColorWhite());
+        driveGamepad.buttonPressed(4, new ColorPurple());
+        driveGamepad.buttonPressed(2, new ColorWhite());
         driveGamepad.buttonPressed(9, new ColorReset());
         
         
         //Loader
-        manipulatorGamepad.buttonPressed(2, new PegGear()); 		//A
-        manipulatorGamepad.buttonPressed(1, new DropGear());		//X
-        manipulatorGamepad.buttonPressed(4, new CatchGear());		//Y
-        manipulatorGamepad.buttonPressed(3, new HoldGear());		//B
+        manipulatorGamepad.buttonPressed(2, new DropGear());		//A
+        manipulatorGamepad.buttonPressed(3, new CatchGear());		//B
+        manipulatorGamepad.buttonPressed(4, new PegGear()); 		//Y
+        manipulatorGamepad.buttonPressed(1, new HoldGear());		//X
+
         
         //Shooting
         manipulatorGamepad.buttonToggled(6, new BoilerShot());		//Left Bumper

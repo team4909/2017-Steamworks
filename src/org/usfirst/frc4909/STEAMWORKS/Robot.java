@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
@@ -49,10 +51,15 @@ public class Robot extends IterativeRobot {
         leds = new LEDControl();
         oi = new OI();
         
-//        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-//        camera.setResolution(IMG_WIDTH, IMG_HEIGHT);
-//        camera.setExposureManual(10);
-//        camera.setWhiteBalanceManual(4500);
+        try {
+        	 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+             camera.setResolution(IMG_WIDTH, IMG_HEIGHT);   
+//             camera.setExposureManual(10);
+             camera.setExposureManual(50);
+             camera.setWhiteBalanceManual(4500);
+		} catch (Exception e) {
+			
+		}
 
 //        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
 //            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
@@ -144,13 +151,13 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
     	(new PivotSched()).start();
     	(new LoaderSched()).start();
-        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
-        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
-        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
-    	//RobotMap.intakeIntakeMotor.set(.525);
-    	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
-    	SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
-//    	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+//        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
+//        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+//        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
+//    		RobotMap.intakeIntakeMotor.set(.525);
+    		SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
+   	 		SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
+   	 		SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
     	
         Scheduler.getInstance().run();
