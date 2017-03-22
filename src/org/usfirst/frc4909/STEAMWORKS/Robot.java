@@ -162,7 +162,7 @@ public class Robot extends IterativeRobot {
    	 		SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
    	    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
    	        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
-   	        SmartDashboard.putBoolean("Gear Speed", Robot.drivetrain.robotDrive.getSingleState());
+   	        //SmartDashboard.putBoolean("Gear Speed", Robot.drivetrain.robotDrive.getSingleState());
     	
     	
         Scheduler.getInstance().run();

@@ -1,0 +1,48 @@
+package org.usfirst.frc4909.STEAMWORKS.commands.intake;
+
+import org.usfirst.frc4909.STEAMWORKS.Robot;
+import org.usfirst.frc4909.STEAMWORKS.utils.Command;
+
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+public class PivotControl extends Command {
+	boolean holdPosition;
+	double location;
+	public PivotControl() {
+//		requires(Robot.intakePolycord);
+		requires(Robot.intakePivot);
+	}
+	
+	protected void initialize() {
+    	Robot.intakePivot.initPID();
+//    	holdPosition=false;
+//    	location=Robot.intakePivot.getAngle();
+    }
+
+    protected void execute() {
+    		SmartDashboard.putNumber("Intake Pivot Setpoint", location);
+    		if(Robot.oi.manipulatorGamepad.getThresholdAxis(1, .25)==0){
+    			SmartDashboard.putBoolean("Hold Intake Position", true);
+    			if(!holdPosition){
+    				location=Robot.intakePivot.getAngle();
+    				
+    				holdPosition=true;
+    			}
+    			Robot.intakePivot.setPosition(location);
+    		}
+    		
+    		else{
+    			holdPosition=false;
+    			SmartDashboard.putBoolean("Hold Intake Position",false);
+    			if(Robot.oi.manipulatorGamepad.getThresholdAxis(1, .25)>0)
+    				Robot.intakePivot.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(1, 0.25)*0.2);
+    			else
+    				Robot.intakePivot.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(1, 0.25)*0.5);
+    		}
+    }
+
+    protected boolean isFinished() {
+        return false; //return Robot.intakePivot.isFinished();
+    }
+}

@@ -4,6 +4,7 @@ import org.usfirst.frc4909.STEAMWORKS.utils.Subsystem;
 import org.usfirst.frc4909.STEAMWORKS.utils.PID.PIDController;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	private double targetTime;
@@ -58,6 +59,20 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 		if(!potPIDcontroller.isDone())
 			targetTime = Timer.getFPGATimestamp();
 	}
+	
+	public void setPosition(double location){
+		potPIDcontroller.atTarget = false;
+		
+		double targetAngle = location;
+		double currentAngle = this.getAngle();
+		double pow = potPIDcontroller.calcPID(targetAngle, currentAngle, 2);
+		this.getPotentiometerPIDController().getMotor().set(pow);
+		SmartDashboard.putNumber("potpow", pow);
+		
+//		if(!potPIDcontroller.isDone())
+			targetTime = Timer.getFPGATimestamp();
+	}
+
 	
 	public boolean isFinished(){
 		return Timer.getFPGATimestamp() - targetTime > .5;
