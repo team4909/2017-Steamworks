@@ -50,9 +50,9 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 		double currentAngle = this.getAngle();
 		double pow = potPIDcontroller.calcPID(targetAngle, currentAngle, 2);
 		if(pow>0 && slowDirection)
-			pow=pow*.5;
+			pow=pow*.9;
 		else if (pow<0 && !slowDirection)
-			pow=pow*.5;
+			pow=pow*.9;
 		this.getPotentiometerPIDController().getMotor().set(pow);
 		
 		if(!potPIDcontroller.isDone())

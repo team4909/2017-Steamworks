@@ -21,6 +21,6 @@ public class Climber extends Subsystem {
     }
     
     public boolean getSwitch() {
-        return false; //(climbSwitch.get());
+        return climbSwitch.get();
     }
 }

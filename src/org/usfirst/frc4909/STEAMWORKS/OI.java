@@ -65,5 +65,6 @@ public class OI {
         //Intake Pivot
         manipulatorGamepad.buttonPressed(5, new Pivot());			//Right Bumper
         
+        
     }
 }

@@ -20,14 +20,49 @@ public class ClimbManual extends Command {
     protected void initialize() {
     }
 
-    // Called repeatedly when this Command is scheduled to run
+    // Called repeatedly when this Command is scheduled t+-*-*****-o run
     protected void execute() {
-    	if(Robot.climber.getSwitch() && !SmartDashboard.getBoolean("Climber Limit Switch Disable", false) && Robot.oi.climberJoystick.getThresholdAxis(1)>=0)
+//    	if(SmartDashboard.getBoolean("Climber Limit Switch Disable", false))
+//    	{
+//    		Robot.leds.setClimbed(false);
+//    		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.8));
+//
+//    	}
+    	
+		if(Robot.oi.climberJoystick.getThresholdAxis(1,0.4)<=0)
     		Robot.climber.climb(0);
+		else
+			Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.6));
+
+
+//    	else
+//    	{
+//        	if(!Robot.climber.getSwitch()){
+//        		if(Robot.oi.climberJoystick.getThresholdAxis(1,0.8)<=0){
+//            		Robot.climber.climb(0);
+////            		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.8));
+//
+//        		}
+//        		else
+//            		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.8));
+//        		Robot.leds.setClimbed(true);
+//        	}
+//        	else{
+//        		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.8));
+//        		Robot.leds.setClimbed(false);
+//        	}
+//
+//
+//    	}
+
+    	    	
     	
-    	else
-    		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1));
-    	
+//    	if(!Robot.climber.getSwitch())
+//    		Robot.leds.setClimbed(true);
+//    	else
+//    		Robot.leds.setClimbed(false);
+//    	Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1));
+
     	SmartDashboard.putBoolean("Climber Limit Switch State", Robot.climber.getSwitch());
     }
 

@@ -12,9 +12,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.ShiftToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
+import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive.Gear;
 
 public class Robot extends IterativeRobot {
     public static OI oi;
@@ -142,7 +144,7 @@ public class Robot extends IterativeRobot {
     public void teleopInit() {
 //        visionThread.start();
     	Robot.drivetrain.navx.zeroYaw();
-
+    	new ShiftToState(Gear.Low).start();
     	RobotMap.drivetrainLeftEncoder.reset();
     	RobotMap.drivetrainRightEncoder.reset();
     }
@@ -158,6 +160,9 @@ public class Robot extends IterativeRobot {
     		SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
    	 		SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
    	 		SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
+   	    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
+   	        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
+   	        SmartDashboard.putBoolean("Gear Speed", Robot.drivetrain.robotDrive.getSingleState());
     	
     	
         Scheduler.getInstance().run();

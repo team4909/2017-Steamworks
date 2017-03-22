@@ -12,7 +12,7 @@ public class BreakBaseline extends CommandGroup {
     //	addParallel(new HoldGear());
     	addSequential(new InvertToState(false));
     	addSequential(new ShiftToState(Gear.Low));
-    	addSequential(new DriveDistance(120));
-    	System.out.println("******FINISHED MOVING******");
+    	addSequential(new DriveDistance(120),10);
+//    	System.out.println("******FINISHED MOVING******");
     }
 }

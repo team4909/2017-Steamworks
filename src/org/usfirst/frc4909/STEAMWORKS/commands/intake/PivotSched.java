@@ -17,7 +17,7 @@ public class PivotSched extends Command {
 
     protected void execute() {
     	if(SmartDashboard.getBoolean("Intake Pivot Manual Override", false))
-    		Robot.intakePivot.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(1)*0.25);
+    		Robot.intakePivot.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(1, 0.15)*0.25);
     	else
     		Robot.intakePivot.setPosition(Robot.intakePivot.targetPosition,true);
     	

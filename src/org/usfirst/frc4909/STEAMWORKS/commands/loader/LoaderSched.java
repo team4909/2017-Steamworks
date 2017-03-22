@@ -16,7 +16,7 @@ public class LoaderSched extends Command {
 
     protected void execute() {
     	if(SmartDashboard.getBoolean("Loader Pivot Manual Override", false))
-    		Robot.loader.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(3)*0.25);
+    		Robot.loader.setSpeed(Robot.oi.manipulatorGamepad.getThresholdAxis(3, 0.15)*0.4);
     	else
     		Robot.loader.setPosition(Robot.loader.targetPosition);
     }

@@ -9,6 +9,6 @@ public class DoNothing extends CommandGroup {
 //    	addSequential(new InvertToState(true));
 //
 //    	addSequential(new ShiftToState(Gear.High));
-    	addSequential(new Rotate(70));
+    	addSequential(new Rotate(70,true));
     }
 }
