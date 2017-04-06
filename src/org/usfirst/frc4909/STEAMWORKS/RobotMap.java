@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
 
@@ -51,6 +52,9 @@ public class RobotMap {
 	public static PotentiometerPIDController loaderPotPIDController;
 
 	public static ShiftingRobotDrive drivetrainRobotDrive;
+	
+	public static AnalogInput intakeGearDetector;;
+
 
 	public static void init() {
 		// PDP Interface
@@ -66,9 +70,9 @@ public class RobotMap {
 				new VictorSP(1));
 
 		intakeIntakeMotor = Devices.addMotor("Intake", "IntakeMotorController", new Spark(2));
-		climberClimberMotorController = Devices.addMotor("Climber", "MotorController", new Spark(5));
+		climberClimberMotorController = Devices.addMotor("Climber", "MotorController", new Spark(7));
 		feederFeederMotor = Devices.addMotor("Feeder", "MotorController", new Spark(3));
-		intakeCenterMotor = intakeIntakeMotor.addSlaveMotor(new Spark(7), -1.52);
+		intakeCenterMotor = intakeIntakeMotor.addSlaveMotor(new Spark(5), -1.52);
 
 		// CAN
 		shooterMotorController = new CANTalon(2);
@@ -88,8 +92,11 @@ public class RobotMap {
 				new double[] { Preferences.getInstance().getDouble("intakeUpPref", 2122),
 						Preferences.getInstance().getDouble("intakeDownPref", 2222) }, // Up,
 																							// Down
-				new PIDConstants(0.023, 0, 0, 0.7));
-
+				new PIDConstants(0.023, 0, 0, 0.4));
+//		new PIDConstants(0.023, 0, 0, 0.7));
+		
+		intakeGearDetector = new AnalogInput(3);
+		
 		loaderPotPIDController = new PotentiometerPIDController("Loader", new Spark(9),
 				new AnalogPotentiometer(1, 3600, Preferences.getInstance().getDouble("loaderOffsetPref", -2270)),
 				new double[] { Preferences.getInstance().getDouble("loaderHoldPref", 0),
@@ -107,7 +114,7 @@ public class RobotMap {
 				drivetrainRightDriveMotorController, true, // Invert Motor
 															// Controllers
 				true, // Enable Safety
-				// new DoubleSolenoid(0,1) // Shifting Solenoid
+				// new DoubleSolenoid(0,1)); // Shifting Solenoid
 				new Solenoid(0));
 
 		// Configure Shooter Motor

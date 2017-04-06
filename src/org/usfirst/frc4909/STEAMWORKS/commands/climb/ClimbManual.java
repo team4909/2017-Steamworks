@@ -33,7 +33,7 @@ public class ClimbManual extends Command {
     		Robot.climber.climb(0);
 		else
 			Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.6));
-
+		Robot.leds.setClimbed(!Robot.climber.getSwitch());
 
 //    	else
 //    	{

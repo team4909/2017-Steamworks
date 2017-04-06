@@ -60,10 +60,10 @@ public class OI {
 
         //Intake Polycord
         manipulatorGamepad.buttonPressed(7, new IntakeIn());		//Right Trigger, whileHeld
-        manipulatorGamepad.buttonPressed(9, new IntakeOut());		//Right Bumper, whileHeld
+        manipulatorGamepad.buttonPressed(10, new IntakeOut());		//Right Bumper, whileHeld
         
         //Intake Pivot
-        manipulatorGamepad.buttonPressed(5, new Pivot());			//Right Bumper
+//        manipulatorGamepad.buttonPressed(5, new Pivot());			//Right Bumper
         
         
     }

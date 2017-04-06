@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.ShiftToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
+import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotTime;
 import org.usfirst.frc4909.STEAMWORKS.commands.loader.LoaderSched;
 import org.usfirst.frc4909.STEAMWORKS.subsystems.*;
 import org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain.ShiftingRobotDrive.Gear;
@@ -102,6 +103,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Intake Pivot Manual Override", false);
         SmartDashboard.putBoolean("Loader Pivot Manual Override", false);
         SmartDashboard.putBoolean("Climber Limit Switch Disable", false);
+        SmartDashboard.putBoolean("Intake Pop Out Disable", false);
         
        prefs=Preferences.getInstance();
      
@@ -120,6 +122,8 @@ public class Robot extends IterativeRobot {
     	SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
     	
     	Robot.drivetrain.navx.reset();
+	        SmartDashboard.putNumber("Gear Detector Intake", RobotMap.intakeGearDetector.getVoltage());
+	        SmartDashboard.putBoolean("Intake Gear", RobotMap.intakeGearDetector.getVoltage()<0.8);
 
         Scheduler.getInstance().run();
     }
@@ -147,11 +151,13 @@ public class Robot extends IterativeRobot {
     	new ShiftToState(Gear.Low).start();
     	RobotMap.drivetrainLeftEncoder.reset();
     	RobotMap.drivetrainRightEncoder.reset();
+    	if(!SmartDashboard.getBoolean("Intake Pop Out Disable", false))
+    		new PivotTime(.1).start();
     }
 
     
     public void teleopPeriodic() {
-    	(new PivotSched()).start();
+//    	(new PivotSched()).start();
     	(new LoaderSched()).start();
 //        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
 //        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
@@ -163,8 +169,9 @@ public class Robot extends IterativeRobot {
    	    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
    	        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
    	        //SmartDashboard.putBoolean("Gear Speed", Robot.drivetrain.robotDrive.getSingleState());
-    	
-    	
+	        SmartDashboard.putBoolean("Intake Gear", RobotMap.intakeGearDetector.getVoltage()<1);
+
+   	        SmartDashboard.putNumber("Gear Detector Intake", RobotMap.intakeGearDetector.getVoltage());
         Scheduler.getInstance().run();
     }
 

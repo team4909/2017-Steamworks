@@ -23,11 +23,11 @@ public class PlaceLoaderGearEncoder extends CommandGroup {
     	
     	addSequential(new Rotate(-30,true),10);
 
-      	addSequential(new DriveDistance(57.128),10);
+      	addSequential(new DriveDistance(60.128),10);
 
     	addSequential(new Rotate(60,true),10);
 
-    	addSequential(new DriveDistance(43),5);//39.349
+    	addSequential(new DriveDistance(46),5);//39.349
 
     	addParallel(new DropGear());
 //    	addSequential(new DriveDistance(4),10);

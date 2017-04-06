@@ -19,7 +19,7 @@ public class IntakeOut extends Command {
     	Robot.intakePolycord.intakeOut();
     }
     protected boolean isFinished(){
-    	return !Robot.oi.manipulatorGamepad.getRawButton(9);
+    	return !Robot.oi.manipulatorGamepad.getRawButton(10);
     }
     protected void end() {
     	Robot.intakePolycord.intakeStop();

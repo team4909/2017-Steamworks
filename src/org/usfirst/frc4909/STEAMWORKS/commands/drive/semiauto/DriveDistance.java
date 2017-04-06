@@ -48,7 +48,7 @@ public class DriveDistance extends PIDCommand {
 		if(Math.abs(rightPow)>maxPow)
 			rightPow=maxPow*Math.signum(rightPow);
 		
-		maxPow+=Robot.drivetrain.voltageRamp(2);
+		maxPow+=Robot.drivetrain.voltageRamp(1);
 		
 //		Robot.drivetrain.robotDrive.tankDrive(
 //			leftPow,
