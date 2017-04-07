@@ -58,7 +58,7 @@ public class RobotMap {
 
 	public static void init() {
 		// PDP Interface
-		PDP = new PowerDistributionPanel();
+		PDP = new PowerDistributionPanel(1);
 
 		// NavX Board
 		navx = Devices.addNavX(SerialPort.Port.kMXP);

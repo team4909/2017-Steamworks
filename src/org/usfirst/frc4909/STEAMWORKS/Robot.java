@@ -1,6 +1,8 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
+import edu.wpi.cscore.CvSink;
 import edu.wpi.cscore.UsbCamera;
+import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
@@ -12,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
+import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.InvertToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.ShiftToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotSched;
 import org.usfirst.frc4909.STEAMWORKS.commands.intake.PivotTime;
@@ -30,6 +33,14 @@ public class Robot extends IterativeRobot {
     public static Shooter shooter;
     public static Loader loader;
     public static LEDControl leds;
+    
+    public static UsbCamera loaderCam;
+    public static UsbCamera intakeCam;
+    public static CvSink cvSinkLoader;
+    public static CvSink cvSinkIntake;
+    public static VideoSink server;
+    boolean isLoaderSide;
+
     
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
@@ -55,11 +66,25 @@ public class Robot extends IterativeRobot {
         oi = new OI();
         
         try {
-        	 UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
-             camera.setResolution(IMG_WIDTH, IMG_HEIGHT);   
+        	 loaderCam = CameraServer.getInstance().startAutomaticCapture(0);
+        	 loaderCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
 //             camera.setExposureManual(10);
-             camera.setExposureManual(50);
-             camera.setWhiteBalanceManual(4500);
+        	 loaderCam.setExposureManual(50);
+        	 loaderCam.setWhiteBalanceManual(4500);
+        	 
+        	 intakeCam = CameraServer.getInstance().startAutomaticCapture(1);
+        	 intakeCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
+        	 intakeCam.setFPS(6);
+//             camera.setExposureManual(10);
+//        	 intakeCam.setExposureManual(30);
+//        	 intakeCam.setWhiteBalanceManual(1000);
+        	 server = CameraServer.getInstance().getServer();
+        	 cvSinkLoader = new CvSink("loadCamcv");
+        	  cvSinkLoader.setSource(loaderCam);
+        	  cvSinkLoader.setEnabled(true);
+        	  cvSinkIntake = new CvSink("intakeCamcv");
+        	  cvSinkIntake.setSource(intakeCam);
+        	  cvSinkIntake.setEnabled(true);
 		} catch (Exception e) {
 			
 		}
@@ -153,6 +178,7 @@ public class Robot extends IterativeRobot {
     	RobotMap.drivetrainRightEncoder.reset();
     	if(!SmartDashboard.getBoolean("Intake Pop Out Disable", false))
     		new PivotTime(.1).start();
+    	new InvertToState(true).start();
     }
 
     
@@ -173,6 +199,9 @@ public class Robot extends IterativeRobot {
 
    	        SmartDashboard.putNumber("Gear Detector Intake", RobotMap.intakeGearDetector.getVoltage());
         Scheduler.getInstance().run();
+        if(oi.driveGamepad.getRawButton(7))
+        	isLoaderSide=!isLoaderSide;
+   
     }
 
     public void testPeriodic() {

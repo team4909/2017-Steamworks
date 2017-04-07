@@ -28,13 +28,13 @@ public class ClimbManual extends Command {
 //    		Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.8));
 //
 //    	}
-    	
-		if(Robot.oi.climberJoystick.getThresholdAxis(1,0.4)<=0)
-    		Robot.climber.climb(0);
-		else
+    	SmartDashboard.putNumber("Climer Current", Robot.climber.getCurrent());
+//		if(Robot.oi.climberJoystick.getThresholdAxis(1,0.4)<=0)
+//    		Robot.climber.climb(0);
+//		else
 			Robot.climber.climb(Robot.oi.climberJoystick.getThresholdAxis(1, 0.6));
-		Robot.leds.setClimbed(!Robot.climber.getSwitch());
-
+//		Robot.leds.setClimbed(!Robot.climber.getSwitch());
+			
 //    	else
 //    	{
 //        	if(!Robot.climber.getSwitch()){

@@ -4,6 +4,7 @@ import org.usfirst.frc4909.STEAMWORKS.Robot;
 import org.usfirst.frc4909.STEAMWORKS.RobotMap;
 import org.usfirst.frc4909.STEAMWORKS.utils.Command;
 
+import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class BoilerShot extends Command {
@@ -19,7 +20,7 @@ public class BoilerShot extends Command {
     protected void execute() {
     	//Robot.shooter.setRPM(270.0);
     	if(!SmartDashboard.getBoolean("Shooter Manual Override", false)){
-			Robot.shooter.setRPM(3500);
+			Robot.shooter.setRPM(Preferences.getInstance().getDouble("shooterRPM", 3500));
 			SmartDashboard.putNumber("Current Shooter RPM", RobotMap.shooterMotorController.getSpeed());
 			
 			if(RobotMap.shooterMotorController.getSpeed() >= 3500.0 * 0.8)

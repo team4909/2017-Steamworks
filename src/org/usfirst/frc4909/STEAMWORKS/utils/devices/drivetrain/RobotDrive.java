@@ -1,5 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS.utils.devices.drivetrain;
 
+import org.usfirst.frc4909.STEAMWORKS.Robot;
+
 import edu.wpi.first.wpilibj.SpeedController;
 
 public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
@@ -50,12 +52,33 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 	
 	public void invert(){
 		inversion = !inversion;
+	     if(inversion){
+	        	Robot.server.setSource(Robot.loaderCam);
+	        	Robot.leds.setColor(false, true, false);
+	        	Robot.leds.setClimbed(true);
+	     }
+	        else{
+	        	Robot.server.setSource(Robot.intakeCam);
+	        	Robot.leds.setColor(true, true, true);
+	        	Robot.leds.setClimbed(false);
+	        }
 	}
 	
 	//true = intake side
 	//false = gear side
 
 	public void invert(boolean state){
+		if(state){
+        	Robot.server.setSource(Robot.loaderCam);
+        	Robot.leds.setColor(false, true, false);
+        	Robot.leds.setClimbed(true);
+
+		}
+        else{
+        	Robot.server.setSource(Robot.intakeCam);
+        	Robot.leds.setColor(true, true, true);
+        	Robot.leds.setClimbed(false);
+        }			
 		inversion = state;
 	}
 	
