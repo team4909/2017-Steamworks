@@ -1,6 +1,7 @@
 package org.usfirst.frc4909.STEAMWORKS;
 
 import edu.wpi.cscore.CvSink;
+import edu.wpi.cscore.CvSource;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.wpilibj.CameraServer;
@@ -13,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.vision.VisionThread;
 
+import org.opencv.core.Mat;
 import org.usfirst.frc4909.STEAMWORKS.commands.auto.*;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.InvertToState;
 import org.usfirst.frc4909.STEAMWORKS.commands.drive.semiauto.ShiftToState;
@@ -38,14 +40,14 @@ public class Robot extends IterativeRobot {
     public static UsbCamera intakeCam;
     public static CvSink cvSinkLoader;
     public static CvSink cvSinkIntake;
+    public static CvSink cvSinkIntakeFPSThrottleInput;
+    public static CvSource cvSinkIntakeFPSThrottle;
     public static VideoSink server;
     boolean isLoaderSide;
 
-    
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
 	private VisionThread visionThread;
-	private final Object imgLock = new Object();
   
     SendableChooser<Object> autoChooser;
     Command autonomousCommand;
@@ -67,24 +69,38 @@ public class Robot extends IterativeRobot {
         
         try {
         	 loaderCam = CameraServer.getInstance().startAutomaticCapture(0);
-        	 loaderCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
-//             camera.setExposureManual(10);
+        	 loaderCam.setResolution(IMG_WIDTH, IMG_HEIGHT); 
         	 loaderCam.setExposureManual(50);
         	 loaderCam.setWhiteBalanceManual(4500);
         	 
         	 intakeCam = CameraServer.getInstance().startAutomaticCapture(1);
-        	 intakeCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
-        	 intakeCam.setFPS(6);
-//             camera.setExposureManual(10);
-//        	 intakeCam.setExposureManual(30);
-//        	 intakeCam.setWhiteBalanceManual(1000);
+        	 intakeCam.setResolution(IMG_WIDTH, IMG_HEIGHT);
+        	 
+             cvSinkIntakeFPSThrottleInput = CameraServer.getInstance().getVideo(intakeCam);
+             cvSinkIntakeFPSThrottleInput.setEnabled(true);
+             
+             cvSinkIntakeFPSThrottle = CameraServer.getInstance().putVideo("intakeCam10FPS", IMG_WIDTH, IMG_HEIGHT);
+        	 
+        	 new Thread(() -> {
+                 Mat source = new Mat();
+                 Mat output = new Mat();
+                 
+                 while(!Thread.interrupted()) {
+                	 cvSinkIntakeFPSThrottleInput.grabFrame(source);
+                	 
+                	 cvSinkIntakeFPSThrottle.putFrame(output);
+                 }
+             }).start();
+        	 
         	 server = CameraServer.getInstance().getServer();
+        	 
         	 cvSinkLoader = new CvSink("loadCamcv");
-        	  cvSinkLoader.setSource(loaderCam);
-        	  cvSinkLoader.setEnabled(true);
-        	  cvSinkIntake = new CvSink("intakeCamcv");
-        	  cvSinkIntake.setSource(intakeCam);
-        	  cvSinkIntake.setEnabled(true);
+        	 cvSinkLoader.setSource(loaderCam);
+        	 cvSinkLoader.setEnabled(true);
+        	 
+        	 cvSinkIntake = new CvSink("intakeCamcv");
+        	 cvSinkIntake.setSource(intakeCam);
+        	 cvSinkIntake.setEnabled(true);
 		} catch (Exception e) {
 			
 		}

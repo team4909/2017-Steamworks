@@ -51,20 +51,10 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
     }
 	
 	public void invert(){
-		inversion = !inversion;
-	     if(inversion){
-	        	Robot.server.setSource(Robot.loaderCam);
-	        	Robot.leds.setColor(false, true, false);
-	        	Robot.leds.setClimbed(true);
-	     }
-	        else{
-	        	Robot.server.setSource(Robot.intakeCam);
-	        	Robot.leds.setColor(true, true, true);
-	        	Robot.leds.setClimbed(false);
-	        }
+		this.invert(!inversion);
 	}
 	
-	//true = intake side
+	//true = floor gear side
 	//false = gear side
 
 	public void invert(boolean state){
@@ -75,7 +65,7 @@ public class RobotDrive extends edu.wpi.first.wpilibj.RobotDrive {
 
 		}
         else{
-        	Robot.server.setSource(Robot.intakeCam);
+        	Robot.server.setSource(Robot.cvSinkIntakeFPSThrottle);
         	Robot.leds.setColor(true, true, true);
         	Robot.leds.setClimbed(false);
         }			
