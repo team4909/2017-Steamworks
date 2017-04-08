@@ -7,6 +7,7 @@ import edu.wpi.cscore.VideoSink;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -43,6 +44,9 @@ public class Robot extends IterativeRobot {
     public static CvSink cvSinkIntakeFPSThrottleInput;
     public static CvSource cvSinkIntakeFPSThrottle;
     public static VideoSink server;
+    
+    double lastFrameSent;
+    
     boolean isLoaderSide;
 
     private static final int IMG_WIDTH = 320;
@@ -79,16 +83,23 @@ public class Robot extends IterativeRobot {
              cvSinkIntakeFPSThrottleInput = CameraServer.getInstance().getVideo(intakeCam);
              cvSinkIntakeFPSThrottleInput.setEnabled(true);
              
-             cvSinkIntakeFPSThrottle = CameraServer.getInstance().putVideo("intakeCam10FPS", IMG_WIDTH, IMG_HEIGHT);
+             cvSinkIntakeFPSThrottle = CameraServer.getInstance().putVideo("intakeCamLowFPS", IMG_WIDTH, IMG_HEIGHT);
         	 
         	 new Thread(() -> {
-                 Mat source = new Mat();
-                 Mat output = new Mat();
+                 Mat cameraMat = new Mat();
                  
                  while(!Thread.interrupted()) {
-                	 cvSinkIntakeFPSThrottleInput.grabFrame(source);
-                	 
-                	 cvSinkIntakeFPSThrottle.putFrame(output);
+                	 try{
+                		 //double timeSinceLastFrameSent = Timer.getFPGATimestamp() - lastFrameSent;
+                		 //if(timeSinceLastFrameSent > 0.125){
+	                	 
+                		 if((Timer.getFPGATimestamp() - lastFrameSent) > 0.125){
+		                	 cvSinkIntakeFPSThrottleInput.grabFrame(cameraMat);
+		
+		                	 cvSinkIntakeFPSThrottle.putFrame(cameraMat);
+		                	 lastFrameSent = Timer.getFPGATimestamp();
+	                	 }
+                	} catch (Exception e) {}
                  }
              }).start();
         	 
@@ -101,9 +112,7 @@ public class Robot extends IterativeRobot {
         	 cvSinkIntake = new CvSink("intakeCamcv");
         	 cvSinkIntake.setSource(intakeCam);
         	 cvSinkIntake.setEnabled(true);
-		} catch (Exception e) {
-			
-		}
+		} catch (Exception e) {}
 
 //        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
 //            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
