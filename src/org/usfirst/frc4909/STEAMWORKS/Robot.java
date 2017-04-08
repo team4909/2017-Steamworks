@@ -109,9 +109,12 @@ public class Robot extends IterativeRobot {
         	 cvSinkLoader.setSource(loaderCam);
         	 cvSinkLoader.setEnabled(true);
         	 
+        	 // Should be Extraneous Now, Used to Prev. Keep Cam. from Idling.
+        	 /*
         	 cvSinkIntake = new CvSink("intakeCamcv");
         	 cvSinkIntake.setSource(intakeCam);
         	 cvSinkIntake.setEnabled(true);
+        	 //*/
 		} catch (Exception e) {}
 
 //        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
