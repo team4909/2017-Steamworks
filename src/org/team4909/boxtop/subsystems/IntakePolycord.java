@@ -1,13 +1,12 @@
 package org.team4909.boxtop.subsystems;
 
 import org.team4909.boxtop.RobotMap;
-import org.team4909.utils.Subsystem;
-import org.team4909.utils.devices.motorcontrollers.SpeedController;
 
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class IntakePolycord extends Subsystem {
-    private final SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
+    private final edu.wpi.first.wpilibj.SpeedController intakeMotor = RobotMap.intakeIntakeMotor;
     private final PowerDistributionPanel pdp = RobotMap.PDP; 
     public void intakeIn(double power){
     	intakeMotor.set(power);
@@ -25,4 +24,10 @@ public class IntakePolycord extends Subsystem {
     	return pdp.getCurrent(13);
     	
     }
+
+	@Override
+	protected void initDefaultCommand() {
+		// TODO Auto-generated method stub
+		
+	}
 }
