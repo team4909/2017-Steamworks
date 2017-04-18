@@ -1,18 +1,18 @@
 package org.team4909.utils.PID.Position;
 
-import org.team4909.utils.PID.PIDController;
+import org.team4909.utils.PID.EasyPIDController;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public abstract class PotentiometerPIDSubsystem extends Subsystem {
+public abstract class EasyPotentiometerPIDSubsystem extends Subsystem {
 	private double targetTime;
 	public int targetPosition = 0;
 	
-    public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
+    public final EasyPIDController potPIDcontroller = new EasyPIDController(this.getPotentiometerPIDController());
     
-	public abstract PotentiometerPIDController getPotentiometerPIDController();
+	public abstract EasyPotentiometerPIDController getPotentiometerPIDController();
 	
 	public double getAngle(){
     	return this.getPotentiometerPIDController().getPot().get();

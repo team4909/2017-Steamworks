@@ -2,23 +2,23 @@ package org.team4909.boxtop.commands.drive.semiauto;
 
 import org.team4909.boxtop.Robot;
 import org.team4909.boxtop.RobotMap;
-import org.team4909.utils.PID.PIDCommand;
-import org.team4909.utils.PID.PIDConstants;
-import org.team4909.utils.PID.PIDController;
+import org.team4909.utils.PID.EasyPIDCommand;
+import org.team4909.utils.PID.EasyPIDConstants;
+import org.team4909.utils.PID.EasyPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveDistance extends PIDCommand {
+public class DriveDistance extends EasyPIDCommand {
 	double target;
 	double initAngle;
 	double maxPow;
-	PIDController rotatePID =new PIDController( new PIDConstants(1, 0, 0, 0.4));
+	EasyPIDController rotatePID =new EasyPIDController( new EasyPIDConstants(1, 0, 0, 0.4));
 ;
 
     public DriveDistance(double targetDist) {
     	this.target = targetDist; 
     	
-    	this.pidController.changePIDGains(new PIDConstants(0.08, 0, 0, 1));
+    	this.pidController.changePIDGains(new EasyPIDConstants(0.08, 0, 0, 1));
 
     	
     }

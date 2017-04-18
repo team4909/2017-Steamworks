@@ -1,12 +1,12 @@
 package org.team4909.boxtop.commands.drive.semiauto;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.PID.PIDCommand;
-import org.team4909.utils.PID.PIDConstants;
+import org.team4909.utils.PID.EasyPIDCommand;
+import org.team4909.utils.PID.EasyPIDConstants;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Rotate extends PIDCommand {
+public class Rotate extends EasyPIDCommand {
 	double target;
 	double maxPow;
 	
@@ -16,14 +16,14 @@ public class Rotate extends PIDCommand {
     public Rotate(double targetAngle) {
     	this.target = targetAngle; 
     	
-    	this.pidController.changePIDGains(new PIDConstants(0.14, 0, 0.1, 0.6));
+    	this.pidController.changePIDGains(new EasyPIDConstants(0.14, 0, 0.1, 0.6));
     }
     //Angles are based on red side, negate if blue
     public Rotate(double targetAngle, boolean usingAlliance) {
     		
     	this.target = targetAngle; 
     	
-    	this.pidController.changePIDGains(new PIDConstants(0.14, 0, 0.1, 0.6));
+    	this.pidController.changePIDGains(new EasyPIDConstants(0.14, 0, 0.1, 0.6));
     	useAlliance = usingAlliance;
 
     }

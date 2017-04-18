@@ -1,19 +1,19 @@
 package org.team4909.utils.PID.Position;
 
-import org.team4909.utils.PID.PIDConstants;
+import org.team4909.utils.PID.EasyPIDConstants;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 
-public class PotentiometerPIDController {
+public class EasyPotentiometerPIDController {
 	private final SpeedController motor;
 	private final AnalogPotentiometer pot;
 	private final double[] positions;
-	private final PIDConstants constants;
+	private final EasyPIDConstants constants;
 	
-	public PotentiometerPIDController(String subsystem, SpeedController initMotor, AnalogPotentiometer initPot, double[] initPositions, PIDConstants initConstants) {
+	public EasyPotentiometerPIDController(String subsystem, SpeedController initMotor, AnalogPotentiometer initPot, double[] initPositions, EasyPIDConstants initConstants) {
 		motor = initMotor;
 		pot = initPot;
 		
@@ -24,7 +24,7 @@ public class PotentiometerPIDController {
     	LiveWindow.addSensor(subsystem, subsystem + "Pot", pot);
 	}
 	
-	public PotentiometerPIDController(String subsystem, SpeedController initMotor, boolean inverted, AnalogPotentiometer initPot, double[] initPositions, PIDConstants initConstants) {
+	public EasyPotentiometerPIDController(String subsystem, SpeedController initMotor, boolean inverted, AnalogPotentiometer initPot, double[] initPositions, EasyPIDConstants initConstants) {
 		motor = initMotor;
 		motor.setInverted(inverted);
     
@@ -49,7 +49,7 @@ public class PotentiometerPIDController {
 		return positions;
 	}
 	
-	public PIDConstants getPID(){
+	public EasyPIDConstants getPID(){
 		return constants;
 	}
 }

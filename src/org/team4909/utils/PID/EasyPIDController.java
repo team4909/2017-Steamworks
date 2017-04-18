@@ -1,6 +1,6 @@
 package org.team4909.utils.PID;
 
-import org.team4909.utils.PID.Position.PotentiometerPIDController;
+import org.team4909.utils.PID.Position.EasyPotentiometerPIDController;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * Modified from Base by Team 1241
  */
-public class PIDController {
+public class EasyPIDController {
 
 	/** The p gain. */
 	double pGain;
@@ -51,7 +51,7 @@ public class PIDController {
 	 * @param d
 	 *            the d
 	 */
-	public PIDController(double p, double i, double d, double max) {
+	public EasyPIDController(double p, double i, double d, double max) {
 		errorSum = 0; // initialize errorSum to 0
 		lastError = 0; // initialize lastError to 0
 		pGain = p;
@@ -60,11 +60,11 @@ public class PIDController {
 		maxOut = max;
 	}
 	
-	public PIDController(PIDConstants constants){
+	public EasyPIDController(EasyPIDConstants constants){
 		this(constants.p, constants.i, constants.d, constants.max);
 	}
 
-	public PIDController(PotentiometerPIDController potentiometerPIDController) {
+	public EasyPIDController(EasyPotentiometerPIDController potentiometerPIDController) {
 		this(potentiometerPIDController.getPID().p, potentiometerPIDController.getPID().i, potentiometerPIDController.getPID().d, potentiometerPIDController.getPID().max);
 	}
 
@@ -107,7 +107,7 @@ public class PIDController {
 		dGain = kD;
 	}
 	
-	public void changePIDGains(PIDConstants consts) {
+	public void changePIDGains(EasyPIDConstants consts) {
 		pGain = consts.p;
 		iGain = consts.i;
 		dGain = consts.d;

@@ -1,10 +1,10 @@
 package org.team4909.boxtop;
 
-import org.team4909.utils.PID.PIDConstants;
-import org.team4909.utils.PID.Position.PotentiometerPIDController;
+import org.team4909.utils.PID.EasyPIDConstants;
+import org.team4909.utils.PID.Position.EasyPotentiometerPIDController;
 import org.team4909.utils.devices.*;
 import org.team4909.utils.devices.drivetrain.ShiftingRobotDrive;
-import org.team4909.utils.devices.motorcontrollers.*;
+import org.team4909.utils.not.anymore.*;
 
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
@@ -47,8 +47,8 @@ public class RobotMap {
 	public static DoubleSolenoid shiftSolenoid;
 	public static Solenoid shiftSolenoidSingle;
 
-	public static PotentiometerPIDController intakePivotPotPIDController;
-	public static PotentiometerPIDController loaderPotPIDController;
+	public static EasyPotentiometerPIDController intakePivotPotPIDController;
+	public static EasyPotentiometerPIDController loaderPotPIDController;
 
 	public static ShiftingRobotDrive drivetrainRobotDrive;
 	
@@ -85,17 +85,17 @@ public class RobotMap {
 		// Pneumatics
 		compressor = new Compressor(0);
 		// Potentiometer PID Controllers
-		intakePivotPotPIDController = new PotentiometerPIDController("Intake", new Spark(8), true,
+		intakePivotPotPIDController = new EasyPotentiometerPIDController("Intake", new Spark(8), true,
 				new AnalogPotentiometer(2, 3600, Preferences.getInstance().getInt("intakeOffsetPref", 0)),
 				new double[] { Preferences.getInstance().getDouble("intakeUpPref", 2122),
 						Preferences.getInstance().getDouble("intakeDownPref", 2222) }, // Up,
 																							// Down
-				new PIDConstants(0.023, 0, 0, 0.4));
+				new EasyPIDConstants(0.023, 0, 0, 0.4));
 //		new PIDConstants(0.023, 0, 0, 0.7));
 		
 		intakeGearDetector = new AnalogInput(3);
 		
-		loaderPotPIDController = new PotentiometerPIDController("Loader", new Spark(9),
+		loaderPotPIDController = new EasyPotentiometerPIDController("Loader", new Spark(9),
 				new AnalogPotentiometer(1, 3600, Preferences.getInstance().getDouble("loaderOffsetPref", -2270)),
 				new double[] { Preferences.getInstance().getDouble("loaderHoldPref", 0),
 						Preferences.getInstance().getDouble("loaderCatchPref", 250),
@@ -105,7 +105,7 @@ public class RobotMap {
 																					// Drop,
 																					// Peg
 
-				new PIDConstants(0.01, 0, 0, 0.7));
+				new EasyPIDConstants(0.01, 0, 0, 0.7));
 
 		// Robot Drive
 		drivetrainRobotDrive = new ShiftingRobotDrive(drivetrainLeftDriveMotorController,

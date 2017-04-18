@@ -4,10 +4,10 @@ import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.Timer;
 
-public abstract class PIDCommand extends EasyCommand {
+public abstract class EasyPIDCommand extends EasyCommand {
 	double targetTime;
 
-	protected PIDController pidController = new PIDController(new PIDConstants(0, 0, 0, 1.0));
+	protected EasyPIDController pidController = new EasyPIDController(new EasyPIDConstants(0, 0, 0, 1.0));
 	
     protected void initialize() {    
     	targetTime = Timer.getFPGATimestamp();

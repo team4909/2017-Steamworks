@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Solenoid;
 
-public class ShiftingRobotDrive extends RobotDrive {
+public class ShiftingRobotDrive extends EasyRobotDrive {
 	private DoubleSolenoid shiftSolenoid;
 	private Solenoid shiftSolenoidSingle;
 	private boolean single = false;

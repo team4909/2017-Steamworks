@@ -1,4 +1,4 @@
-package org.team4909.utils.devices.motorcontrollers;
+package org.team4909.utils.not.anymore;
 
 public class CANTalon extends com.ctre.CANTalon {
 	public CANTalon(int deviceNumber) {
