@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.vision.VisionThread;
 import org.team4909.boxtop.commands.auto.*;
 import org.team4909.boxtop.commands.drive.semiauto.InvertToState;
 import org.team4909.boxtop.commands.drive.semiauto.ShiftToState;
-import org.team4909.boxtop.commands.intake.PivotSched;
 import org.team4909.boxtop.commands.intake.PivotTime;
 import org.team4909.boxtop.commands.loader.LoaderSched;
 import org.team4909.boxtop.subsystems.*;
@@ -41,11 +40,8 @@ public class Robot extends IterativeRobot {
     public static VideoSink server;
     boolean isLoaderSide;
 
-    
     private static final int IMG_WIDTH = 320;
 	private static final int IMG_HEIGHT = 240;
-	private VisionThread visionThread;
-	private final Object imgLock = new Object();
   
     SendableChooser<Object> autoChooser;
     Command autonomousCommand;
@@ -67,18 +63,15 @@ public class Robot extends IterativeRobot {
         
         try {
         	 loaderCam = CameraServer.getInstance().startAutomaticCapture(0);
-        	 loaderCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
-//             camera.setExposureManual(10);
+        	 loaderCam.setResolution(IMG_WIDTH, IMG_HEIGHT);
         	 loaderCam.setExposureManual(50);
         	 loaderCam.setWhiteBalanceManual(4500);
         	 
         	 intakeCam = CameraServer.getInstance().startAutomaticCapture(1);
         	 intakeCam.setResolution(IMG_WIDTH, IMG_HEIGHT);   
         	 intakeCam.setFPS(6);
-//             camera.setExposureManual(10);
-//        	 intakeCam.setExposureManual(30);
-//        	 intakeCam.setWhiteBalanceManual(1000);
         	 server = CameraServer.getInstance().getServer();
+        	 
         	 cvSinkLoader = new CvSink("loadCamcv");
         	  cvSinkLoader.setSource(loaderCam);
         	  cvSinkLoader.setEnabled(true);
@@ -115,11 +108,7 @@ public class Robot extends IterativeRobot {
        prefs=Preferences.getInstance();
     }
 
-//    @SuppressWarnings("deprecation")
-	public void disabledInit(){
-//		stop();
-//		visionThread.run();
-	}
+    public void disabledInit(){}
     
     public void disabledPeriodic() {
     	SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
@@ -149,7 +138,6 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit() {
-//        visionThread.start();
     	Robot.drivetrain.navx.zeroYaw();
     	new ShiftToState(Gear.Low).start();
     	RobotMap.drivetrainLeftEncoder.reset();
@@ -162,16 +150,11 @@ public class Robot extends IterativeRobot {
     
     public void teleopPeriodic() {
     	(new LoaderSched()).start();
-//        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
-//        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
-//        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
-//    		RobotMap.intakeIntakeMotor.set(.525);
     		SmartDashboard.putNumber("pivot angle", Robot.intakePivot.getAngle());
    	 		SmartDashboard.putNumber("loader angle", Robot.loader.getAngle());
    	 		SmartDashboard.putNumber("shooter rpm", Robot.shooter.getRPM());
    	    	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
    	        SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
-   	        //SmartDashboard.putBoolean("Gear Speed", Robot.drivetrain.robotDrive.getSingleState());
 	        SmartDashboard.putBoolean("Intake Gear", RobotMap.intakeGearDetector.getVoltage()<1);
 
    	        SmartDashboard.putNumber("Gear Detector Intake", RobotMap.intakeGearDetector.getVoltage());
