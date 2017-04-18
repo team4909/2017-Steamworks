@@ -1,9 +1,9 @@
 package org.team4909.boxtop.commands.intake;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
-public class Pivot extends Command {
+public class Pivot extends EasyCommand {
 	public Pivot() {}
 	
 	protected void initialize() {

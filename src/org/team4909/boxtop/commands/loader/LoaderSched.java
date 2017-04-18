@@ -1,11 +1,11 @@
 package org.team4909.boxtop.commands.loader;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class LoaderSched extends Command {
+public class LoaderSched extends EasyCommand {
 	public LoaderSched() {
 		requires(Robot.loader);
 	}

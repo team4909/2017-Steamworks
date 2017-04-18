@@ -8,4 +8,6 @@ public class Loader extends PotentiometerPIDSubsystem {
     public PotentiometerPIDController getPotentiometerPIDController(){
     	return RobotMap.loaderPotPIDController;
     }
+
+	protected void initDefaultCommand() {}
 }

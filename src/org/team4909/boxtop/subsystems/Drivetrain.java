@@ -2,11 +2,11 @@ package org.team4909.boxtop.subsystems;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 import org.team4909.boxtop.Robot;
 import org.team4909.boxtop.RobotMap;
 import org.team4909.boxtop.commands.drive.*;
-import org.team4909.utils.Subsystem;
 import org.team4909.utils.devices.drivetrain.NavX;
 import org.team4909.utils.devices.drivetrain.ShiftingRobotDrive;
 

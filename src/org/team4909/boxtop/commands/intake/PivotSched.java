@@ -1,11 +1,11 @@
 package org.team4909.boxtop.commands.intake;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PivotSched extends Command {
+public class PivotSched extends EasyCommand {
 	public PivotSched() {
 //		requires(Robot.intakePolycord);
 		requires(Robot.intakePivot);

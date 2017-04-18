@@ -1,7 +1,7 @@
 package org.team4909.utils;
 
-public abstract class Command extends edu.wpi.first.wpilibj.command.Command {
-	public Command() {}
+public abstract class EasyCommand extends edu.wpi.first.wpilibj.command.Command {
+	public EasyCommand() {}
 
 	@Override
 	protected boolean isFinished() {

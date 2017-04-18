@@ -1,14 +1,14 @@
 package org.team4909.boxtop.commands.shooter;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ShootManual extends Command {
+public class ShootManual extends EasyCommand {
 
     public ShootManual() {
         // Use requires() here to declare subsystem dependencies

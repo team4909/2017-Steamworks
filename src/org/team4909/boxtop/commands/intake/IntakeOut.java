@@ -1,9 +1,9 @@
 package org.team4909.boxtop.commands.intake;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
-public class IntakeOut extends Command {
+public class IntakeOut extends EasyCommand {
     public IntakeOut() {
        
         

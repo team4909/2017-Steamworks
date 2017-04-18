@@ -1,12 +1,12 @@
 package org.team4909.boxtop.commands.intake;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class PivotControl extends Command {
+public class PivotControl extends EasyCommand {
 	boolean holdPosition;
 	double location;
 	public PivotControl() {

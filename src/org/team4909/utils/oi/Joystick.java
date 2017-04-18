@@ -1,4 +1,4 @@
-package org.team4909.utils;
+package org.team4909.utils.oi;
 
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;

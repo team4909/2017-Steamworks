@@ -1,11 +1,11 @@
 package org.team4909.boxtop.commands.climb;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class ClimbCommand extends Command {
+public class ClimbCommand extends EasyCommand {
     public ClimbCommand() {
         requires(Robot.climber);
     }

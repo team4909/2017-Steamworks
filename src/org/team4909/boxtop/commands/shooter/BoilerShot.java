@@ -2,12 +2,12 @@ package org.team4909.boxtop.commands.shooter;
 
 import org.team4909.boxtop.Robot;
 import org.team4909.boxtop.RobotMap;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class BoilerShot extends Command {
+public class BoilerShot extends EasyCommand {
     public BoilerShot() {
         requires(Robot.shooter);
     }

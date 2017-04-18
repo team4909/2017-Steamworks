@@ -2,11 +2,11 @@ package org.team4909.boxtop.commands.shooter;
 
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class FeederOn extends Command {
+public class FeederOn extends EasyCommand {
     public FeederOn() {
         requires(Robot.feeder);
     }

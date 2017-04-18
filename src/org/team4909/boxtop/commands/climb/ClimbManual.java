@@ -1,14 +1,14 @@
 package org.team4909.boxtop.commands.climb;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ClimbManual extends Command {
+public class ClimbManual extends EasyCommand {
 
     public ClimbManual() {
         // Use requires() here to declare subsystem dependencies

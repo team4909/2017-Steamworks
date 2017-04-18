@@ -1,10 +1,10 @@
 package org.team4909.boxtop.subsystems;
 
 import org.team4909.boxtop.RobotMap;
-import org.team4909.utils.Subsystem;
-
 import com.ctre.CANTalon;
 import com.ctre.CANTalon.TalonControlMode;
+
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Shooter extends Subsystem {
 	private CANTalon shooterMotorController = RobotMap.shooterMotorController;

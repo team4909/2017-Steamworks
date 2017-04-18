@@ -1,9 +1,9 @@
 package org.team4909.boxtop.subsystems;
 
 import org.team4909.boxtop.RobotMap;
-import org.team4909.utils.Subsystem;
 
 import edu.wpi.first.wpilibj.SpeedController;
+import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Feeder extends Subsystem {
     private final SpeedController feederMotor = RobotMap.feederFeederMotor;
@@ -15,4 +15,7 @@ public class Feeder extends Subsystem {
     public void stopFeed(){
     	feederMotor.set(0);
     }
+
+	@Override
+	protected void initDefaultCommand() {}
 }

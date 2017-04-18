@@ -1,11 +1,11 @@
 package org.team4909.boxtop.commands.drive;
 
 import org.team4909.boxtop.Robot;
-import org.team4909.utils.Command;
+import org.team4909.utils.EasyCommand;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class DriveCommand extends Command {
+public class DriveCommand extends EasyCommand {
     public DriveCommand() {
         requires(Robot.drivetrain);
         

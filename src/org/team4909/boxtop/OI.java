@@ -5,7 +5,7 @@ import org.team4909.boxtop.commands.intake.*;
 import org.team4909.boxtop.commands.led.*
 import org.team4909.boxtop.commands.loader.*;
 import org.team4909.boxtop.commands.shooter.*;
-import org.team4909.utils.Joystick;
+import org.team4909.utils.oi.Joystick;
 
 public class OI {
     public Joystick leftDriveJoystick;
