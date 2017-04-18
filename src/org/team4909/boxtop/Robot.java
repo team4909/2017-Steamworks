@@ -89,24 +89,6 @@ public class Robot extends IterativeRobot {
 			
 		}
 
-//        visionThread = new VisionThread(camera, new GripPipeline(), pipeline -> {
-//            SmartDashboard.putBoolean("Is Empty", pipeline.filterContoursOutput().isEmpty());
-////            if (!pipeline.filterContoursOutput().isEmpty()) {
-//            
-//            if (pipeline.filterContoursOutput().size()>1) {
-//                Rect l = Imgproc.boundingRect(pipeline.filterContoursOutput().get(0));
-//                Rect r = Imgproc.boundingRect(pipeline.filterContoursOutput().get(1));
-//                synchronized (imgLock) {
-//                    SmartDashboard.putNumber("Centel X L", (l.x + (l.width / 2)));
-//                    SmartDashboard.putNumber("Centel Y L", (l.y + (l.height / 2)));
-//                    SmartDashboard.putNumber("Center X R", (r.x + (r.width / 2)));
-//                    SmartDashboard.putNumber("Center Y R", (r.y + (r.height / 2)));
-//                    SmartDashboard.putNumber("Avg X", ((r.x + (r.height / 2)+ l.x + (l.width / 2))/2));
-//
-//                }
-//            }
-//        });
-
         // Autonomous Chooser
         autoChooser = new SendableChooser<Object>();
         autoChooser.addDefault("Do Nothing", new DoNothing());
@@ -131,8 +113,6 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putBoolean("Intake Pop Out Disable", false);
         
        prefs=Preferences.getInstance();
-     
-
     }
 
 //    @SuppressWarnings("deprecation")
@@ -208,9 +188,5 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
     
-    public void stop() {
-        Thread waitThread = visionThread;
-        visionThread = null;
-        waitThread.interrupt();
-    }
+    public void stop() {}
 }
