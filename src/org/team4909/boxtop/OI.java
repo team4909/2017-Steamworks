@@ -2,12 +2,7 @@ package org.team4909.boxtop;
 
 import org.team4909.boxtop.commands.drive.*;
 import org.team4909.boxtop.commands.intake.*;
-import org.team4909.boxtop.commands.led.ColorBlue;
-import org.team4909.boxtop.commands.led.ColorGreen;
-import org.team4909.boxtop.commands.led.ColorPurple;
-import org.team4909.boxtop.commands.led.ColorRed;
-import org.team4909.boxtop.commands.led.ColorReset;
-import org.team4909.boxtop.commands.led.ColorWhite;
+import org.team4909.boxtop.commands.led.*
 import org.team4909.boxtop.commands.loader.*;
 import org.team4909.boxtop.commands.shooter.*;
 import org.team4909.utils.Joystick;
