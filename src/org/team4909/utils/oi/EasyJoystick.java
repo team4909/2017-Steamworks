@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class Joystick extends edu.wpi.first.wpilibj.Joystick {
-	public Joystick(int port) {
+public class EasyJoystick extends edu.wpi.first.wpilibj.Joystick {
+	public EasyJoystick(int port) {
 		super(port);
 	}
 

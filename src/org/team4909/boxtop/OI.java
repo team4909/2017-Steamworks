@@ -5,23 +5,23 @@ import org.team4909.boxtop.commands.intake.*;
 import org.team4909.boxtop.commands.led.*;
 import org.team4909.boxtop.commands.loader.*;
 import org.team4909.boxtop.commands.shooter.*;
-import org.team4909.utils.oi.Joystick;
+import org.team4909.utils.oi.EasyJoystick;
 
 public class OI {
-    public Joystick leftDriveJoystick;
-    public Joystick rightDriveJoystick;
-    public Joystick driveGamepad;
-    public Joystick manipulatorGamepad;
-    public Joystick climberJoystick;
+    public EasyJoystick leftDriveJoystick;
+    public EasyJoystick rightDriveJoystick;
+    public EasyJoystick driveGamepad;
+    public EasyJoystick manipulatorGamepad;
+    public EasyJoystick climberJoystick;
     
     public OI() {
     	
     	//Joystick Intializations
-    	leftDriveJoystick = new Joystick(0);
-        rightDriveJoystick = new Joystick(1);
-        driveGamepad = new Joystick(2);
-        manipulatorGamepad = new Joystick(3);
-        climberJoystick = new Joystick(4);
+    	leftDriveJoystick = new EasyJoystick(0);
+        rightDriveJoystick = new EasyJoystick(1);
+        driveGamepad = new EasyJoystick(2);
+        manipulatorGamepad = new EasyJoystick(3);
+        climberJoystick = new EasyJoystick(4);
 
     	//Tank Drivetrain
         leftDriveJoystick.buttonPressed(1, new InvertDrive());		//Trigger (Left Joystick)
