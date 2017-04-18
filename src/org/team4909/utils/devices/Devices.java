@@ -3,6 +3,8 @@ package org.team4909.utils.devices;
 import org.team4909.utils.devices.drivetrain.NavX;
 import org.team4909.utils.devices.motorcontrollers.SpeedController;
 
+import com.kauailabs.navx.frc.AHRS;
+
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
@@ -43,7 +45,7 @@ public class Devices {
 		return new DigitalInput(channel);
 	}
 	
-	public static NavX addNavX (edu.wpi.first.wpilibj.SerialPort.Port kmxp){
+	public static AHRS addNavX (edu.wpi.first.wpilibj.SerialPort.Port kmxp){
 		return new NavX(kmxp);
 	}
 }

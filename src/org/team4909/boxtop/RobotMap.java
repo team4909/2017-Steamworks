@@ -3,12 +3,12 @@ package org.team4909.boxtop;
 import org.team4909.utils.PID.PIDConstants;
 import org.team4909.utils.PID.Position.PotentiometerPIDController;
 import org.team4909.utils.devices.*;
-import org.team4909.utils.devices.drivetrain.NavX;
 import org.team4909.utils.devices.drivetrain.ShiftingRobotDrive;
 import org.team4909.utils.devices.motorcontrollers.*;
 
 import com.ctre.CANTalon.FeedbackDevice;
 import com.ctre.CANTalon.TalonControlMode;
+import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class RobotMap {
 	public static PowerDistributionPanel PDP;
 
-	public static NavX navx;
+	public static AHRS navx;
 
 	public static SpeedController drivetrainLeftDriveMotorController;
 	public static SpeedController drivetrainRightDriveMotorController;

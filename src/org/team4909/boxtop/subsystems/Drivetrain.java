@@ -7,12 +7,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import org.team4909.boxtop.Robot;
 import org.team4909.boxtop.RobotMap;
 import org.team4909.boxtop.commands.drive.*;
-import org.team4909.utils.devices.drivetrain.NavX;
 import org.team4909.utils.devices.drivetrain.ShiftingRobotDrive;
+
+import com.kauailabs.navx.frc.AHRS;
 
 public class Drivetrain extends Subsystem {
 	public ShiftingRobotDrive robotDrive 	= RobotMap.drivetrainRobotDrive;
-	public NavX navx 						= RobotMap.navx;
+	public AHRS navx 						= RobotMap.navx;
 	
     private final Encoder leftEncoder 	= RobotMap.drivetrainLeftEncoder;
     private final Encoder rightEncoder 	= RobotMap.drivetrainRightEncoder;
