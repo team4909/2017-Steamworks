@@ -135,13 +135,11 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	autonomousCommand = (Command) autoChooser.getSelected();
-//    	autonomousCommand = (Command) new PlaceMiddleGearEncoder();
 
         if (autonomousCommand != null) autonomousCommand.start();
     }
 
     public void autonomousPeriodic() {
-    	(new PivotSched()).start();
     	(new LoaderSched()).start();
     	SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
         SmartDashboard.putNumber("Right Encoder Distance", drivetrain.getRightEncDistance());
@@ -163,7 +161,6 @@ public class Robot extends IterativeRobot {
 
     
     public void teleopPeriodic() {
-//    	(new PivotSched()).start();
     	(new LoaderSched()).start();
 //        SmartDashboard.putString("Gear Speed",Robot.drivetrain.robotDrive.getState().name());
 //        SmartDashboard.putNumber("Left Encoder Distance", drivetrain.getLeftEncDistance());
