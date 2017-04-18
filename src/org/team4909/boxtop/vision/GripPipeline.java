@@ -1,4 +1,4 @@
-package org.team4909.boxtop.STEAMWORKS.vision;
+package org.team4909.boxtop.vision;
 
 import java.util.ArrayList;
 import java.util.List;
