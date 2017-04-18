@@ -30,13 +30,12 @@ public class RobotMap {
 
 	public static AHRS navx;
 
-	public static SpeedController drivetrainLeftDriveMotorController;
-	public static SpeedController drivetrainRightDriveMotorController;
+	public static edu.wpi.first.wpilibj.SpeedController drivetrainLeftDriveMotorController;
+	public static edu.wpi.first.wpilibj.SpeedController drivetrainRightDriveMotorController;
 
-	public static SpeedController intakeIntakeMotor;
-	public static SpeedController climberClimberMotorController;
-	public static SpeedController feederFeederMotor;
-	public static SpeedController intakeCenterMotor;
+	public static edu.wpi.first.wpilibj.SpeedController intakeIntakeMotor;
+	public static edu.wpi.first.wpilibj.SpeedController climberClimberMotorController;
+	public static edu.wpi.first.wpilibj.SpeedController feederFeederMotor;
 
 	public static CANTalon shooterMotorController;
 
@@ -72,7 +71,6 @@ public class RobotMap {
 		intakeIntakeMotor = Devices.addMotor("Intake", "IntakeMotorController", new Spark(2));
 		climberClimberMotorController = Devices.addMotor("Climber", "MotorController", new Spark(7));
 		feederFeederMotor = Devices.addMotor("Feeder", "MotorController", new Spark(3));
-		intakeCenterMotor = intakeIntakeMotor.addSlaveMotor(new Spark(5), -1.52);
 
 		// CAN
 		shooterMotorController = new CANTalon(2);
