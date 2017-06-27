@@ -23,9 +23,9 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	}
 
 	public void initPID(){
-    	targetTime = Timer.getFPGATimestamp();
+    		targetTime = Timer.getFPGATimestamp();
     	
-    	potPIDcontroller.resetPID();
+    		potPIDcontroller.resetPID();
 	}
 	
 	public void setTargetPosition(int position){
