@@ -10,13 +10,13 @@ public abstract class PotentiometerPIDSubsystem extends Subsystem {
 	private double targetTime;
 	public int targetPosition = 0;
 	
-    public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
+   	public final PIDController potPIDcontroller = new PIDController(this.getPotentiometerPIDController());
     
 	public abstract PotentiometerPIDController getPotentiometerPIDController();
 	
 	public double getAngle(){
-    	return this.getPotentiometerPIDController().getPot().get();
-    }
+    		return this.getPotentiometerPIDController().getPot().get();
+    	}
 	
 	public void setSpeed(double speed){
 		this.getPotentiometerPIDController().getMotor().set(speed);
