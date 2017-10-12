@@ -15,12 +15,12 @@ public class Shooter extends Subsystem {
 	
 	public void setRPM(double rpm) {
 		shooterMotorController.changeControlMode(TalonControlMode.Speed);
-		shooterMotorController.set(rpm);
+		//shooterMotorController.set(rpm);
 	}
 	
 	public void setVoltage(double percent) {
 		shooterMotorController.changeControlMode(TalonControlMode.PercentVbus);
-		shooterMotorController.set(percent);
+		//shooterMotorController.set(percent);
 	}
 	
 	public double getRPM(){
